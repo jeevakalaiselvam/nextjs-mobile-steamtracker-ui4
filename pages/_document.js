@@ -1,4 +1,5 @@
 import Document from "next/document";
+import Head from "next/head";
 import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
@@ -18,6 +19,13 @@ export default class MyDocument extends Document {
         ...initialProps,
         styles: (
           <>
+            <Head>
+              <title>My page title</title>
+              <meta
+                name="viewport"
+                content="initial-scale=1.0, width=device-width"
+              />
+            </Head>
             {initialProps.styles}
             {sheet.getStyleElement()}
           </>

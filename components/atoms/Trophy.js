@@ -29,7 +29,7 @@ const Count = styled.div`
   color: ${(props) => getColor(props.color) ?? getColor(COLOR_LIGHT1)};
   margin: ${(props) =>
     props.isHorizontal ? "0rem 0.5rem 0rem 0rem" : "0.25rem 0rem 0rem 0rem"};
-  font-size: ${(props) => props.size ?? "1rem"};
+  font-size: ${(props) => (props.isHorizontal ? "1.75rem" : "1.25rem")};
 `;
 
 export default function Trophy({ count, isHorizontal, color, icon, size }) {

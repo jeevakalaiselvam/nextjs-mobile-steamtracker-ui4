@@ -100,7 +100,7 @@ export default function GamesHeader() {
           count={completed}
           size={"2rem"}
           color={COLOR_GOLD}
-          isHorizontal={false}
+          isHorizontal={true}
         />
       </HeaderContent>
       <OptionsIcon onClick={rightIconClickHandler} active={right}>

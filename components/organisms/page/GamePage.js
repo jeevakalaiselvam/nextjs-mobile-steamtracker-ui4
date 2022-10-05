@@ -24,9 +24,10 @@ const Container = styled.div`
   max-height: 100vh;
   min-width: 100vw;
   max-width: 100vw;
-  background: url(${(props) => props.background});
+  background: url(${(props) => props.image ?? ""});
   background-size: cover;
   background-repeat: no-repeat;
+  overflow: hidden;
 `;
 
 const BackdropContainer = styled.div`
@@ -35,8 +36,9 @@ const BackdropContainer = styled.div`
   min-width: 100vw;
   max-width: 100vw;
   background-color: ${(props) => getColor(COLOR_DARK_TRANSPARENT5)};
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
   position: relative;
+  overflow: hidden;
 `;
 
 const Header = styled.div`
@@ -48,7 +50,6 @@ const Header = styled.div`
   min-width: 100vw;
   max-width: 100vw;
   background-color: ${(props) => getColor(COLOR_DARK_TRANSPARENT3)};
-  backdrop-filter: blur(20px);
 `;
 
 const Content = styled.div`
@@ -67,10 +68,9 @@ const LeftContainer = styled.div`
   justify-content: center;
   min-height: 100vh;
   max-height: 100vh;
-  min-width: 80vw;
-  max-width: 80vw;
+  min-width: 75vw;
+  max-width: 75vw;
   background-color: ${(props) => getColor(COLOR_DARK_TRANSPARENT6)};
-  backdrop-filter: blur(10px);
   position: absolute;
   top: 0;
   left: ${(props) => (props.active ? "0" : "-100vw")};
@@ -84,10 +84,9 @@ const RightContainer = styled.div`
   justify-content: center;
   min-height: 100vh;
   max-height: 100vh;
-  min-width: 80vw;
-  max-width: 80vw;
+  min-width: 75vw;
+  max-width: 75vw;
   background-color: ${(props) => getColor(COLOR_DARK_TRANSPARENT6)};
-  backdrop-filter: blur(10px);
   position: absolute;
   top: 0;
   right: ${(props) => (props.active ? "0" : "-100vw")};
@@ -114,7 +113,7 @@ export default function GamesPage() {
   };
 
   return (
-    <Container background={HEADER_IMAGE(getRandomGameId())}>
+    <Container image={HEADER_IMAGE(getRandomGameId())}>
       <BackdropContainer>
         <Header>
           <GamesHeader />

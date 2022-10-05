@@ -2,15 +2,18 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { getColor } from "../../helper/colorHelper";
+import { getColor } from "../../../helper/colorHelper";
 import {
   COLOR_DARK_TRANSPARENT2,
   COLOR_DARK_TRANSPARENT3,
   COLOR_DARK_TRANSPARENT4,
-} from "../../helper/constantHelper";
-import { HEADER_IMAGE } from "../../helper/urlHelper";
-import GamesHeader from "./header/GamesHeader";
-import GamesLeft from "./leftside/GamesLeft";
+  COLOR_DARK_TRANSPARENT5,
+  COLOR_DARK_TRANSPARENT6,
+} from "../../../helper/constantHelper";
+import { HEADER_IMAGE } from "../../../helper/urlHelper";
+import GamesHeader from "../header/GamesHeader";
+import GamesLeft from "../leftside/GamesLeft";
+import GamesRight from "../rightside/GamesRight";
 
 const Container = styled.div`
   display: flex;
@@ -31,7 +34,7 @@ const BackdropContainer = styled.div`
   max-height: 100vh;
   min-width: 100vw;
   max-width: 100vw;
-  background-color: ${(props) => getColor(COLOR_DARK_TRANSPARENT4)};
+  background-color: ${(props) => getColor(COLOR_DARK_TRANSPARENT5)};
   backdrop-filter: blur(20px);
   position: relative;
 `;
@@ -44,7 +47,7 @@ const Header = styled.div`
   max-height: 8vh;
   min-width: 100vw;
   max-width: 100vw;
-  background-color: ${(props) => getColor(COLOR_DARK_TRANSPARENT2)};
+  background-color: ${(props) => getColor(COLOR_DARK_TRANSPARENT3)};
   backdrop-filter: blur(20px);
 `;
 
@@ -66,10 +69,12 @@ const LeftContainer = styled.div`
   max-height: 100vh;
   min-width: 80vw;
   max-width: 80vw;
-  background-color: ${(props) => getColor(COLOR_DARK_TRANSPARENT3)};
+  background-color: ${(props) => getColor(COLOR_DARK_TRANSPARENT6)};
+  backdrop-filter: blur(10px);
   position: absolute;
   top: 0;
-  left: ${(props) => (props.active ? "0" : "-80vw")};
+  left: ${(props) => (props.active ? "0" : "-100vw")};
+  transition: all 0.25s;
 `;
 
 const RightContainer = styled.div`
@@ -81,10 +86,12 @@ const RightContainer = styled.div`
   max-height: 100vh;
   min-width: 80vw;
   max-width: 80vw;
-  background-color: ${(props) => getColor(COLOR_DARK_TRANSPARENT3)};
+  background-color: ${(props) => getColor(COLOR_DARK_TRANSPARENT6)};
+  backdrop-filter: blur(10px);
   position: absolute;
   top: 0;
-  right: ${(props) => (props.active ? "0" : "80vw")};
+  right: ${(props) => (props.active ? "0" : "-100vw")};
+  transition: all 0.25s;
 `;
 
 export default function GamesPage() {
@@ -116,7 +123,9 @@ export default function GamesPage() {
         <LeftContainer active={left}>
           <GamesLeft />
         </LeftContainer>
-        {/* <RightContainer active={right}></RightContainer> */}
+        <RightContainer active={right}>
+          <GamesRight />
+        </RightContainer>
       </BackdropContainer>
     </Container>
   );

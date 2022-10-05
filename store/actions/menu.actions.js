@@ -1,6 +1,8 @@
 import {
   HEADER_LEFT_GAMES_OFF,
   HEADER_LEFT_GAMES_ON,
+  HEADER_RIGHT_GAMES_OFF,
+  HEADER_RIGHT_GAMES_ON,
 } from "../types/menu.types";
 
 export const headerLeftGamesOn = () => {

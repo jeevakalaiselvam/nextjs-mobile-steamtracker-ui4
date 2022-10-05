@@ -44,7 +44,7 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state,
         gamesPageMenu: {
           ...state.gamesPageMenu,
-          right: false,
+          right: true,
         },
       };
 

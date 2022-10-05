@@ -46,7 +46,7 @@ export default function Trophy({ count, isHorizontal, color, icon, size }) {
 }
 
 Trophy.propTypes = {
-  count: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
   isHorizontal: PropTypes.bool,
   color: PropTypes.string,
   icon: PropTypes.string.isRequired,

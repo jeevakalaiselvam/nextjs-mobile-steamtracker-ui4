@@ -29,9 +29,9 @@ const IconClose = styled.div`
   }
 `;
 
-export default function SidebarClose() {
+export default function SidebarClose({ onClick }) {
   return (
-    <Container>
+    <Container onClick={onClick}>
       <IconClose>{getIcon(ICON_CLOSE)}</IconClose>
     </Container>
   );

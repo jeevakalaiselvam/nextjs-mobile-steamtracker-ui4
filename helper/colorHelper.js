@@ -29,11 +29,19 @@ export const getColor = (color) => {
     case COLORS.COLOR_DARK_TRANSPARENT2:
       return "rgba(0,0,0,0.2)";
     case COLORS.COLOR_DARK_TRANSPARENT3:
-      return "rgba(0,0,0,0.4)";
+      return "rgba(0,0,0,0.3)";
     case COLORS.COLOR_DARK_TRANSPARENT4:
-      return "rgba(0,0,0,0.6)";
+      return "rgba(0,0,0,0.4)";
     case COLORS.COLOR_DARK_TRANSPARENT5:
+      return "rgba(0,0,0,0.5)";
+    case COLORS.COLOR_DARK_TRANSPARENT6:
+      return "rgba(0,0,0,0.6)";
+    case COLORS.COLOR_DARK_TRANSPARENT7:
+      return "rgba(0,0,0,0.7)";
+    case COLORS.COLOR_DARK_TRANSPARENT8:
       return "rgba(0,0,0,0.8)";
+    case COLORS.COLOR_DARK_TRANSPARENT9:
+      return "rgba(0,0,0,0.9)";
     case COLORS.COLOR_ACCENT:
       return "#3049d1";
     case COLORS.COLOR_DANGER:

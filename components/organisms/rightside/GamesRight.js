@@ -1,7 +1,6 @@
-import React from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { headerLeftGamesOff } from "../../../store/actions/menu.actions";
+import { headerRightGamesOff } from "../../../store/actions/menu.actions";
 import SidebarClose from "../../atoms/SidebarClose";
 
 const Container = styled.div`
@@ -12,14 +11,14 @@ const Container = styled.div`
   min-height: 100vh;
 `;
 
-export default function GamesLeft() {
+export default function GamesRight() {
   const dispatch = useDispatch();
 
   return (
     <Container>
       <SidebarClose
         onClick={() => {
-          dispatch(headerLeftGamesOff());
+          dispatch(headerRightGamesOff());
         }}
       />
     </Container>

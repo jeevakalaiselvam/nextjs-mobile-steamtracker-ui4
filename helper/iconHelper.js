@@ -1,5 +1,10 @@
-import { HiDotsVertical, HiMenu } from "react-icons/hi";
-import { ICON_MENU, ICON_OPTIONS, ICON_TROPHY } from "./constantHelper";
+import { HiDotsVertical, HiMenu, HiXCircle } from "react-icons/hi";
+import {
+  ICON_CLOSE,
+  ICON_MENU,
+  ICON_OPTIONS,
+  ICON_TROPHY,
+} from "./constantHelper";
 import { FaTrophy } from "react-icons/fa";
 
 export const getIcon = (type) => {
@@ -10,6 +15,8 @@ export const getIcon = (type) => {
       return <HiDotsVertical />;
     case ICON_TROPHY:
       return <FaTrophy />;
+    case ICON_CLOSE:
+      return <HiXCircle />;
     default:
       return <HiMenu />;
   }

@@ -9,6 +9,8 @@ import {
   COLOR_DARK_TRANSPARENT4,
 } from "../../helper/constantHelper";
 import { HEADER_IMAGE } from "../../helper/urlHelper";
+import GamesHeader from "./header/GamesHeader";
+import GamesLeft from "./leftside/GamesLeft";
 
 const Container = styled.div`
   display: flex;
@@ -31,6 +33,7 @@ const BackdropContainer = styled.div`
   max-width: 100vw;
   background-color: ${(props) => getColor(COLOR_DARK_TRANSPARENT4)};
   backdrop-filter: blur(20px);
+  position: relative;
 `;
 
 const Header = styled.div`
@@ -54,10 +57,43 @@ const Content = styled.div`
   max-width: 100vw;
 `;
 
-export default function Page({ leftSide, rightSide, header, content }) {
+const LeftContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  max-height: 100vh;
+  min-width: 80vw;
+  max-width: 80vw;
+  background-color: ${(props) => getColor(COLOR_DARK_TRANSPARENT3)};
+  position: absolute;
+  top: 0;
+  left: ${(props) => (props.active ? "0" : "-80vw")};
+`;
+
+const RightContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  max-height: 100vh;
+  min-width: 80vw;
+  max-width: 80vw;
+  background-color: ${(props) => getColor(COLOR_DARK_TRANSPARENT3)};
+  position: absolute;
+  top: 0;
+  right: ${(props) => (props.active ? "0" : "80vw")};
+`;
+
+export default function GamesPage() {
   const router = useRouter();
   const steam = useSelector((state) => state.steam);
+  const menu = useSelector((state) => state.menu);
   const { games } = steam;
+  const { gamesPageMenu } = menu;
+  const { left, right } = gamesPageMenu;
 
   useEffect(() => {
     if (!Object.keys(games).length > 0) {
@@ -73,8 +109,14 @@ export default function Page({ leftSide, rightSide, header, content }) {
   return (
     <Container background={HEADER_IMAGE(getRandomGameId())}>
       <BackdropContainer>
-        <Header>{header}</Header>
+        <Header>
+          <GamesHeader />
+        </Header>
         <Content></Content>
+        <LeftContainer active={left}>
+          <GamesLeft />
+        </LeftContainer>
+        {/* <RightContainer active={right}></RightContainer> */}
       </BackdropContainer>
     </Container>
   );

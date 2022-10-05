@@ -2,6 +2,7 @@
 export const ICON_MENU = "ICON_MENU";
 export const ICON_OPTIONS = "ICON_OPTIONS";
 export const ICON_TROPHY = "ICON_TROPHY";
+export const ICON_CLOSE = "ICON_CLOSE";
 
 //Color Constants
 export const COLOR_LIGHT1 = "COLOR_LIGHT1";
@@ -25,5 +26,7 @@ export const COLOR_DARK_TRANSPARENT4 = "COLOR_DARK_TRANSPARENT4";
 export const COLOR_DARK_TRANSPARENT5 = "COLOR_DARK_TRANSPARENT5";
 
 //Other Colors
+export const COLOR_SUCCESS = "COLOR_SUCCESS";
+export const COLOR_DANGER = "COLOR_DANGER";
 export const COLOR_ACCENT = "COLOR_ACCENT";
 export const COLOR_GOLD = "COLOR_GOLD";

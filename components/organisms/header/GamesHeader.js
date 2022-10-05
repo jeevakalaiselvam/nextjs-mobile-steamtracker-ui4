@@ -6,14 +6,17 @@ import { getColor } from "../../../helper/colorHelper";
 import {
   COLOR_ACCENT,
   COLOR_GOLD,
-  COLOR_LIGHT1,
-  COLOR_LIGHT_TRANSPARENT1,
   COLOR_LIGHT_TRANSPARENT4,
   ICON_MENU,
   ICON_OPTIONS,
   ICON_TROPHY,
 } from "../../../helper/constantHelper";
 import { getIcon } from "../../../helper/iconHelper";
+import {
+  headerLeftGamesOff,
+  headerLeftGamesOn,
+  headerRightGamesOn,
+} from "../../../store/actions/menu.actions";
 import Trophy from "../../atoms/Trophy";
 
 const Container = styled.div`
@@ -34,7 +37,8 @@ const MenuIcon = styled.div`
   width: 50px;
   height: 50px;
   font-size: 3rem;
-  color: ${(props) => getColor(COLOR_LIGHT_TRANSPARENT4)};
+  color: ${(props) =>
+    props.active ? getColor(COLOR_ACCENT) : getColor(COLOR_LIGHT_TRANSPARENT4)};
   &:hover {
     color: ${(props) => getColor(COLOR_ACCENT)};
   }
@@ -47,7 +51,8 @@ const OptionsIcon = styled.div`
   width: 50px;
   height: 50px;
   font-size: 2.5rem;
-  color: ${(props) => getColor(COLOR_LIGHT_TRANSPARENT4)};
+  color: ${(props) =>
+    props.active ? getColor(COLOR_ACCENT) : getColor(COLOR_LIGHT_TRANSPARENT4)};
   &:hover {
     color: ${(props) => getColor(COLOR_ACCENT)};
   }
@@ -64,7 +69,10 @@ export default function GamesHeader() {
   const router = useRouter();
   const dispatch = useDispatch();
   const steam = useSelector((state) => state.steam);
+  const menu = useSelector((state) => state.menu);
   const { games } = steam;
+  const { gamesPageMenu } = menu;
+  const { left, right } = gamesPageMenu;
 
   const completed =
     games.length !== 0
@@ -73,23 +81,31 @@ export default function GamesHeader() {
         }, 0)
       : 0;
 
-  const leftIconClickHandler = () => {};
+  const leftIconClickHandler = () => {
+    dispatch(headerLeftGamesOn());
+  };
 
-  const rightIconClickHandler = () => {};
+  const rightIconClickHandler = () => {
+    dispatch(headerRightGamesOn());
+  };
 
   return (
     <Container>
-      <MenuIcon>{getIcon(ICON_MENU)}</MenuIcon>
+      <MenuIcon onClick={leftIconClickHandler} active={left}>
+        {getIcon(ICON_MENU)}
+      </MenuIcon>
       <HeaderContent>
         <Trophy
           icon={ICON_TROPHY}
           count={completed}
           size={"2rem"}
           color={COLOR_GOLD}
-          isHorizontal={true}
+          isHorizontal={false}
         />
       </HeaderContent>
-      <OptionsIcon>{getIcon(ICON_OPTIONS)}</OptionsIcon>
+      <OptionsIcon onClick={rightIconClickHandler} active={right}>
+        {getIcon(ICON_OPTIONS)}
+      </OptionsIcon>
     </Container>
   );
 }

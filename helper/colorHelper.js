@@ -36,6 +36,10 @@ export const getColor = (color) => {
       return "rgba(0,0,0,0.8)";
     case COLORS.COLOR_ACCENT:
       return "#3049d1";
+    case COLORS.COLOR_DANGER:
+      return "#ff4858";
+    case COLORS.COLOR_SUCCESS:
+      return "#6cff5c";
     case COLORS.COLOR_GOLD:
       return "#f1b51b";
     default:

@@ -34,11 +34,11 @@ const Count = styled.div`
 
 export default function Trophy({ count, isHorizontal, color, icon, size }) {
   return (
-    <Container isHorizontal={isHorizontal ?? false}>
-      <Icon size={size} color={color} isHorizontal={isHorizontal ?? false}>
+    <Container isHorizontal={isHorizontal}>
+      <Icon size={size} color={color} isHorizontal={isHorizontal}>
         {getIcon(icon ?? ICON_TROPHY)}
       </Icon>
-      <Count size={size} color={color} isHorizontal={isHorizontal ?? false}>
+      <Count size={size} color={color} isHorizontal={isHorizontal}>
         {count ?? 0}
       </Count>
     </Container>

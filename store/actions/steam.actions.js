@@ -1,10 +1,10 @@
-import axios from 'axios';
-import { API_GET_GAMES } from '../../helper/urlHelper';
+import axios from "axios";
+import { API_GET_GAMES } from "../../helper/urlHelper";
 import {
   FETCH_ALL_GAMES_ERROR,
   FETCH_ALL_GAMES_REQUEST,
   FETCH_ALL_GAMES_SUCCESS,
-} from '../types/games.types';
+} from "../types/steam.types";
 
 export const fetchAllGames = () => {
   return (dispatch) => {

@@ -1,7 +1,7 @@
 import {
   FETCH_ALL_GAMES_REQUEST,
   FETCH_ALL_GAMES_SUCCESS,
-} from '../types/games.types';
+} from "../types/steam.types";
 
 const INITIAL_STATE = {
   games: [],

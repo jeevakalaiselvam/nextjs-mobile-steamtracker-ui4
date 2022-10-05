@@ -1,8 +1,10 @@
-import { combineReducers } from 'redux';
-import gamesReducer from './games.reducer';
+import { combineReducers } from "redux";
+import steamReducer from "./steam.reducer";
+import menuReducer from "./menu.reducer";
 
 const rootReducer = combineReducers({
-  steamtracker: gamesReducer,
+  steam: steamReducer,
+  menu: menuReducer,
 });
 
 export default rootReducer;

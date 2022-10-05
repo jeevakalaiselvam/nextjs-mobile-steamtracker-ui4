@@ -1,16 +1,7 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import styled from 'styled-components';
-import { useRouter } from 'next/router';
-import GamePage from '../../components/organisms/GamePage';
+import React from "react";
+import GamesHeader from "../../components/organisms/header/GamesHeader";
+import Page from "../../components/organisms/Page";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-export default function GamesPage() {
-  return <GamePage />;
+export default function GamePage() {
+  return <Page header={<GamesHeader />} />;
 }

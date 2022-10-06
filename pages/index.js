@@ -5,11 +5,11 @@ import * as Loaders from "react-spinners";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { HEADER_IMAGE } from "../helper/urlHelper";
-import { getColor } from "../helper/colorHelper";
 import {
-  COLOR_DARK_TRANSPARENT2,
-  COLOR_DARK_TRANSPARENT4,
-} from "../helper/constantHelper";
+  COLOR_MAIN_BACKGROUND,
+  DARK_BACKGROUND,
+  getColor,
+} from "../helper/colorHelper";
 
 const Container = styled.div`
   display: flex;
@@ -19,7 +19,7 @@ const Container = styled.div`
   max-width: 100vw;
   max-height: 100vh;
   min-height: 100vh;
-  background: url(${(props) => props.background});
+  background: url(${(props) => props.image});
   background-size: cover;
   background-repeat: no-repeat;
 `;
@@ -31,7 +31,7 @@ const BackdropContainer = styled.div`
   justify-content: center;
   min-width: 100vw;
   max-width: 100vw;
-  background-color: ${(props) => getColor(COLOR_DARK_TRANSPARENT4)};
+  background-color: ${(props) => getColor(COLOR_MAIN_BACKGROUND)};
   backdrop-filter: blur(20px);
 `;
 
@@ -52,12 +52,11 @@ export default function Home() {
   }, [games]);
 
   const getRandomGameId = () => {
-    // return games[Math.floor(Math.random() * games.length)]?.id ?? "1151640";
     return "1151640";
   };
 
   return (
-    <Container background={HEADER_IMAGE(getRandomGameId())}>
+    <Container image={HEADER_IMAGE(getRandomGameId())}>
       <BackdropContainer>
         <Loaders.HashLoader />
       </BackdropContainer>

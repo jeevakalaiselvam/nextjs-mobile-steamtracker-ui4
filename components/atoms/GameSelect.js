@@ -14,8 +14,6 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  min-width: 100vw;
-  max-width: 100vw;
   overflow: hidden;
   position: relative;
 `;
@@ -23,15 +21,14 @@ const Container = styled.div`
 const SelectDrop = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  min-width: 100vw;
-  max-width: 100vw;
-  min-height: 80px;
-  max-height: 80px;
+  justify-content: flex-start;
+  flex-direction: column;
+  min-width: 67.5vw;
+  max-width: 67.5vw;
   overflow: scroll;
   margin-bottom: 2px;
   background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
 `;
 
 const SearchBarContainer = styled.div`
@@ -39,58 +36,28 @@ const SearchBarContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  min-width: 100vw;
-  max-width: 100vw;
   margin-bottom: 2px;
-`;
-
-const SelectDropDown = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-  min-width: 100vw;
-  max-width: 100vw;
-  max-height: calc(100vh - 100px);
-  overflow: scroll;
-  margin-bottom: 2px;
-`;
-
-const SelectInner = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  min-width: 100vw;
-  max-width: 100vw;
-  min-height: 80px;
-  max-height: 80px;
-  overflow: scroll;
-  margin-bottom: 2px;
-  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 const GameImage = styled.div`
   display: flex;
   align-items: center;
-  flex: 1;
   justify-content: center;
   flex-direction: row;
+  width: 200px;
   background: url(${(props) => props.image});
   background-repeat: no-repeat;
   background-size: contain;
-  min-height: 80px;
-  max-height: 80px;
+  min-height: 100px;
+  max-height: 100px;
 `;
 
 const GameTitle = styled.div`
   display: flex;
-  flex: 1;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: row;
-  min-height: 80px;
-  max-height: 80px;
+  padding: 0rem 0.25rem;
   color: #fefefe;
 `;
 
@@ -105,28 +72,15 @@ export default function GameSelect() {
   const { gamesPageSettings } = settings;
   const { selectedGameId, searchTerm } = gamesPageSettings;
 
-  useEffect(() => {
-    if (games && Object.keys(games).length === 0) {
-      router.push("/");
-    }
-  }, []);
-
   const selectedGame =
     games.find((game) => game.id === selectedGameId) ?? games[0];
 
-  const filterGamesWithoutSelectedGame = games.filter(
-    (game) =>
-      game.id != (selectedGame?.id ?? "") &&
-      game.name
-        .toLowerCase()
-        .trim()
-        .includes((searchTerm ?? "").toLowerCase().trim())
+  const filterGamesWithoutSelectedGame = games.filter((game) =>
+    game.name
+      .toLowerCase()
+      .trim()
+      .includes((searchTerm ?? "").toLowerCase().trim())
   );
-
-  const gameSelectHandler = (gameId) => {
-    dispatch(gamesPageSelectGame(gameId));
-    setShowMenu((old) => false);
-  };
 
   const searchTermHandler = (searchData) => {
     dispatch(gamesPageSearchTerm(searchData));
@@ -134,38 +88,25 @@ export default function GameSelect() {
 
   return (
     <Container>
-      <SelectDrop
-        onClick={() => {
-          setShowMenu((old) => !old);
-        }}
-      >
-        <GameImage
-          image={HEADER_IMAGE(selectedGame?.id ?? games[0]?.id ?? "")}
-        ></GameImage>
-        <GameTitle>{selectedGame?.name ?? games[0]?.name ?? ""}</GameTitle>
-      </SelectDrop>
-      {showMenu && (
-        <SearchBarContainer>
-          <Searchbar onSearchObtained={searchTermHandler} width="90vw" />
-        </SearchBarContainer>
+      <SearchBarContainer>
+        <Searchbar onSearchObtained={searchTermHandler} width="57.5vw" />
+      </SearchBarContainer>
+      {searchTerm === "" && (
+        <SelectDrop>
+          <GameImage
+            image={HEADER_IMAGE(selectedGame?.id ?? games[0]?.id ?? "")}
+          ></GameImage>
+          <GameTitle>{selectedGame?.name ?? games[0]?.name ?? ""}</GameTitle>
+        </SelectDrop>
       )}
-
-      <SelectDropDown>
-        {showMenu &&
-          filterGamesWithoutSelectedGame.length > 0 &&
-          filterGamesWithoutSelectedGame.map((game) => {
-            return (
-              <SelectInner
-                onClick={() => {
-                  gameSelectHandler(game.id);
-                }}
-              >
-                <GameImage image={HEADER_IMAGE(game.id)}></GameImage>
-                <GameTitle>{game.name}</GameTitle>
-              </SelectInner>
-            );
-          })}
-      </SelectDropDown>
+      {searchTerm !== "" && (
+        <SelectDrop>
+          <GameImage
+            image={HEADER_IMAGE(filterGamesWithoutSelectedGame[0]?.id ?? "")}
+          ></GameImage>
+          <GameTitle>{filterGamesWithoutSelectedGame[0]?.name ?? ""}</GameTitle>
+        </SelectDrop>
+      )}
     </Container>
   );
 }

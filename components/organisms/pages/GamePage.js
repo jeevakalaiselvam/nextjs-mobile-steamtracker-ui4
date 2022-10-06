@@ -2,8 +2,17 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { THEME_SWITCH_COUNT } from "../../../helper/configHelper";
+import {
+  READ_JSON,
+  SELECTED_THEME,
+  WRITE_JSON,
+} from "../../../helper/storageHelper";
 import { HEADER_IMAGE } from "../../../helper/urlHelper";
-import GamesPageHeader from "../../molecules/GamesPageHeader";
+import GamesPageHeader from "../../molecules/GameSelectList";
+import GamesHeader from "../../molecules/GamesHeader";
+import GamesContent from "../content/GamesContent";
+import GamePageLeft from "../left/GamePageLeft";
 
 const Container = styled.div`
   display: flex;
@@ -16,18 +25,56 @@ const Container = styled.div`
   background: url(${(props) => props.image});
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
 `;
 
 const BackDrop = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  flex-direction: column;
   min-width: 100vw;
   max-width: 100vw;
   min-height: 100vh;
   max-height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
+`;
+
+const LeftContainer = styled.div`
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: scroll;
+  position: absolute;
+  min-width: 70vw;
+  max-width: 70vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  top: 0;
+  left: ${(props) => (props.open ? "0" : "-70vw")};
+  transition: all 0.25s;
+  z-index: 1;
+`;
+
+const HeaderContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 100vw;
+  max-width: 100vw;
+  min-height: 55px;
+  min-height: 55px;
+`;
+
+const ContentContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 100vw;
+  max-width: 100vw;
+  flex: 1;
+  min-height: 55px;
+  min-height: 55px;
 `;
 
 export default function GamesPage() {
@@ -37,7 +84,7 @@ export default function GamesPage() {
   const settings = useSelector((state) => state.settings);
   const { games } = steam;
   const { gamesPageSettings } = settings;
-  const { selectedGameId } = gamesPageSettings;
+  const { selectedGameId, drawerOpen } = gamesPageSettings;
 
   useEffect(() => {
     if (games && Object.keys(games).length === 0) {
@@ -45,10 +92,42 @@ export default function GamesPage() {
     }
   }, []);
 
+  const getRandomGameId = () => {
+    let oldThemeData = READ_JSON(SELECTED_THEME, {
+      gameId: "1151640",
+      count: 0,
+    });
+    if (oldThemeData.count < THEME_SWITCH_COUNT) {
+      let updatedThemeData = {
+        gameId: oldThemeData.gameId,
+        count: oldThemeData.count + 1,
+      };
+      WRITE_JSON(SELECTED_THEME, updatedThemeData);
+      return oldThemeData.gameId;
+    } else {
+      let newGameId =
+        games[Math.floor(Math.random() * games.length)].id ?? "1151640";
+      let newThemeData = {
+        gameId: newGameId,
+        count: 0,
+      };
+      WRITE_JSON(SELECTED_THEME, newThemeData);
+      return;
+    }
+  };
+
   return (
-    <Container image={HEADER_IMAGE(selectedGameId ?? "1151640")}>
+    <Container image={HEADER_IMAGE(getRandomGameId())}>
       <BackDrop>
-        <GamesPageHeader />
+        <LeftContainer open={drawerOpen}>
+          <GamePageLeft />
+        </LeftContainer>
+        <HeaderContainer>
+          <GamesHeader />
+        </HeaderContainer>
+        <ContentContainer>
+          <GamesContent />
+        </ContentContainer>
       </BackDrop>
     </Container>
   );

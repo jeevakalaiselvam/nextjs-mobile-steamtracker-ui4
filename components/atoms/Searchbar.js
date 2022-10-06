@@ -4,6 +4,7 @@ import { HiSearch } from "react-icons/hi";
 
 const Container = styled.div`
   display: flex;
+  margin: 0.5rem;
 `;
 
 const SearchIcon = styled.div`
@@ -12,7 +13,7 @@ const SearchIcon = styled.div`
   justify-content: center;
   background: rgba(0, 0, 0, 0.5);
   padding: 0.5rem 1rem;
-  border-radius: 8px 0px 0px 8px;
+  border-radius: 0px 0px 0px 0px;
 `;
 
 const SearchInput = styled.div`

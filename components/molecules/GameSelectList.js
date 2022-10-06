@@ -9,12 +9,10 @@ const Container = styled.div`
   align-items: center;
   justify-content: flex-start;
   flex-direction: row;
-  min-width: 100vw;
-  max-width: 100vw;
   overflow: scroll;
 `;
 
-export default function GamesPageHeader() {
+export default function GameSelectList() {
   const router = useRouter();
   const dispatch = useDispatch();
   const steam = useSelector((state) => state.steam);

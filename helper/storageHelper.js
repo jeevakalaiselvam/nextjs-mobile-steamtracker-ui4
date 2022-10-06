@@ -1,3 +1,5 @@
+export const SELECTED_THEME = "SELECTED_THEME";
+
 export const WRITE_JSON = (key, data) => {
   if (typeof window !== "undefined") {
     localStorage.setItem(key, JSON.stringify(data));

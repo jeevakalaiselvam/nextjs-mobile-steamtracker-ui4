@@ -38,7 +38,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(fetchAllGames());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (games && Object.keys(games).length > 0) {

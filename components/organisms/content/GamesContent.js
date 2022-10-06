@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import GameCard from "../../atoms/GameCard";
+import Searchbar from "../../atoms/Searchbar";
 
 const Container = styled.div`
   display: flex;
@@ -11,7 +12,27 @@ const Container = styled.div`
   justify-content: flex-start;
   min-width: 100vw;
   max-width: 100vw;
-  height: calc(100vh - 55px);
+  min-height: calc(100vh - 55px);
+  max-height: calc(100vh - 55px);
+`;
+
+const GamesSearch = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-width: 100vw;
+  max-width: 100vw;
+  min-height: 40px;
+  max-height: 40px;
+`;
+const GamesList = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-width: 100vw;
+  max-width: 100vw;
+  min-height: calc(100vh - 55px - 50px);
+  max-height: calc(100vh - 55px - 50px);
   overflow: scroll;
   padding: 0.5rem;
 `;
@@ -25,12 +46,19 @@ export default function GamesContent() {
   const { gamesPageSettings } = settings;
   const { selectedGameId } = gamesPageSettings;
 
+  const searchHandler = (search) => {};
+
   return (
     <Container>
-      {games.length > 0 &&
-        games.map((game) => {
-          return <GameCard game={game} key={game.id} />;
-        })}
+      <GamesSearch>
+        <Searchbar onSearchObtained={searchHandler} width="85vw" />
+      </GamesSearch>
+      <GamesList>
+        {games.length > 0 &&
+          games.map((game) => {
+            return <GameCard game={game} key={game.id} />;
+          })}
+      </GamesList>
     </Container>
   );
 }

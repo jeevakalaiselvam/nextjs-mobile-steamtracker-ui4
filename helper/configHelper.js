@@ -1,1 +1,1 @@
-export const THEME_SWITCH_COUNT = 50;
+export const THEME_SWITCH_COUNT = 20;

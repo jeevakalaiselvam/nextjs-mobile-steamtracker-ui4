@@ -7,8 +7,16 @@ import {
   COLOR_REFRESH_INACTIVE,
   getColor,
 } from "../../helper/colorHelper";
-import { getIcon, ICON_MENU, ICON_REFRESH } from "../../helper/iconHelper";
-import { gamesPageDrawerToggle } from "../../store/actions/settings.actions";
+import {
+  getIcon,
+  ICON_MENU,
+  ICON_REFRESH,
+  ICON_SEARCH,
+} from "../../helper/iconHelper";
+import {
+  gamesPageDrawerToggle,
+  gamesPageSearchShow,
+} from "../../store/actions/settings.actions";
 import TrophyCount from "../atoms/TrophyCount";
 
 const Container = styled.div`
@@ -44,6 +52,35 @@ const Middle = styled.div`
   justify-content: center;
   overflow: hidden;
   flex: 1;
+`;
+
+const LeftAfter = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 1rem;
+  justify-content: center;
+  opacity: 0;
+  font-size: 2.25rem;
+  padding: 4px;
+  color: ${(props) =>
+    props.rotate
+      ? getColor(COLOR_REFRESH_INACTIVE)
+      : getColor(COLOR_REFRESH_INACTIVE)};
+`;
+
+const RightBefore = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 2.25rem;
+  padding: 4px;
+  margin-right: 1rem;
+  color: ${(props) =>
+    props.rotate
+      ? getColor(COLOR_REFRESH_INACTIVE)
+      : getColor(COLOR_REFRESH_INACTIVE)};
 `;
 
 const Right = styled.div`
@@ -87,7 +124,7 @@ export default function GamesHeader() {
   const settings = useSelector((state) => state.settings);
   const { games } = steam;
   const { gamesPageSettings } = settings;
-  const { drawerOpen } = gamesPageSettings;
+  const { drawerOpen, searchShow } = gamesPageSettings;
 
   const [rotate, setRotate] = useState(false);
 
@@ -102,14 +139,24 @@ export default function GamesHeader() {
     }, 2000);
   };
 
+  const searchClickHandler = () => {
+    dispatch(gamesPageSearchShow(true));
+  };
+
   return (
     <Container>
       <Left onClick={menuClickHandler}>
         {drawerOpen ? getIcon(ICON_MENU) : getIcon(ICON_MENU)}
       </Left>
+      <LeftAfter rotate={rotate} onClick={refreshClickHandler}>
+        {getIcon(ICON_SEARCH)}
+      </LeftAfter>
       <Middle>
         <TrophyCount />
       </Middle>
+      <RightBefore onClick={searchClickHandler}>
+        {getIcon(ICON_SEARCH)}
+      </RightBefore>
       <Right rotate={rotate} onClick={refreshClickHandler}>
         {getIcon(ICON_REFRESH)}
       </Right>

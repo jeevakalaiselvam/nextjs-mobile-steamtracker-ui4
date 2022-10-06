@@ -4,7 +4,7 @@ import { HiSearch } from "react-icons/hi";
 
 const Container = styled.div`
   display: flex;
-  margin: 0.5rem;
+  margin: 0.5rem 0 0 0;
 `;
 
 const SearchIcon = styled.div`

@@ -1,5 +1,6 @@
 import {
   GAMES_PAGE_DRAWER_TOGGLE,
+  GAMES_PAGE_SEARCH_SHOW,
   GAMES_PAGE_SEARCH_TERM,
   GAMES_PAGE_SELECTED_GAME,
 } from "../types/settings.types";
@@ -9,6 +10,7 @@ const INITIAL_STATE = {
     selectedGameId: "",
     searchTerm: "",
     drawerOpen: false,
+    searchShow: false,
   },
 };
 
@@ -39,6 +41,14 @@ const reducer = (state = INITIAL_STATE, action) => {
         gamesPageSettings: {
           ...state.gamesPageSettings,
           drawerOpen: payload,
+        },
+      };
+    case GAMES_PAGE_SEARCH_SHOW:
+      return {
+        ...state,
+        gamesPageSettings: {
+          ...state.gamesPageSettings,
+          searchShow: payload,
         },
       };
 

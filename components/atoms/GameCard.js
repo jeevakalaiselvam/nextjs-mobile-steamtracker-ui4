@@ -23,8 +23,8 @@ const Image = styled.div`
   justify-content: center;
   min-width: 100%;
   max-width: 100%;
-  min-height: 125px;
-  max-height: 125px;
+  min-height: 150px;
+  max-height: 150px;
   background: url(${(props) => props.image});
   background-size: cover;
   background-repeat: no-repeat;

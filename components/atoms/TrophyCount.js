@@ -18,7 +18,7 @@ const Trophy = styled.div`
   flex-direction: row;
   justify-content: center;
   margin-right: 0.75rem;
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: ${(props) => getColor(COLOR_GOLD_TROPHY)};
 `;
 

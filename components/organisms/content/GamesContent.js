@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import GameCard from "../../atoms/GameCard";
@@ -31,8 +31,10 @@ const GamesList = styled.div`
   flex-direction: column;
   min-width: 100vw;
   max-width: 100vw;
-  min-height: calc(100vh - 55px - 50px);
-  max-height: calc(100vh - 55px - 50px);
+  min-height: ${(props) =>
+    props.searchShow ? "calc(100vh - 55px - 50px)" : "calc(100vh - 55px)"};
+  max-height: ${(props) =>
+    props.searchShow ? "calc(100vh - 55px - 50px)" : "calc(100vh - 55px)"};
   overflow: scroll;
   padding: 0.5rem;
 `;
@@ -44,18 +46,29 @@ export default function GamesContent() {
   const settings = useSelector((state) => state.settings);
   const { games } = steam;
   const { gamesPageSettings } = settings;
-  const { selectedGameId } = gamesPageSettings;
+  const { selectedGameId, searchShow } = gamesPageSettings;
 
-  const searchHandler = (search) => {};
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const searchHandler = (search) => {
+    setSearchTerm((old) => search.toLowerCase().trim());
+  };
+
+  const searchFilteredGames = games.filter((game) =>
+    game.name.toLowerCase().trim().includes(searchTerm)
+  );
 
   return (
     <Container>
-      <GamesSearch>
-        <Searchbar onSearchObtained={searchHandler} width="85vw" />
-      </GamesSearch>
-      <GamesList>
-        {games.length > 0 &&
-          games.map((game) => {
+      {console.log("SHOW", searchShow)}
+      {searchShow && (
+        <GamesSearch>
+          <Searchbar onSearchObtained={searchHandler} width="85vw" />
+        </GamesSearch>
+      )}
+      <GamesList searchShow={searchShow}>
+        {searchFilteredGames.length > 0 &&
+          searchFilteredGames.map((game) => {
             return <GameCard game={game} key={game.id} />;
           })}
       </GamesList>

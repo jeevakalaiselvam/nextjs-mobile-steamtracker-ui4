@@ -9,9 +9,12 @@ import {
 } from "../../helper/colorHelper";
 import {
   getIcon,
+  ICON_CLOSE,
   ICON_MENU,
   ICON_REFRESH,
   ICON_SEARCH,
+  ICON_SEARCH_ACTIVE,
+  ICON_SEARCH_CANCEL,
 } from "../../helper/iconHelper";
 import {
   gamesPageDrawerToggle,
@@ -140,7 +143,7 @@ export default function GamesHeader() {
   };
 
   const searchClickHandler = () => {
-    dispatch(gamesPageSearchShow(true));
+    dispatch(gamesPageSearchShow(!searchShow));
   };
 
   return (
@@ -155,7 +158,8 @@ export default function GamesHeader() {
         <TrophyCount />
       </Middle>
       <RightBefore onClick={searchClickHandler}>
-        {getIcon(ICON_SEARCH)}
+        {!searchShow && getIcon(ICON_SEARCH_ACTIVE)}
+        {searchShow && getIcon(ICON_SEARCH_CANCEL)}
       </RightBefore>
       <Right rotate={rotate} onClick={refreshClickHandler}>
         {getIcon(ICON_REFRESH)}

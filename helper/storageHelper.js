@@ -1,4 +1,4 @@
-export const SELECTED_THEME = "SELECTED_THEME";
+export const SELECTED_THEME_ID = "SELECTED_THEME_ID";
 
 export const WRITE_JSON = (key, data) => {
   if (typeof window !== "undefined") {

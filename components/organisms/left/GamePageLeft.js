@@ -12,7 +12,9 @@ import {
   getIcon,
   ICON_CLOSE,
   ICON_DRAWER_CLOSE,
+  ICON_THEME_SWITCH,
 } from "../../../helper/iconHelper";
+import { SELECTED_THEME_ID, WRITE_JSON } from "../../../helper/storageHelper";
 import { gamesPageDrawerToggle } from "../../../store/actions/settings.actions";
 import Profile from "../../atoms/Profile";
 import GameSelectList from "../../molecules/GameSelectList";
@@ -42,6 +44,23 @@ const Close = styled.div`
   }
 `;
 
+const Theme = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: ${(props) => getColor(COLOR_TEXT_DULL)};
+  font-size: 2.5rem;
+  padding: 1rem;
+
+  &:hover {
+    color: ${(props) => getColor(COLOR_CLOSE_RED)};
+  }
+`;
+
 export default function GamePageLeft() {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -55,8 +74,18 @@ export default function GamePageLeft() {
     dispatch(gamesPageDrawerToggle(false));
   };
 
+  const themeRefreshClickHandler = () => {
+    let newGameId =
+      games[Math.floor(Math.random() * games.length)].id ?? "1151640";
+    WRITE_JSON(SELECTED_THEME_ID, newGameId);
+    dispatch(gamesPageDrawerToggle(false));
+  };
+
   return (
     <Container>
+      <Theme onClick={themeRefreshClickHandler}>
+        {getIcon(ICON_THEME_SWITCH)}
+      </Theme>
       <Close onClick={closeClickHandler}>{getIcon(ICON_DRAWER_CLOSE)}</Close>
       <Profile />
     </Container>

@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { THEME_SWITCH_COUNT } from "../../../helper/configHelper";
 import {
   READ_JSON,
-  SELECTED_THEME,
+  SELECTED_THEME_ID,
   WRITE_JSON,
 } from "../../../helper/storageHelper";
 import { HEADER_IMAGE } from "../../../helper/urlHelper";
@@ -92,32 +92,13 @@ export default function GamesPage() {
     }
   }, []);
 
-  const getRandomGameId = () => {
-    let oldThemeData = READ_JSON(SELECTED_THEME, {
-      gameId: "1151640",
-      count: 0,
-    });
-    if (oldThemeData.count < THEME_SWITCH_COUNT) {
-      let updatedThemeData = {
-        gameId: oldThemeData.gameId,
-        count: oldThemeData.count + 1,
-      };
-      WRITE_JSON(SELECTED_THEME, updatedThemeData);
-      return oldThemeData.gameId;
-    } else {
-      let newGameId =
-        games[Math.floor(Math.random() * games.length)].id ?? "1151640";
-      let newThemeData = {
-        gameId: newGameId,
-        count: 0,
-      };
-      WRITE_JSON(SELECTED_THEME, newThemeData);
-      return;
-    }
+  const getStoredThemeId = () => {
+    const storedId = READ_JSON(SELECTED_THEME_ID, "1151640");
+    return storedId;
   };
 
   return (
-    <Container image={HEADER_IMAGE(getRandomGameId())}>
+    <Container image={HEADER_IMAGE(getStoredThemeId())}>
       <BackDrop>
         <LeftContainer open={drawerOpen}>
           <GamePageLeft />

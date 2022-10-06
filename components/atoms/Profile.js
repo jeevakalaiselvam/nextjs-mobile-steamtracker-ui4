@@ -28,7 +28,7 @@ const Image = styled.div`
 const Name = styled.div`
   display: flex;
   padding: 1rem 0rem 0rem 0rem;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   align-items: center;
   flex-direction: row;
   justify-content: center;

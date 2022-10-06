@@ -8,7 +8,11 @@ import {
   COLOR_TEXT_DULL,
   getColor,
 } from "../../../helper/colorHelper";
-import { getIcon, ICON_CLOSE } from "../../../helper/iconHelper";
+import {
+  getIcon,
+  ICON_CLOSE,
+  ICON_DRAWER_CLOSE,
+} from "../../../helper/iconHelper";
 import { gamesPageDrawerToggle } from "../../../store/actions/settings.actions";
 import Profile from "../../atoms/Profile";
 import GameSelectList from "../../molecules/GameSelectList";
@@ -30,7 +34,7 @@ const Close = styled.div`
   top: 0;
   right: 0;
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
-  font-size: 3rem;
+  font-size: 2.5rem;
   padding: 1rem;
 
   &:hover {
@@ -53,7 +57,7 @@ export default function GamePageLeft() {
 
   return (
     <Container>
-      <Close onClick={closeClickHandler}>{getIcon(ICON_CLOSE)}</Close>
+      <Close onClick={closeClickHandler}>{getIcon(ICON_DRAWER_CLOSE)}</Close>
       <Profile />
     </Container>
   );

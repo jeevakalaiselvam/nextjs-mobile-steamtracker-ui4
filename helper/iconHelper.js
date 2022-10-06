@@ -5,10 +5,12 @@ import {
   TbList,
   TbMenu,
   TbMenu2,
+  TbPlayerTrackPrev,
   TbRefresh,
   TbRefreshDot,
   TbSearch,
   TbTrophy,
+  TbX,
   TbZoomCancel,
   TbZoomQuestion,
 } from "react-icons/tb";
@@ -18,6 +20,7 @@ export const ICON_REFRESH = "ICON_REFRESH";
 export const ICON_TROPHY = "ICON_TROPHY";
 export const ICON_MENU = "ICON_MENU";
 export const ICON_CLOSE = "ICON_CLOSE";
+export const ICON_DRAWER_CLOSE = "ICON_DRAWER_CLOSE";
 export const ICON_SEARCH_ACTIVE = "ICON_SEARCH_ACTIVE";
 export const ICON_SEARCH_CANCEL = "ICON_SEARCH_CANCEL";
 
@@ -29,8 +32,10 @@ export const getIcon = (type) => {
       return <TbTrophy />;
     case ICON_MENU:
       return <TbMenu2 />;
+    case ICON_DRAWER_CLOSE:
+      return <TbPlayerTrackPrev />;
     case ICON_CLOSE:
-      return <TbCrutches />;
+      return <TbX />;
     case ICON_SEARCH_ACTIVE:
       return <TbZoomQuestion />;
     case ICON_SEARCH_CANCEL:

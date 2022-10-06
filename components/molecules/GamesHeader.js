@@ -5,6 +5,8 @@ import styled from "styled-components";
 import {
   COLOR_REFRESH_ACTIVE,
   COLOR_REFRESH_INACTIVE,
+  COLOR_TEXT_DRAWER_ICON,
+  COLOR_TEXT_DULL,
   getColor,
 } from "../../helper/colorHelper";
 import {
@@ -32,7 +34,7 @@ const Container = styled.div`
   min-height: 55px;
   max-height: 55px;
   overflow: hidden;
-  color: #fefefe;
+  color: ${(props) => getColor(COLOR_TEXT_DRAWER_ICON)};
   padding-right: 1rem;
   background-color: rgba(0, 0, 0, 0.1);
   padding-left: 1rem;
@@ -44,7 +46,7 @@ const Left = styled.div`
   flex-direction: row;
   justify-content: center;
   overflow: hidden;
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   padding: 4px;
 `;
 
@@ -66,10 +68,7 @@ const LeftAfter = styled.div`
   opacity: 0;
   font-size: 2.25rem;
   padding: 4px;
-  color: ${(props) =>
-    props.rotate
-      ? getColor(COLOR_REFRESH_INACTIVE)
-      : getColor(COLOR_REFRESH_INACTIVE)};
+  color: ${(props) => getColor(COLOR_TEXT_DRAWER_ICON)};
 `;
 
 const RightBefore = styled.div`
@@ -80,10 +79,7 @@ const RightBefore = styled.div`
   font-size: 2.25rem;
   padding: 4px;
   margin-right: 1rem;
-  color: ${(props) =>
-    props.rotate
-      ? getColor(COLOR_REFRESH_INACTIVE)
-      : getColor(COLOR_REFRESH_INACTIVE)};
+  color: ${(props) => getColor(COLOR_TEXT_DRAWER_ICON)};
 `;
 
 const Right = styled.div`
@@ -139,7 +135,8 @@ export default function GamesHeader() {
     setRotate(true);
     setTimeout(() => {
       setRotate(false);
-    }, 2000);
+      router.push("/");
+    }, 1000);
   };
 
   const searchClickHandler = () => {

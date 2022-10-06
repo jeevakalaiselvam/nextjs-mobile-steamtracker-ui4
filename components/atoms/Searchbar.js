@@ -12,6 +12,7 @@ const SearchIcon = styled.div`
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.5);
+  color: #9caabe;
   padding: 0.5rem 1rem;
   border-radius: 0px 0px 0px 0px;
 `;

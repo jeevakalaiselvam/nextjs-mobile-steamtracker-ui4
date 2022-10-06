@@ -6,6 +6,7 @@ import {
   TbList,
   TbMenu,
   TbMenu2,
+  TbPlayerTrackNext,
   TbPlayerTrackPrev,
   TbRefresh,
   TbRefreshDot,
@@ -31,7 +32,7 @@ export const getIcon = (type) => {
     case ICON_REFRESH:
       return <TbRefreshDot />;
     case ICON_TROPHY:
-      return <TbTrophy />;
+      return <FaTrophy />;
     case ICON_MENU:
       return <TbMenu2 />;
     case ICON_DRAWER_CLOSE:
@@ -43,7 +44,7 @@ export const getIcon = (type) => {
     case ICON_SEARCH_CANCEL:
       return <TbZoomCancel />;
     case ICON_THEME_SWITCH:
-      return <TbComponents />;
+      return <TbPlayerTrackNext />;
     default:
       return <TbTrophy />;
   }

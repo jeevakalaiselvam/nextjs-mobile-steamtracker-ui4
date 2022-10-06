@@ -23,8 +23,9 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
+  min-height: 100vh;
 `;
 
 const Close = styled.div`
@@ -61,6 +62,40 @@ const Theme = styled.div`
   }
 `;
 
+const CloseBottom = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: ${(props) => getColor(COLOR_TEXT_DULL)};
+  font-size: 2.5rem;
+  padding: 1rem;
+
+  &:hover {
+    color: ${(props) => getColor(COLOR_CLOSE_RED)};
+  }
+`;
+
+const ThemeBottom = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: ${(props) => getColor(COLOR_TEXT_DULL)};
+  font-size: 2.5rem;
+  padding: 1rem;
+
+  &:hover {
+    color: ${(props) => getColor(COLOR_CLOSE_RED)};
+  }
+`;
+
 export default function GamePageLeft() {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -87,6 +122,12 @@ export default function GamePageLeft() {
         {getIcon(ICON_THEME_SWITCH)}
       </Theme>
       <Close onClick={closeClickHandler}>{getIcon(ICON_DRAWER_CLOSE)}</Close>
+      <ThemeBottom onClick={themeRefreshClickHandler}>
+        {getIcon(ICON_THEME_SWITCH)}
+      </ThemeBottom>
+      <CloseBottom onClick={closeClickHandler}>
+        {getIcon(ICON_DRAWER_CLOSE)}
+      </CloseBottom>
       <Profile />
     </Container>
   );

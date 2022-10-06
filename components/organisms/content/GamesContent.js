@@ -58,17 +58,21 @@ export default function GamesContent() {
     game.name.toLowerCase().trim().includes(searchTerm)
   );
 
+  const sortFilteredGames = searchFilteredGames.sort((game1, game2) => {
+    return Number(game2.completion) - Number(game1.completion);
+  });
+
   return (
     <Container>
       {console.log("SHOW", searchShow)}
       {searchShow && (
         <GamesSearch>
-          <Searchbar onSearchObtained={searchHandler} width="85vw" />
+          <Searchbar onSearchObtained={searchHandler} width="87.5vw" />
         </GamesSearch>
       )}
       <GamesList searchShow={searchShow}>
-        {searchFilteredGames.length > 0 &&
-          searchFilteredGames.map((game) => {
+        {sortFilteredGames.length > 0 &&
+          sortFilteredGames.map((game) => {
             return <GameCard game={game} key={game.id} />;
           })}
       </GamesList>

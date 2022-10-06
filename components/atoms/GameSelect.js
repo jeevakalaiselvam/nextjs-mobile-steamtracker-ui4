@@ -2,13 +2,8 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import {
-  COLOR_GAME_SELECT,
-  COLOR_GAME_SELECT_OPTION,
-  DARK_BACKGROUND,
-  getColor,
-} from "../../helper/colorHelper";
 import { HEADER_IMAGE } from "../../helper/urlHelper";
+import { gamesPageSelectGame } from "../../store/actions/settings.actions";
 
 const Container = styled.div`
   display: flex;
@@ -31,7 +26,8 @@ const SelectDrop = styled.div`
   min-height: 80px;
   max-height: 80px;
   overflow: scroll;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 const SelectDropDown = styled.div`
@@ -43,7 +39,7 @@ const SelectDropDown = styled.div`
   max-width: 100vw;
   max-height: calc(100vh - 100px);
   overflow: scroll;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 `;
 
 const SelectInner = styled.div`
@@ -56,7 +52,8 @@ const SelectInner = styled.div`
   min-height: 80px;
   max-height: 80px;
   overflow: scroll;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 const GameImage = styled.div`
@@ -80,6 +77,7 @@ const GameTitle = styled.div`
   flex-direction: row;
   min-height: 80px;
   max-height: 80px;
+  color: #fefefe;
 `;
 
 export default function GameSelect() {
@@ -88,13 +86,28 @@ export default function GameSelect() {
   const router = useRouter();
   const dispatch = useDispatch();
   const steam = useSelector((state) => state.steam);
+  const settings = useSelector((state) => state.settings);
   const { games } = steam;
+  const { gamesPageSettings } = settings;
+  const { selectedGameId } = gamesPageSettings;
 
   useEffect(() => {
     if (games && Object.keys(games).length === 0) {
       router.push("/");
     }
   }, []);
+
+  const selectedGame =
+    games.find((game) => game.id === selectedGameId) ?? games[0];
+
+  const filterGamesWithoutSelectedGame = games.filter(
+    (game) => game.id != (selectedGame?.id ?? "")
+  );
+
+  const gameSelectHandler = (gameId) => {
+    dispatch(gamesPageSelectGame(gameId));
+    setShowMenu((old) => false);
+  };
 
   return (
     <Container>
@@ -103,15 +116,21 @@ export default function GameSelect() {
           setShowMenu((old) => !old);
         }}
       >
-        <GameImage>0</GameImage>
-        <GameTitle>1</GameTitle>
+        <GameImage
+          image={HEADER_IMAGE(selectedGame?.id ?? games[0].id)}
+        ></GameImage>
+        <GameTitle>{selectedGame?.name ?? games[0].name}</GameTitle>
       </SelectDrop>
       <SelectDropDown>
         {showMenu &&
-          games.length > 0 &&
-          games.map((game) => {
+          filterGamesWithoutSelectedGame.length > 0 &&
+          filterGamesWithoutSelectedGame.map((game) => {
             return (
-              <SelectInner>
+              <SelectInner
+                onClick={() => {
+                  gameSelectHandler(game.id);
+                }}
+              >
                 <GameImage image={HEADER_IMAGE(game.id)}></GameImage>
                 <GameTitle>{game.name}</GameTitle>
               </SelectInner>

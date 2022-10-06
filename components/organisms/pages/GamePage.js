@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { COLOR_MAIN_BACKGROUND, getColor } from "../../../helper/colorHelper";
 import { HEADER_IMAGE } from "../../../helper/urlHelper";
 import GamesPageHeader from "../../molecules/GamesPageHeader";
 
@@ -27,7 +26,7 @@ const BackDrop = styled.div`
   max-width: 100vw;
   min-height: 100vh;
   max-height: 100vh;
-  background-color: ${(props) => getColor(COLOR_MAIN_BACKGROUND)};
+  background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
 `;
 

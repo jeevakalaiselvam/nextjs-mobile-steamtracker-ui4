@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import steamReducer from "./steam.reducer";
-import menuReducer from "./menu.reducer";
+import settingsReducer from "./settings.reducer";
 
 const rootReducer = combineReducers({
   steam: steamReducer,
-  menu: menuReducer,
+  settings: settingsReducer,
 });
 
 export default rootReducer;

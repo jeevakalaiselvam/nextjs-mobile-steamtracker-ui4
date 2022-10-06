@@ -50,7 +50,16 @@ const Left = styled.div`
   padding: 4px;
 `;
 
-const Middle = styled.div`
+const MiddleLeft = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  overflow: hidden;
+  flex: 1;
+`;
+
+const MiddleRight = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -151,9 +160,12 @@ export default function GamesHeader() {
       <LeftAfter rotate={rotate} onClick={refreshClickHandler}>
         {getIcon(ICON_SEARCH)}
       </LeftAfter>
-      <Middle>
-        <TrophyCount />
-      </Middle>
+      <MiddleLeft>
+        <TrophyCount type="completion" />
+      </MiddleLeft>
+      {/* <MiddleRight>
+        <TrophyCount type="all" />
+      </MiddleRight> */}
       <RightBefore onClick={searchClickHandler}>
         {!searchShow && getIcon(ICON_SEARCH_ACTIVE)}
         {searchShow && getIcon(ICON_SEARCH_CANCEL)}

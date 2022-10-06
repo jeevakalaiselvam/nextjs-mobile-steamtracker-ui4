@@ -1,6 +1,6 @@
 import React from "react";
-import GamesPage from "../../components/organisms/pages/GamePage";
+import GamesPage from "../../components/organisms/pages/GamesPage";
 
-export default function GameIndexPage() {
+export default function GamesIndexPage() {
   return <GamesPage />;
 }

@@ -19,6 +19,10 @@ const Container = styled.div`
   max-width: 100%;
   margin-bottom: 0.5rem;
   background-color: rgba(0, 0, 0, 0.5);
+
+  &:hover {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
 `;
 
 const Image = styled.div`
@@ -102,8 +106,12 @@ export default function GameCard({ game }) {
   const { selectedGameId } = gamesPageSettings;
   const { name } = game;
 
+  const movetoGame = () => {
+    router.push(`/games/${game.id}`);
+  };
+
   return (
-    <Container>
+    <Container onClick={movetoGame}>
       <Image image={HEADER_IMAGE(game.id)}></Image>
       <SubPanel>
         <Name>{game.name}</Name>

@@ -11,7 +11,6 @@ import {
 import { HEADER_IMAGE } from "../../../helper/urlHelper";
 import GamesPageHeader from "../../molecules/GameSelectList";
 import GamesHeader from "../../molecules/GamesHeader";
-import GameContent from "../content/GameContent";
 import GamesContent from "../content/GamesContent";
 import GamePageLeft from "../left/GamePageLeft";
 
@@ -78,9 +77,8 @@ const ContentContainer = styled.div`
   min-height: 55px;
 `;
 
-export default function GamePage() {
+export default function GamesPage() {
   const router = useRouter();
-  const { gameId } = router.query;
   const dispatch = useDispatch();
   const steam = useSelector((state) => state.steam);
   const settings = useSelector((state) => state.settings);
@@ -109,7 +107,7 @@ export default function GamePage() {
           <GamesHeader />
         </HeaderContainer>
         <ContentContainer>
-          <GameContent gameId={gameId} />
+          <GamesContent />
         </ContentContainer>
       </BackDrop>
     </Container>

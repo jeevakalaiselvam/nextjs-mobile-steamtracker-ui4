@@ -4,6 +4,7 @@ import {
   FETCH_ALL_GAMES_ERROR,
   FETCH_ALL_GAMES_REQUEST,
   FETCH_ALL_GAMES_SUCCESS,
+  SET_HIDDEN_ACHIEVEMENTS_GAME,
 } from "../types/steam.types";
 
 export const fetchAllGames = () => {
@@ -17,5 +18,14 @@ export const fetchAllGames = () => {
         dispatch({ type: FETCH_ALL_GAMES_ERROR, payload: error });
       }
     );
+  };
+};
+
+export const setHiddenAchievementsForGame = (gameId, hiddenAchievements) => {
+  return (dispatch) => {
+    return dispatch({
+      type: SET_HIDDEN_ACHIEVEMENTS_GAME,
+      payload: { gameId, hiddenAchievements },
+    });
   };
 };

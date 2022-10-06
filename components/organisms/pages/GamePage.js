@@ -34,7 +34,10 @@ export default function GamesPage() {
   const router = useRouter();
   const dispatch = useDispatch();
   const steam = useSelector((state) => state.steam);
+  const settings = useSelector((state) => state.settings);
   const { games } = steam;
+  const { gamesPageSettings } = settings;
+  const { selectedGameId } = gamesPageSettings;
 
   useEffect(() => {
     if (games && Object.keys(games).length === 0) {
@@ -43,7 +46,7 @@ export default function GamesPage() {
   }, []);
 
   return (
-    <Container image={HEADER_IMAGE(games[0]?.id ?? "1151640")}>
+    <Container image={HEADER_IMAGE(selectedGameId ?? "1151640")}>
       <BackDrop>
         <GamesPageHeader />
       </BackDrop>

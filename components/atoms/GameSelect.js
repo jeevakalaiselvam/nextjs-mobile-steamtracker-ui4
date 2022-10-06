@@ -3,7 +3,11 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { HEADER_IMAGE } from "../../helper/urlHelper";
-import { gamesPageSelectGame } from "../../store/actions/settings.actions";
+import {
+  gamesPageSearchTerm,
+  gamesPageSelectGame,
+} from "../../store/actions/settings.actions";
+import Searchbar from "./Searchbar";
 
 const Container = styled.div`
   display: flex;
@@ -28,6 +32,16 @@ const SelectDrop = styled.div`
   overflow: scroll;
   margin-bottom: 2px;
   background-color: rgba(0, 0, 0, 0.5);
+`;
+
+const SearchBarContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  min-width: 100vw;
+  max-width: 100vw;
+  margin-bottom: 2px;
 `;
 
 const SelectDropDown = styled.div`
@@ -89,7 +103,7 @@ export default function GameSelect() {
   const settings = useSelector((state) => state.settings);
   const { games } = steam;
   const { gamesPageSettings } = settings;
-  const { selectedGameId } = gamesPageSettings;
+  const { selectedGameId, searchTerm } = gamesPageSettings;
 
   useEffect(() => {
     if (games && Object.keys(games).length === 0) {
@@ -101,12 +115,21 @@ export default function GameSelect() {
     games.find((game) => game.id === selectedGameId) ?? games[0];
 
   const filterGamesWithoutSelectedGame = games.filter(
-    (game) => game.id != (selectedGame?.id ?? "")
+    (game) =>
+      game.id != (selectedGame?.id ?? "") &&
+      game.name
+        .toLowerCase()
+        .trim()
+        .includes((searchTerm ?? "").toLowerCase().trim())
   );
 
   const gameSelectHandler = (gameId) => {
     dispatch(gamesPageSelectGame(gameId));
     setShowMenu((old) => false);
+  };
+
+  const searchTermHandler = (searchData) => {
+    dispatch(gamesPageSearchTerm(searchData));
   };
 
   return (
@@ -117,10 +140,16 @@ export default function GameSelect() {
         }}
       >
         <GameImage
-          image={HEADER_IMAGE(selectedGame?.id ?? games[0].id)}
+          image={HEADER_IMAGE(selectedGame?.id ?? games[0]?.id ?? "")}
         ></GameImage>
-        <GameTitle>{selectedGame?.name ?? games[0].name}</GameTitle>
+        <GameTitle>{selectedGame?.name ?? games[0]?.name ?? ""}</GameTitle>
       </SelectDrop>
+      {showMenu && (
+        <SearchBarContainer>
+          <Searchbar onSearchObtained={searchTermHandler} width="90vw" />
+        </SearchBarContainer>
+      )}
+
       <SelectDropDown>
         {showMenu &&
           filterGamesWithoutSelectedGame.length > 0 &&

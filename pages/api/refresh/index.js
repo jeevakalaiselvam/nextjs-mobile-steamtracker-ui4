@@ -28,7 +28,7 @@ const handler = async (req, res) => {
 
       //Get All Achievements Schema for All Games
       finalGamesResponse = await Promise.all(
-        finalGamesResponse.slice(25, 50).map(async (game) => {
+        finalGamesResponse.map(async (game) => {
           const schemeAchievement = await fetch(
             FETCH_ALL_ACHIEVEMENTS_SCHEMA(game.id)
           );

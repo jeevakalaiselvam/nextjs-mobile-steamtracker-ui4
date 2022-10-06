@@ -5,11 +5,6 @@ import * as Loaders from "react-spinners";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { HEADER_IMAGE } from "../helper/urlHelper";
-import {
-  COLOR_MAIN_BACKGROUND,
-  DARK_BACKGROUND,
-  getColor,
-} from "../helper/colorHelper";
 
 const Container = styled.div`
   display: flex;
@@ -31,8 +26,8 @@ const BackdropContainer = styled.div`
   justify-content: center;
   min-width: 100vw;
   max-width: 100vw;
-  background-color: ${(props) => getColor(COLOR_MAIN_BACKGROUND)};
-  backdrop-filter: blur(20px);
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
 `;
 
 export default function Home() {

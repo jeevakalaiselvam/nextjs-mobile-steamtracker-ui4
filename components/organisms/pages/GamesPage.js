@@ -81,12 +81,6 @@ export default function GamesPage() {
   const { gamesPageSettings } = settings;
   const { selectedGameId, drawerOpen } = gamesPageSettings;
 
-  useEffect(() => {
-    if (games && Object.keys(games).length === 0) {
-      router.push("/");
-    }
-  }, []);
-
   const getStoredThemeId = () => {
     const storedId = READ_JSON(SELECTED_THEME_ID, "1151640");
     return storedId;

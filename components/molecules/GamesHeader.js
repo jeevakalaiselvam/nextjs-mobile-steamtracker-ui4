@@ -35,6 +35,7 @@ import {
   gamesPageSortOptions,
   gamesPageToggleOptions,
 } from "../../store/actions/settings.actions";
+import LevelCount from "../atoms/LevelCount";
 import OptionItem from "../atoms/OptionItem";
 import TrophyCount from "../atoms/TrophyCount";
 
@@ -205,7 +206,7 @@ export default function GamesHeader() {
         {searchShow && getIcon(ICON_SEARCH_CANCEL)}
       </LeftAfter>
       <MiddleLeft>
-        <TrophyCount type="completion" />
+        <LevelCount type="completion" />
       </MiddleLeft>
       <RightBefore rotate={rotate} onClick={showOptionsToggle}>
         {getIcon(ICON_OPTIONS_DROPDOWN)}

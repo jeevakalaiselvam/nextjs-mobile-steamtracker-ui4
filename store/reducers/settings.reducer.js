@@ -1,4 +1,5 @@
 import {
+  GAME_VIEW_TYPE_LARGE,
   RECENT_TYPE_TODAY,
   SORT_ACHIEVEMENTS_ALL,
   SORT_GAMES_COMPLETTION,
@@ -19,6 +20,7 @@ import {
   GAME_PAGE_SWITCH_RECENT_TYPE,
   GAME_PAGE_TOGGLE_COMPLETED,
   GAME_PAGE_TOGGLE_OPTIONS,
+  GAME_PAGE_VIEW_TYPE,
 } from "../types/settings.types";
 
 const INITIAL_STATE = {
@@ -39,6 +41,7 @@ const INITIAL_STATE = {
     toggleCompleted: false,
     sortOption: SORT_ACHIEVEMENTS_ALL,
     recentType: RECENT_TYPE_TODAY,
+    viewType: GAME_VIEW_TYPE_LARGE,
   },
 };
 
@@ -177,6 +180,15 @@ const reducer = (state = INITIAL_STATE, action) => {
         gamePageSettings: {
           ...state.gamePageSettings,
           recentType: payload,
+        },
+      };
+
+    case GAME_PAGE_VIEW_TYPE:
+      return {
+        ...state,
+        gamePageSettings: {
+          ...state.gamePageSettings,
+          viewType: payload,
         },
       };
 

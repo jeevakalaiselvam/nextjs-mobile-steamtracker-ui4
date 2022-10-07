@@ -26,6 +26,9 @@ import {
   ICON_SORT_OPTION,
 } from "../../helper/iconHelper";
 import {
+  GAME_VIEW_TYPE_ICON,
+  GAME_VIEW_TYPE_LARGE,
+  GAME_VIEW_TYPE_SMALL,
   SORT_ACHIEVEMENTS_ALL,
   SORT_ACHIEVEMENTS_LOCKED,
   SORT_ACHIEVEMENTS_UNLOCKED,
@@ -37,8 +40,10 @@ import {
   gamePageToggleOptions,
   gamePageSortOptions,
   gamePageDrawerHistoryToggle,
+  gamePageViewType,
 } from "../../store/actions/settings.actions";
 import { gamePageRefreshGameData } from "../../store/actions/steam.actions";
+import LevelCount from "../atoms/LevelCount";
 import OptionItem from "../atoms/OptionItem";
 import TrophyCount from "../atoms/TrophyCount";
 
@@ -205,6 +210,10 @@ export default function GameHeader({ gameId }) {
     dispatch(gamePageSortOptions(sortType));
   };
 
+  const viewTypeClickHandler = (viewType) => {
+    dispatch(gamePageViewType(viewType));
+  };
+
   return (
     <Container>
       <Left onClick={menuClickHandler}>
@@ -215,7 +224,7 @@ export default function GameHeader({ gameId }) {
         {searchShow && getIcon(ICON_SEARCH_CANCEL)}
       </LeftAfter>
       <MiddleLeft>
-        <TrophyCount type="completion" />
+        <LevelCount type="completion" />
       </MiddleLeft>
       <RightBefore rotate={rotate} onClick={showOptionsToggle}>
         {getIcon(ICON_OPTIONS_DROPDOWN)}
@@ -238,6 +247,24 @@ export default function GameHeader({ gameId }) {
               icon={ICON_SORT_OPTION}
               optionType={SORT_ACHIEVEMENTS_UNLOCKED}
               optionClickHandler={optionClickHandler}
+            />
+            <OptionItem
+              title={"Show View Large"}
+              icon={ICON_SORT_OPTION}
+              optionType={GAME_VIEW_TYPE_LARGE}
+              optionClickHandler={viewTypeClickHandler}
+            />
+            <OptionItem
+              title={"Show View Small"}
+              icon={ICON_SORT_OPTION}
+              optionType={GAME_VIEW_TYPE_SMALL}
+              optionClickHandler={viewTypeClickHandler}
+            />
+            <OptionItem
+              title={"Show View Icon"}
+              icon={ICON_SORT_OPTION}
+              optionType={GAME_VIEW_TYPE_ICON}
+              optionClickHandler={viewTypeClickHandler}
             />
             <CloseButton onClick={showOptionsToggle}>
               {getIcon(ICON_OPTIONS_CLOSE)}

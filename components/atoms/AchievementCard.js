@@ -9,7 +9,13 @@ import {
   COLOR_TEXT_DULL_BRIGHT,
   getColor,
 } from "../../helper/colorHelper";
-import { getIcon, ICON_HIDDEN, ICON_PERCENTAGE } from "../../helper/iconHelper";
+import {
+  getIcon,
+  ICON_HIDDEN,
+  ICON_PERCENTAGE,
+  ICON_XP,
+} from "../../helper/iconHelper";
+import { getXPForAchievement } from "../../helper/xpHelper";
 import { setHiddenRequestsOngoing } from "../../store/actions/steam.actions";
 
 const Container = styled.div`
@@ -25,7 +31,7 @@ const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   margin-top: 0.25rem;
   opacity: ${(props) =>
-    props.toggleCompleted && props.achieved ? "0.25" : "1"};
+    props.toggleCompleted && props.achieved ? "0.15" : "1"};
 `;
 
 const TopWrapper = styled.div`
@@ -111,6 +117,41 @@ const Hidden = styled.div`
   &:active {
     color: ${(props) => getColor(COLOR_REFRESH_ACTIVE)};
   }
+`;
+
+const XPDetails = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  color: ${(props) => getColor(COLOR_TEXT_DULL_BRIGHT)};
+  padding-left: 0.5rem;
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  font-size: 2rem;
+
+  &:hover,
+  &:active {
+    color: ${(props) => getColor(COLOR_REFRESH_ACTIVE)};
+  }
+`;
+
+const XPIcon = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem 0.25rem;
+`;
+
+const XPData = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem 0.25rem;
+  font-size: 1.5rem;
 `;
 
 const Percentage = styled.div`
@@ -224,6 +265,10 @@ export default function AchievementCard({
             </Desc>
           )}
         </Data>
+        <XPDetails>
+          <XPIcon>{getIcon(ICON_XP)}</XPIcon>
+          <XPData>{getXPForAchievement(percentage)}</XPData>
+        </XPDetails>
       </TopWrapper>
       <BottomWrapper>
         {hidden === 1 && (

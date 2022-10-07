@@ -10,11 +10,14 @@ import {
   TbBeerOff,
   TbBook,
   TbBookOff,
+  TbBrandCodesandbox,
   TbCardboards,
   TbCardboardsOff,
+  TbCircleX,
   TbColumns,
   TbDeviceGamepad2,
   TbDotsVertical,
+  TbGizmo,
   TbHexagons,
   TbLockOff,
   TbManualGearbox,
@@ -25,16 +28,24 @@ import {
   TbPlayerSkipBack,
   TbPlayerTrackNext,
   TbPlayerTrackPrev,
+  TbPower,
+  TbRefresh,
   TbRefreshDot,
+  TbReportOff,
   TbRuler,
   TbRulerOff,
+  TbSearch,
   TbSettings,
+  TbSitemap,
+  TbSitemapOff,
   TbStar,
   TbStars,
   TbSun,
   TbSwords,
   TbTallymark4,
   TbTrophy,
+  TbWand,
+  TbWandOff,
   TbWorld,
   TbX,
 } from "react-icons/tb";
@@ -57,11 +68,13 @@ export const ICON_OPTIONS_DROPDOWN = "ICON_OPTIONS_DROPDOWN";
 export const ICON_OPTIONS_CLOSE = "ICON_OPTIONS_CLOSE";
 export const ICON_SORT_OPTION = "ICON_SORT_OPTION";
 export const ICON_SETTINGS = "ICON_SETTINGS";
+export const ICON_CLOSE_CIRCLE = "ICON_CLOSE_CIRCLE";
+export const ICON_XP = "ICON_XP";
 
 export const getIcon = (type) => {
   switch (type) {
     case ICON_REFRESH:
-      return <TbRefreshDot />;
+      return <TbRefresh />;
     case ICON_TROPHY:
       return <FaTrophy />;
     case ICON_MENU:
@@ -71,9 +84,9 @@ export const getIcon = (type) => {
     case ICON_CLOSE:
       return <TbX />;
     case ICON_SEARCH_ACTIVE:
-      return <TbRuler />;
+      return <TbWand />;
     case ICON_SEARCH_CANCEL:
-      return <TbRulerOff />;
+      return <TbWandOff />;
     case ICON_THEME_SWITCH:
       return <TbSun />;
     case ICON_HIDDEN:
@@ -96,6 +109,10 @@ export const getIcon = (type) => {
       return <TbColumns />;
     case ICON_SETTINGS:
       return <TbSettings />;
+    case ICON_CLOSE_CIRCLE:
+      return <TbReportOff />;
+    case ICON_XP:
+      return <TbBrandCodesandbox />;
     default:
       return <TbTrophy />;
   }

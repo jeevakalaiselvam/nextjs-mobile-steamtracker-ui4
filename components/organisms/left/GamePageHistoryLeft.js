@@ -244,7 +244,6 @@ export default function GamePageHistoryLeft({ gameId }) {
                 achievement={achievement}
                 showHiddenByDefault={true}
                 gameId={achievement.gameId}
-                game={selectedGame}
               />
             );
           })}

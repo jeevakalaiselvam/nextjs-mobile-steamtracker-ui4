@@ -4,8 +4,25 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { getAchievementsSortedByUserOptions } from "../../../helper/achievementHelper";
+import {
+  COLOR_ACCENT,
+  COLOR_CLOSE_RED,
+  COLOR_TEXT_DULL,
+  getColor,
+} from "../../../helper/colorHelper";
+import {
+  getIcon,
+  ICON_CLOSE,
+  ICON_CLOSE_CIRCLE,
+} from "../../../helper/iconHelper";
+import {
+  GAME_VIEW_TYPE_ICON,
+  GAME_VIEW_TYPE_LARGE,
+  SORT_ACHIEVEMENTS_ALL,
+} from "../../../helper/sortHelper";
 import { setHiddenAchievementsForGame } from "../../../store/actions/steam.actions";
 import AchievementCard from "../../atoms/AchievementCard";
+import AchievementCardIcon from "../../atoms/AchievementCardIcon";
 import GameCard from "../../atoms/GameCard";
 import Searchbar from "../../atoms/Searchbar";
 
@@ -29,7 +46,7 @@ const AchievementSearch = styled.div`
   min-height: 40px;
   max-height: 40px;
 `;
-const AchievementList = styled.div`
+const AchievementListLarge = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -44,6 +61,42 @@ const AchievementList = styled.div`
   padding: 0 0.25rem 0.5rem 0.25rem;
 `;
 
+const AchievementListIcon = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 100vw;
+  max-width: 100vw;
+  min-height: ${(props) =>
+    props.searchShow ? "calc(100vh - 55px - 50px)" : "calc(100vh - 55px)"};
+  max-height: ${(props) =>
+    props.searchShow ? "calc(100vh - 55px - 50px)" : "calc(100vh - 55px)"};
+`;
+
+const AchievementSelected = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100px;
+  max-height: 100px;
+  backdrop-filter: blur(10px);
+`;
+
+const AchievementIcons = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  overflow: scroll;
+`;
+
 export default function GameContent({ gameId }) {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -51,7 +104,7 @@ export default function GameContent({ gameId }) {
   const settings = useSelector((state) => state.settings);
   const { games, hiddenAchievements } = steam;
   const { gamePageSettings } = settings;
-  const { selectedGameId, searchShow, toggleCompleted, sortOption } =
+  const { selectedGameId, searchShow, toggleCompleted, sortOption, viewType } =
     gamePageSettings;
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -99,6 +152,14 @@ export default function GameContent({ gameId }) {
     }
   }, [gameId]);
 
+  const [selectedAchievement, setSelectedAchievement] = useState(
+    sortFilteredAchievements[0]
+  );
+
+  const clickDetectedHandler = (achievementSelected) => {
+    setSelectedAchievement((old) => achievementSelected);
+  };
+
   return (
     <Container>
       {searchShow && (
@@ -110,20 +171,56 @@ export default function GameContent({ gameId }) {
           />
         </AchievementSearch>
       )}
-      <AchievementList searchShow={searchShow}>
-        {sortOptionUserOptionFiltered.length > 0 &&
-          sortOptionUserOptionFiltered.map((achievement) => {
-            return (
+      {viewType === GAME_VIEW_TYPE_LARGE && (
+        <AchievementListLarge searchShow={searchShow}>
+          {sortOptionUserOptionFiltered.length > 0 &&
+            sortOptionUserOptionFiltered.map((achievement) => {
+              return (
+                <AchievementCard
+                  key={achievement.name}
+                  toggleCompleted={
+                    sortOption === SORT_ACHIEVEMENTS_ALL
+                      ? true
+                      : toggleCompleted
+                  }
+                  achievement={achievement}
+                  gameId={achievement.gameId}
+                  showHiddenByDefault={false}
+                />
+              );
+            })}
+        </AchievementListLarge>
+      )}
+
+      {viewType === GAME_VIEW_TYPE_ICON && (
+        <AchievementListIcon searchShow={searchShow}>
+          {selectedAchievement && (
+            <AchievementSelected>
               <AchievementCard
-                key={achievement.name}
-                toggleCompleted={toggleCompleted}
-                achievement={achievement}
-                gameId={achievement.gameId}
+                toggleCompleted={false}
+                achievement={selectedAchievement}
+                gameId={selectedAchievement.gameId}
                 showHiddenByDefault={false}
               />
-            );
-          })}
-      </AchievementList>
+            </AchievementSelected>
+          )}
+          <AchievementIcons>
+            {sortOptionUserOptionFiltered.length > 0 &&
+              sortOptionUserOptionFiltered.map((achievement) => {
+                return (
+                  <AchievementCardIcon
+                    key={achievement.name}
+                    toggleCompleted={true}
+                    achievement={achievement}
+                    gameId={achievement.gameId}
+                    showHiddenByDefault={false}
+                    clickDetectedHandler={clickDetectedHandler}
+                  />
+                );
+              })}
+          </AchievementIcons>
+        </AchievementListIcon>
+      )}
     </Container>
   );
 }

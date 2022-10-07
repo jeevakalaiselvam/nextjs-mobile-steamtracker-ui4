@@ -10,9 +10,11 @@ import {
   GAME_PAGE_SEARCH_SHOW,
   GAME_PAGE_SEARCH_TERM,
   GAME_PAGE_SELECTED_GAME,
+  GAME_PAGE_SORT_OPTIONS,
   GAME_PAGE_SWITCH_RECENT_TYPE,
   GAME_PAGE_TOGGLE_COMPLETED,
   GAME_PAGE_TOGGLE_OPTIONS,
+  GAME_PAGE_VIEW_TYPE,
 } from "../types/settings.types";
 
 //GAMES PAGE ACTIONS
@@ -72,7 +74,11 @@ export const gamePageToggleOptions = (toggleOptions) => {
 };
 
 export const gamePageSortOptions = (sortOption) => {
-  return { type: GAME_PAGE_TOGGLE_OPTIONS, payload: sortOption };
+  return { type: GAME_PAGE_SORT_OPTIONS, payload: sortOption };
+};
+
+export const gamePageViewType = (viewType) => {
+  return { type: GAME_PAGE_VIEW_TYPE, payload: viewType };
 };
 
 export const gamePageSwitchRecentType = (recentType) => {

@@ -22,6 +22,8 @@ const Container = styled.div`
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.5);
   margin-top: 0.25rem;
+  opacity: ${(props) =>
+    props.toggleCompleted && props.achieved ? "0.25" : "1"};
 `;
 
 const TopWrapper = styled.div`
@@ -143,7 +145,11 @@ const PercentNumber = styled.div`
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
 `;
 
-export default function AchievementCard({ achievement, gameId }) {
+export default function AchievementCard({
+  achievement,
+  gameId,
+  toggleCompleted,
+}) {
   const router = useRouter();
   const dispatch = useDispatch();
   const steam = useSelector((state) => state.steam);
@@ -180,12 +186,14 @@ export default function AchievementCard({ achievement, gameId }) {
   };
 
   return (
-    <Container>
+    <Container
+      toggleCompleted={toggleCompleted}
+      achieved={achieved == "1" ? true : false}
+    >
       <TopWrapper>
         <Icon src={icon}></Icon>
         <Data>
           <Title>{displayName}</Title>
-          {console.log("JEEVA", hiddenDescription)}
           {hidden === 1 && !showHiddenDesc && <Desc>HIDDEN</Desc>}
           {hidden === 1 && showHiddenDesc && (
             <Desc>
@@ -209,6 +217,10 @@ export default function AchievementCard({ achievement, gameId }) {
             {getIcon(ICON_HIDDEN)}
           </Hidden>
         )}
+        <Percentage>
+          <PercentIcon>{getIcon(ICON_PERCENTAGE)}</PercentIcon>
+          <PercentNumber>{percentage.toFixed(2)} %</PercentNumber>
+        </Percentage>
         <Percentage>
           <PercentIcon>{getIcon(ICON_PERCENTAGE)}</PercentIcon>
           <PercentNumber>{percentage.toFixed(2)} %</PercentNumber>

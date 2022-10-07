@@ -12,6 +12,8 @@ import {
 import {
   getIcon,
   ICON_CLOSE,
+  ICON_COMPLETED_TOGGLE_ACTIVE,
+  ICON_COMPLETED_TOGGLE_DISABLED,
   ICON_MENU,
   ICON_REFRESH,
   ICON_SEARCH,
@@ -19,8 +21,9 @@ import {
   ICON_SEARCH_CANCEL,
 } from "../../helper/iconHelper";
 import {
-  gamesPageDrawerToggle,
-  gamesPageSearchShow,
+  gamePageToggleCompleted,
+  gamePageDrawerToggle,
+  gamePageSearchShow,
 } from "../../store/actions/settings.actions";
 import TrophyCount from "../atoms/TrophyCount";
 
@@ -124,19 +127,19 @@ const Right = styled.div`
   }
 `;
 
-export default function GamesHeader() {
+export default function GameHeader() {
   const router = useRouter();
   const dispatch = useDispatch();
   const steam = useSelector((state) => state.steam);
   const settings = useSelector((state) => state.settings);
   const { games } = steam;
-  const { gamesPageSettings } = settings;
-  const { drawerOpen, searchShow } = gamesPageSettings;
+  const { gamePageSettings } = settings;
+  const { drawerOpen, searchShow, toggleCompleted } = gamePageSettings;
 
   const [rotate, setRotate] = useState(false);
 
   const menuClickHandler = () => {
-    dispatch(gamesPageDrawerToggle(!drawerOpen));
+    dispatch(gamePageDrawerToggle(!drawerOpen));
   };
 
   const refreshClickHandler = () => {
@@ -148,7 +151,11 @@ export default function GamesHeader() {
   };
 
   const searchClickHandler = () => {
-    dispatch(gamesPageSearchShow(!searchShow));
+    dispatch(gamePageSearchShow(!searchShow));
+  };
+
+  const completedToggleClickHandler = () => {
+    dispatch(gamePageToggleCompleted(!toggleCompleted));
   };
 
   return (
@@ -156,15 +163,13 @@ export default function GamesHeader() {
       <Left onClick={menuClickHandler}>
         {drawerOpen ? getIcon(ICON_MENU) : getIcon(ICON_MENU)}
       </Left>
-      <LeftAfter rotate={rotate} onClick={refreshClickHandler}>
-        {getIcon(ICON_SEARCH)}
+      <LeftAfter rotate={rotate} onClick={completedToggleClickHandler}>
+        {!toggleCompleted && getIcon(ICON_COMPLETED_TOGGLE_DISABLED)}
+        {toggleCompleted && getIcon(ICON_COMPLETED_TOGGLE_ACTIVE)}
       </LeftAfter>
       <MiddleLeft>
         <TrophyCount type="completion" />
       </MiddleLeft>
-      {/* <MiddleRight>
-        <TrophyCount type="all" />
-      </MiddleRight> */}
       <RightBefore onClick={searchClickHandler}>
         {!searchShow && getIcon(ICON_SEARCH_ACTIVE)}
         {searchShow && getIcon(ICON_SEARCH_CANCEL)}

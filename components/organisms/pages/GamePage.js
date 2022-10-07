@@ -9,6 +9,7 @@ import {
   WRITE_JSON,
 } from "../../../helper/storageHelper";
 import { HEADER_IMAGE } from "../../../helper/urlHelper";
+import GameHeader from "../../molecules/GameHeader";
 import GamesPageHeader from "../../molecules/GameSelectList";
 import GamesHeader from "../../molecules/GamesHeader";
 import GameContent from "../content/GameContent";
@@ -86,8 +87,8 @@ export default function GamePage() {
   const steam = useSelector((state) => state.steam);
   const settings = useSelector((state) => state.settings);
   const { games } = steam;
-  const { gamesPageSettings } = settings;
-  const { selectedGameId, drawerOpen } = gamesPageSettings;
+  const { gamePageSettings } = settings;
+  const { selectedGameId, drawerOpen } = gamePageSettings;
 
   useEffect(() => {
     if (games && Object.keys(games).length === 0) {
@@ -110,7 +111,7 @@ export default function GamePage() {
           <GamePageLeft />
         </LeftContainer>
         <HeaderContainer>
-          <GamesHeader />
+          <GameHeader />
         </HeaderContainer>
         <ContentContainer>
           <GameContent gameId={gameId} />

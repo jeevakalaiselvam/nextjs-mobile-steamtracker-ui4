@@ -7,6 +7,11 @@ import {
   TbBarrelOff,
   TbBeer,
   TbBeerOff,
+  TbBook,
+  TbBookOff,
+  TbCardboards,
+  TbCardboardsOff,
+  TbHexagons,
   TbLockOff,
   TbMedal,
   TbMenu2,
@@ -16,6 +21,8 @@ import {
   TbPlayerTrackNext,
   TbPlayerTrackPrev,
   TbRefreshDot,
+  TbRuler,
+  TbRulerOff,
   TbTrophy,
   TbWorld,
   TbX,
@@ -32,6 +39,9 @@ export const ICON_SEARCH_CANCEL = "ICON_SEARCH_CANCEL";
 export const ICON_HIDDEN = "ICON_HIDDEN";
 export const ICON_PERCENTAGE = "ICON_PERCENTAGE";
 export const ICON_MEDAL = "ICON_MEDAL";
+export const ICON_COMPLETED_TOGGLE_DISABLED = "ICON_COMPLETED_TOGGLE_DISABLED";
+export const ICON_COMPLETED_TOGGLE_ACTIVE = "ICON_COMPLETED_TOGGLE_ACTIVE";
+export const ICON_GAMES = "ICON_GAMES";
 
 export const getIcon = (type) => {
   switch (type) {
@@ -46,9 +56,9 @@ export const getIcon = (type) => {
     case ICON_CLOSE:
       return <TbX />;
     case ICON_SEARCH_ACTIVE:
-      return <TbBeer />;
+      return <TbRuler />;
     case ICON_SEARCH_CANCEL:
-      return <TbBeerOff />;
+      return <TbRulerOff />;
     case ICON_THEME_SWITCH:
       return <TbAtom />;
     case ICON_HIDDEN:
@@ -57,6 +67,12 @@ export const getIcon = (type) => {
       return <TbWorld />;
     case ICON_MEDAL:
       return <TbMedal />;
+    case ICON_COMPLETED_TOGGLE_DISABLED:
+      return <TbCardboards />;
+    case ICON_COMPLETED_TOGGLE_ACTIVE:
+      return <TbCardboardsOff />;
+    case ICON_GAMES:
+      return <TbHexagons />;
     default:
       return <TbTrophy />;
   }

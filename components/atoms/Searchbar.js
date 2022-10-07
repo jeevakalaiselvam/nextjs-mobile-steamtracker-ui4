@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { HiSearch } from "react-icons/hi";
 
@@ -39,8 +39,10 @@ const SearchInput = styled.div`
 `;
 
 const Searchbar = (props) => {
-  const { onSearchObtained, width } = props;
+  const { onSearchObtained, width, searchShow } = props;
   const [searchTerm, setSearchTerm] = useState("");
+
+  const inputRef = useRef();
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -56,6 +58,13 @@ const Searchbar = (props) => {
     setSearchTerm((old) => data);
   };
 
+  useEffect(() => {
+    if (searchShow) {
+      console.log("REF", inputRef.current);
+      inputRef.current.focus();
+    }
+  }, [searchShow]);
+
   return (
     <Container>
       <SearchIcon>
@@ -63,6 +72,7 @@ const Searchbar = (props) => {
       </SearchIcon>
       <SearchInput width={width}>
         <input
+          ref={inputRef}
           type="text"
           value={searchTerm ?? ""}
           onChange={searchTermChanged}

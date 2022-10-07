@@ -64,7 +64,6 @@ export default function GamesContent() {
 
   return (
     <Container>
-      {console.log("SHOW", searchShow)}
       {searchShow && (
         <GamesSearch>
           <Searchbar onSearchObtained={searchHandler} width="87.5vw" />

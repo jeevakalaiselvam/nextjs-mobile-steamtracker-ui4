@@ -6,9 +6,12 @@ export const COLOR_TEXT_DULL = "COLOR_TEXT_DULL";
 export const COLOR_TEXT_DULL_BRIGHT = "COLOR_TEXT_DULL_BRIGHT";
 export const COLOR_TEXT_DRAWER_ICON = "COLOR_TEXT_DRAWER_ICON";
 export const COLOR_PLATINUM_TROPHY = "COLOR_PLATINUM_TROPHY";
+export const COLOR_ACCENT = "COLOR_ACCENT";
 
 export const getColor = (type) => {
   switch (type) {
+    case COLOR_ACCENT:
+      return "#3049d1";
     case COLOR_GOLD_TROPHY:
       return "#f1b51b";
     case COLOR_PLATINUM_TROPHY:

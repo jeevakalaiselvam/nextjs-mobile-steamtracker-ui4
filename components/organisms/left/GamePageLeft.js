@@ -24,6 +24,7 @@ import { gamesPageDrawerToggle } from "../../../store/actions/settings.actions";
 import Profile from "../../atoms/Profile";
 import ProfileHistory from "../../atoms/ProfileHistory";
 import ProfileLevel from "../../atoms/ProfileLevel";
+import ProfileMenu from "../../atoms/ProfileMenu";
 import ProfileTrophies from "../../atoms/ProfileTrophies";
 import GameSelectList from "../../molecules/GameSelectList";
 
@@ -147,6 +148,7 @@ export default function GamePageLeft() {
       <ProfileLevel />
       <ProfileTrophies />
       <ProfileHistory />
+      <ProfileMenu />
     </Container>
   );
 }

@@ -49,8 +49,8 @@ export default function GameContent({ gameId }) {
   const steam = useSelector((state) => state.steam);
   const settings = useSelector((state) => state.settings);
   const { games } = steam;
-  const { gamesPageSettings } = settings;
-  const { selectedGameId, searchShow } = gamesPageSettings;
+  const { gamePageSettings } = settings;
+  const { selectedGameId, searchShow, toggleCompleted } = gamePageSettings;
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -65,7 +65,7 @@ export default function GameContent({ gameId }) {
     achievement.name.toLowerCase().trim().includes(searchTerm)
   );
 
-  const sortFilteredAchievements = searchFilteredAchievements.sort(
+  let sortFilteredAchievements = searchFilteredAchievements.sort(
     (achievement1, achievement2) => {
       return Number(achievement2.percentage) - Number(achievement1.percentage);
     }
@@ -76,7 +76,6 @@ export default function GameContent({ gameId }) {
     const getHidden = async () => {
       const hiddenResponse = await axios.get(`/api/hidden/${gameId}`);
       const hiddenData = hiddenResponse.data.hiddenMapper;
-      console.log("HIDDEN", hiddenData);
       dispatch(setHiddenAchievementsForGame(gameId, hiddenData));
     };
     if (selectedGame && !selectedGame.hiddenAchievements) {
@@ -88,15 +87,19 @@ export default function GameContent({ gameId }) {
     <Container>
       {searchShow && (
         <AchievementSearch>
-          <Searchbar onSearchObtained={searchHandler} width="87.5vw" />
+          <Searchbar
+            onSearchObtained={searchHandler}
+            width="87.5vw"
+            searchShow={searchShow}
+          />
         </AchievementSearch>
       )}
-      {console.log(allAchievements)}
       <AchievementList searchShow={searchShow}>
         {sortFilteredAchievements.length > 0 &&
           sortFilteredAchievements.map((achievement) => {
             return (
               <AchievementCard
+                toggleCompleted={toggleCompleted}
                 achievement={achievement}
                 key={achievement.id}
                 gameId={gameId}

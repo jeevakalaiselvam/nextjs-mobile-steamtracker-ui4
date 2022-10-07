@@ -8,12 +8,14 @@ import {
   COLOR_TEXT_DULL_BRIGHT,
   getColor,
 } from "../../helper/colorHelper";
-import { getIcon, ICON_MEDAL } from "../../helper/iconHelper";
+import { getIcon, ICON_GAMES, ICON_MEDAL } from "../../helper/iconHelper";
 import { LEVEL_MODIFIER } from "../../helper/storageHelper";
 import {
   getDefaultLevelPreference,
   getXPDetailsForAllGames,
 } from "../../helper/xpHelper";
+import { gamePageDrawerToggle } from "../../store/actions/settings.actions";
+import MenuItem from "./MenuItem";
 
 const Container = styled.div`
   display: flex;
@@ -52,7 +54,7 @@ const LevelIcon = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 4rem;
+  font-size: 3rem;
   padding: 0.25rem 0.5rem;
   color: ${(props) => getColor(COLOR_GOLD_TROPHY)};
 `;
@@ -64,7 +66,7 @@ const LevelData = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0.25rem 0.5rem;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   color: ${(props) => getColor(COLOR_GOLD_TROPHY)};
 `;
 
@@ -79,7 +81,7 @@ const LevelUp = styled.div`
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
 `;
 
-export default function ProfileLevel() {
+export default function ProfileMenu() {
   const router = useRouter();
   const dispatch = useDispatch();
   const steam = useSelector((state) => state.steam);
@@ -95,13 +97,21 @@ export default function ProfileLevel() {
     xpRequiredForLevelUp,
   } = getXPDetailsForAllGames(games);
 
+  const menuClickHandler = (to) => {
+    dispatch(gamePageDrawerToggle(false));
+    router.push(to);
+  };
+
   return (
     <Container>
-      <Title>Profile Level</Title>
+      <Title>Profile Menu</Title>
       <Data>
-        <LevelIcon>{getIcon(ICON_MEDAL)}</LevelIcon>
-        <LevelData>{currentLevel}</LevelData>
-        <LevelUp>+{xpRequiredForLevelUp} more..</LevelUp>
+        <MenuItem
+          to="/games"
+          title="Games"
+          icon={ICON_GAMES}
+          menuClickHandler={menuClickHandler}
+        />
       </Data>
     </Container>
   );

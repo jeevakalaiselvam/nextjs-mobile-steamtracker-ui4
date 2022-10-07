@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,7 +36,9 @@ import {
   gamePageSearchShow,
   gamePageToggleOptions,
   gamePageSortOptions,
+  gamePageDrawerHistoryToggle,
 } from "../../store/actions/settings.actions";
+import { gamePageRefreshGameData } from "../../store/actions/steam.actions";
 import OptionItem from "../atoms/OptionItem";
 import TrophyCount from "../atoms/TrophyCount";
 
@@ -161,7 +164,7 @@ const CloseButton = styled.div`
   justify-content: flex-end;
 `;
 
-export default function GameHeader() {
+export default function GameHeader({ gameId }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const steam = useSelector((state) => state.steam);
@@ -177,12 +180,13 @@ export default function GameHeader() {
     dispatch(gamePageDrawerToggle(!drawerOpen));
   };
 
-  const refreshClickHandler = () => {
-    setRotate(true);
-    setTimeout(() => {
-      setRotate(false);
-      router.push("/");
-    }, 1000);
+  const refreshClickHandler = async () => {
+    setRotate((old) => true);
+    const response = await axios.get(`/api/refresh/${gameId}`);
+    const gameRefreshData = response.data.data;
+    setRotate((old) => false);
+    dispatch(gamePageRefreshGameData(gameId, gameRefreshData));
+    dispatch(gamePageDrawerHistoryToggle(true));
   };
 
   const searchClickHandler = () => {

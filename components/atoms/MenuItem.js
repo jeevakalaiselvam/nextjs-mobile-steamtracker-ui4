@@ -21,6 +21,7 @@ const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
   padding-left: 1rem;
   min-height: 40px;
+  margin-top: 0.5rem;
 
   &:hover,
   &:active {
@@ -39,6 +40,7 @@ const Link = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0.25rem 0.5rem;
+  min-width: 50%;
 `;
 
 const Icon = styled.div`
@@ -55,7 +57,7 @@ const Title = styled.div`
   display: flex;
   flex: 1;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   font-size: 1.5rem;
   padding: 0.25rem 0.5rem;

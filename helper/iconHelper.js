@@ -17,6 +17,7 @@ import {
   TbDotsVertical,
   TbHexagons,
   TbLockOff,
+  TbManualGearbox,
   TbMedal,
   TbMenu2,
   TbNote,
@@ -53,6 +54,7 @@ export const ICON_GAMES = "ICON_GAMES";
 export const ICON_OPTIONS_DROPDOWN = "ICON_OPTIONS_DROPDOWN";
 export const ICON_OPTIONS_CLOSE = "ICON_OPTIONS_CLOSE";
 export const ICON_SORT_OPTION = "ICON_SORT_OPTION";
+export const ICON_SETTINGS = "ICON_SETTINGS";
 
 export const getIcon = (type) => {
   switch (type) {
@@ -90,6 +92,8 @@ export const getIcon = (type) => {
       return <TbArrowBarToUp />;
     case ICON_SORT_OPTION:
       return <TbColumns />;
+    case ICON_SETTINGS:
+      return <TbManualGearbox />;
     default:
       return <TbTrophy />;
   }

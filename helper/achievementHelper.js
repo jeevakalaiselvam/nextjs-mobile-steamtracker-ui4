@@ -1,4 +1,8 @@
 import {
+  RECENT_TYPE_MONTH,
+  RECENT_TYPE_TODAY,
+  RECENT_TYPE_WEEK,
+  RECENT_TYPE_YEAR,
   SORT_ACHIEVEMENTS_ALL,
   SORT_ACHIEVEMENTS_LOCKED,
   SORT_ACHIEVEMENTS_UNLOCKED,
@@ -93,4 +97,96 @@ export const getGamesSortedByUserOptions = (games, sortType) => {
   }
 
   return newGames;
+};
+
+export const addRefreshedDataForGameId = (
+  oldGames,
+  gameId,
+  gameRefreshData
+) => {
+  let newGames = [];
+  newGames = oldGames.map((game) => {
+    if (game.id == gameId) {
+      let newGame = gameRefreshData;
+      return newGame;
+    } else {
+      return game;
+    }
+  });
+  return newGames;
+};
+
+export const getAllAchievementsForAllGames = (games) => {
+  let allAchievements = [];
+  games.forEach((game) => {
+    let gameAchievements = game.achievements;
+    gameAchievements.forEach((achievement) => {
+      if (achievement.achieved == 1) {
+        allAchievements.push(achievement);
+      }
+    });
+  });
+  return allAchievements;
+};
+
+export const getAllAchievementsUnlockedByType = (type, achievements) => {
+  console.log("JEEVA", type, achievements.length);
+  let newAchievements = [];
+  if (achievements.length > 0) {
+    if (type == RECENT_TYPE_TODAY) {
+      console.log("IN TODAY");
+      let date = new Date();
+      date.setHours(0, 0, 0, 0);
+      date.setDate(date.getDate());
+      let timeUTC;
+      timeUTC = date.getTime() / 1000;
+
+      newAchievements = achievements.filter(
+        (achievement) =>
+          achievement.achieved == 1 && achievement.unlocktime > timeUTC
+      );
+    }
+    if (type == RECENT_TYPE_WEEK) {
+      console.log("IN WEEK");
+      let date = new Date();
+      date.setHours(0, 0, 0, 0);
+      date.setDate(date.getDate() - 7);
+      let timeUTC;
+      timeUTC = date.getTime() / 1000;
+
+      newAchievements = achievements.filter(
+        (achievement) =>
+          achievement.achieved == 1 && achievement.unlocktime > timeUTC
+      );
+    }
+    if (type == RECENT_TYPE_MONTH) {
+      console.log("IN MONTH");
+      let date = new Date();
+      date.setHours(0, 0, 0, 0);
+      date.setDate(date.getDate() - 30);
+      let timeUTC;
+      timeUTC = date.getTime() / 1000;
+
+      newAchievements = achievements.filter(
+        (achievement) =>
+          achievement.achieved == 1 && achievement.unlocktime > timeUTC
+      );
+    }
+
+    if (type == RECENT_TYPE_YEAR) {
+      console.log("IN YEAR");
+      let date = new Date();
+      date.setHours(0, 0, 0, 0);
+      date.setDate(date.getDate() - 365);
+      let timeUTC;
+      timeUTC = date.getTime() / 1000;
+
+      newAchievements = achievements.filter(
+        (achievement) =>
+          achievement.achieved == 1 && achievement.unlocktime > timeUTC
+      );
+    }
+  }
+  console.log("RETURNING", newAchievements.length);
+  return newAchievements;
 };

@@ -2,18 +2,11 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { THEME_SWITCH_COUNT } from "../../../helper/configHelper";
-import {
-  READ_JSON,
-  SELECTED_THEME_ID,
-  WRITE_JSON,
-} from "../../../helper/storageHelper";
+import { READ_JSON, SELECTED_THEME_ID } from "../../../helper/storageHelper";
 import { HEADER_IMAGE } from "../../../helper/urlHelper";
-import GamesPageHeader from "../../molecules/GameSelectList";
 import GamesHeader from "../../molecules/GamesHeader";
 import GamesContent from "../content/GamesContent";
 import GamesPageLeft from "../left/GamesPageLeft";
-import GamePageLeft from "../left/GamesPageLeft";
 
 const Container = styled.div`
   display: flex;

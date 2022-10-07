@@ -4,6 +4,7 @@ import {
   FETCH_ALL_GAMES_ERROR,
   FETCH_ALL_GAMES_REQUEST,
   FETCH_ALL_GAMES_SUCCESS,
+  REFRESH_GAME_DATA,
   SET_HIDDEN_ACHIEVEMENTS_GAME,
 } from "../types/steam.types";
 
@@ -27,5 +28,12 @@ export const setHiddenAchievementsForGame = (gameId, hiddenAchievements) => {
       type: SET_HIDDEN_ACHIEVEMENTS_GAME,
       payload: { gameId, hiddenAchievements },
     });
+  };
+};
+
+export const gamePageRefreshGameData = (gameId, gameRefreshData) => {
+  return {
+    type: REFRESH_GAME_DATA,
+    payload: { gameId, gameRefreshData },
   };
 };

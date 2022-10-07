@@ -100,6 +100,7 @@ const handler = async (req, res) => {
               ...achievement,
               achieved: achievementFound.achieved,
               unlocktime: achievementFound.unlocktime,
+              gameId: game.id,
             };
             return newAchievement;
           });
@@ -123,6 +124,7 @@ const handler = async (req, res) => {
             toGet: toGet,
             completed: newAchievements.length - toGet,
             total: newAchievements.length,
+            gameId: game.id,
             recentRefresh: new Date(),
           };
           return newGame;

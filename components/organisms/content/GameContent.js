@@ -86,14 +86,15 @@ export default function GameContent({ gameId }) {
     sortOption
   );
 
-  //Get All Hidden Data
+  //Get Hidden Achievements if not present for games
   useEffect(() => {
     const getHidden = async () => {
       const hiddenResponse = await axios.get(`/api/hidden/${gameId}`);
       const hiddenData = hiddenResponse.data.hiddenMapper;
       dispatch(setHiddenAchievementsForGame(gameId, hiddenData));
     };
-    if (selectedGame && !selectedGame.hiddenAchievements) {
+
+    if (!hiddenAchievements[gameId]) {
       getHidden();
     }
   }, [gameId]);
@@ -117,7 +118,8 @@ export default function GameContent({ gameId }) {
                 key={achievement.name}
                 toggleCompleted={toggleCompleted}
                 achievement={achievement}
-                gameId={gameId}
+                gameId={achievement.gameId}
+                showHiddenByDefault={false}
               />
             );
           })}

@@ -5,10 +5,12 @@ import {
   GAMES_PAGE_SELECTED_GAME,
   GAMES_PAGE_SORT_OPTIONS,
   GAMES_PAGE_TOGGLE_OPTIONS,
+  GAME_PAGE_DRAWER_HISTORY_TOGGLE,
   GAME_PAGE_DRAWER_TOGGLE,
   GAME_PAGE_SEARCH_SHOW,
   GAME_PAGE_SEARCH_TERM,
   GAME_PAGE_SELECTED_GAME,
+  GAME_PAGE_SWITCH_RECENT_TYPE,
   GAME_PAGE_TOGGLE_COMPLETED,
   GAME_PAGE_TOGGLE_OPTIONS,
 } from "../types/settings.types";
@@ -39,11 +41,11 @@ export const gamesPageSortOptions = (sortOption) => {
   return { type: GAMES_PAGE_SORT_OPTIONS, payload: sortOption };
 };
 
+//GAME PAGE ACTIONS
+
 export const gamePageSelectGame = (gameId) => {
   return { type: GAME_PAGE_SELECTED_GAME, payload: gameId };
 };
-
-//GAME PAGE ACTIONS
 
 export const gamePageSearchTerm = (searchTerm) => {
   return { type: GAME_PAGE_SEARCH_TERM, payload: searchTerm };
@@ -51,6 +53,10 @@ export const gamePageSearchTerm = (searchTerm) => {
 
 export const gamePageDrawerToggle = (drawerOpen) => {
   return { type: GAME_PAGE_DRAWER_TOGGLE, payload: drawerOpen };
+};
+
+export const gamePageDrawerHistoryToggle = (drawerHistoryOpen) => {
+  return { type: GAME_PAGE_DRAWER_HISTORY_TOGGLE, payload: drawerHistoryOpen };
 };
 
 export const gamePageSearchShow = (searchShow) => {
@@ -67,4 +73,8 @@ export const gamePageToggleOptions = (toggleOptions) => {
 
 export const gamePageSortOptions = (sortOption) => {
   return { type: GAME_PAGE_TOGGLE_OPTIONS, payload: sortOption };
+};
+
+export const gamePageSwitchRecentType = (recentType) => {
+  return { type: GAME_PAGE_SWITCH_RECENT_TYPE, payload: recentType };
 };

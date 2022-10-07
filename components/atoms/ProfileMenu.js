@@ -8,7 +8,12 @@ import {
   COLOR_TEXT_DULL_BRIGHT,
   getColor,
 } from "../../helper/colorHelper";
-import { getIcon, ICON_GAMES, ICON_MEDAL } from "../../helper/iconHelper";
+import {
+  getIcon,
+  ICON_GAMES,
+  ICON_MEDAL,
+  ICON_SETTINGS,
+} from "../../helper/iconHelper";
 import { LEVEL_MODIFIER } from "../../helper/storageHelper";
 import {
   getDefaultLevelPreference,
@@ -104,12 +109,17 @@ export default function ProfileMenu() {
 
   return (
     <Container>
-      <Title>Navigation</Title>
       <Data>
         <MenuItem
           to="/games"
           title="Games"
           icon={ICON_GAMES}
+          menuClickHandler={menuClickHandler}
+        />
+        <MenuItem
+          to="/settings"
+          title="Settings"
+          icon={ICON_SETTINGS}
           menuClickHandler={menuClickHandler}
         />
       </Data>

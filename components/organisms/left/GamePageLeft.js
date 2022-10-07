@@ -26,7 +26,6 @@ import ProfileHistory from "../../atoms/ProfileHistory";
 import ProfileLevel from "../../atoms/ProfileLevel";
 import ProfileMenu from "../../atoms/ProfileMenu";
 import ProfileTrophies from "../../atoms/ProfileTrophies";
-import GameSelectList from "../../molecules/GameSelectList";
 
 const Container = styled.div`
   display: flex;

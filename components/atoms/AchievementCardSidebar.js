@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +9,10 @@ import {
   getColor,
 } from "../../helper/colorHelper";
 import { getIcon, ICON_HIDDEN, ICON_PERCENTAGE } from "../../helper/iconHelper";
-import { setHiddenRequestsOngoing } from "../../store/actions/steam.actions";
+import {
+  setHiddenAchievementsForGame,
+  setHiddenRequestsOngoing,
+} from "../../store/actions/steam.actions";
 
 const Container = styled.div`
   display: flex;
@@ -19,11 +21,11 @@ const Container = styled.div`
   justify-content: flex-start;
   min-width: 100%;
   max-width: 100%;
-  min-height: 105px;
-  max-height: 105px;
+  min-height: 100px;
+  max-height: 100px;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.5);
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
   opacity: ${(props) =>
     props.toggleCompleted && props.achieved ? "0.25" : "1"};
 `;
@@ -147,7 +149,7 @@ const PercentNumber = styled.div`
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
 `;
 
-export default function AchievementCard({
+export default function AchievementCardSidebar({
   achievement,
   gameId,
   toggleCompleted,
@@ -200,9 +202,9 @@ export default function AchievementCard({
           {hidden === 1 && !showHiddenDesc && <Desc>HIDDEN</Desc>}
           {hidden === 1 && showHiddenDesc && (
             <Desc>
-              {getHiddenDescription().length > 80
-                ? getHiddenDescription().slice(0, 80) + ".."
-                : getHiddenDescription()}
+              {(getHiddenDescription() ?? "HIDDEN").length > 80
+                ? (getHiddenDescription() ?? "HIDDEN").slice(0, 80) + ".."
+                : getHiddenDescription() ?? "HIDDEN"}
             </Desc>
           )}
           {hidden !== 1 && (

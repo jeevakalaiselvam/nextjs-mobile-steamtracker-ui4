@@ -11,6 +11,7 @@ import {
 import { HEADER_IMAGE } from "../../../helper/urlHelper";
 import GameHeader from "../../molecules/GameHeader";
 import GameContent from "../content/GameContent";
+import GamePageHistoryLeft from "../left/GamePageHistoryLeft";
 import GamePageLeft from "../left/GamePageLeft";
 
 const Container = styled.div`
@@ -56,6 +57,22 @@ const LeftContainer = styled.div`
   z-index: 1;
 `;
 
+const LeftContainerHistory = styled.div`
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: scroll;
+  position: absolute;
+  min-width: 90vw;
+  max-width: 90vw;
+  background: url(${(props) => props.image});
+  background-size: cover;
+  background-repeat: no-repeat;
+  top: 0;
+  left: ${(props) => (props.open ? "-1vw" : "-90vw")};
+  transition: all 0.25s;
+  z-index: 2;
+`;
+
 const HeaderContainer = styled.div`
   display: flex;
   align-items: flex-start;
@@ -85,7 +102,7 @@ export default function GamePage() {
   const settings = useSelector((state) => state.settings);
   const { games } = steam;
   const { gamePageSettings } = settings;
-  const { selectedGameId, drawerOpen } = gamePageSettings;
+  const { selectedGameId, drawerOpen, drawerHistoryOpen } = gamePageSettings;
 
   useEffect(() => {
     if (games && Object.keys(games).length === 0) {
@@ -107,8 +124,14 @@ export default function GamePage() {
         >
           <GamePageLeft />
         </LeftContainer>
+        <LeftContainerHistory
+          open={drawerHistoryOpen}
+          image={HEADER_IMAGE(getStoredThemeId())}
+        >
+          <GamePageHistoryLeft gameId={gameId} />
+        </LeftContainerHistory>
         <HeaderContainer>
-          <GameHeader />
+          <GameHeader gameId={gameId} />
         </HeaderContainer>
         <ContentContainer>
           <GameContent gameId={gameId} />

@@ -1,4 +1,5 @@
 import {
+  RECENT_TYPE_TODAY,
   SORT_ACHIEVEMENTS_ALL,
   SORT_GAMES_COMPLETTION,
 } from "../../helper/sortHelper";
@@ -9,11 +10,13 @@ import {
   GAMES_PAGE_SELECTED_GAME,
   GAMES_PAGE_SORT_OPTIONS,
   GAMES_PAGE_TOGGLE_OPTIONS,
+  GAME_PAGE_DRAWER_HISTORY_TOGGLE,
   GAME_PAGE_DRAWER_TOGGLE,
   GAME_PAGE_SEARCH_SHOW,
   GAME_PAGE_SEARCH_TERM,
   GAME_PAGE_SELECTED_GAME,
   GAME_PAGE_SORT_OPTIONS,
+  GAME_PAGE_SWITCH_RECENT_TYPE,
   GAME_PAGE_TOGGLE_COMPLETED,
   GAME_PAGE_TOGGLE_OPTIONS,
 } from "../types/settings.types";
@@ -31,9 +34,11 @@ const INITIAL_STATE = {
     selectedGameId: "",
     searchTerm: "",
     drawerOpen: false,
+    drawerHistoryOpen: false,
     searchShow: false,
     toggleCompleted: false,
     sortOption: SORT_ACHIEVEMENTS_ALL,
+    recentType: RECENT_TYPE_TODAY,
   },
 };
 
@@ -67,6 +72,7 @@ const reducer = (state = INITIAL_STATE, action) => {
           drawerOpen: payload,
         },
       };
+
     case GAMES_PAGE_SEARCH_SHOW:
       return {
         ...state,
@@ -121,6 +127,14 @@ const reducer = (state = INITIAL_STATE, action) => {
           drawerOpen: payload,
         },
       };
+    case GAME_PAGE_DRAWER_HISTORY_TOGGLE:
+      return {
+        ...state,
+        gamePageSettings: {
+          ...state.gamePageSettings,
+          drawerHistoryOpen: payload,
+        },
+      };
     case GAME_PAGE_SEARCH_SHOW:
       return {
         ...state,
@@ -154,6 +168,15 @@ const reducer = (state = INITIAL_STATE, action) => {
         gamePageSettings: {
           ...state.gamePageSettings,
           sortOption: payload,
+        },
+      };
+
+    case GAME_PAGE_SWITCH_RECENT_TYPE:
+      return {
+        ...state,
+        gamePageSettings: {
+          ...state.gamePageSettings,
+          recentType: payload,
         },
       };
 

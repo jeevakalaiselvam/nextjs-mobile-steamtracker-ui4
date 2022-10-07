@@ -69,7 +69,11 @@ export default function GamesContent() {
     <Container>
       {searchShow && (
         <GamesSearch>
-          <Searchbar onSearchObtained={searchHandler} width="87.5vw" />
+          <Searchbar
+            onSearchObtained={searchHandler}
+            width="87.5vw"
+            searchShow={searchShow}
+          />
         </GamesSearch>
       )}
       <GamesList searchShow={searchShow}>

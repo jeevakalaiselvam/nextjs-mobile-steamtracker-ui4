@@ -49,7 +49,7 @@ export default function GameContent({ gameId }) {
   const dispatch = useDispatch();
   const steam = useSelector((state) => state.steam);
   const settings = useSelector((state) => state.settings);
-  const { games } = steam;
+  const { games, hiddenAchievements } = steam;
   const { gamePageSettings } = settings;
   const { selectedGameId, searchShow, toggleCompleted, sortOption } =
     gamePageSettings;
@@ -63,9 +63,17 @@ export default function GameContent({ gameId }) {
   const selectedGame = games.find((game) => game.id == gameId);
   const allAchievements = selectedGame?.achievements ?? [];
 
-  const searchFilteredAchievements = allAchievements.filter((achievement) =>
-    achievement.name.toLowerCase().trim().includes(searchTerm)
-  );
+  const hiddenAchievementsForGame = hiddenAchievements[gameId];
+
+  const searchFilteredAchievements = allAchievements.filter((achievement) => {
+    return (
+      achievement.displayName.toLowerCase().trim().includes(searchTerm) ||
+      hiddenAchievementsForGame[achievement.displayName.toLowerCase().trim()]
+        .toLowerCase()
+        .trim()
+        .includes(searchTerm)
+    );
+  });
 
   let sortFilteredAchievements = searchFilteredAchievements.sort(
     (achievement1, achievement2) => {

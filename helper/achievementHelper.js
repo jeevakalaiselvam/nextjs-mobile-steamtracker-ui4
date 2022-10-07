@@ -72,7 +72,6 @@ export const getGamesSortedByUserOptions = (games, sortType) => {
     newGames = games.sort(
       (game1, game2) => game2.completion - game1.completion
     );
-    console.log("JEEVA Sorting COMPLETION", newGames);
   } else if (sortType === SORT_GAMES_NAMES_AZ) {
     newGames = games.sort((game1, game2) => {
       if (game1.name < game2.name) {
@@ -81,7 +80,6 @@ export const getGamesSortedByUserOptions = (games, sortType) => {
         return 1;
       }
     });
-    console.log("JEEVA Sorting AZ", newGames);
   } else if (sortType === SORT_GAMES_NAMES_ZA) {
     newGames = games.sort((game1, game2) => {
       if (game2.name < game1.name) {
@@ -90,7 +88,6 @@ export const getGamesSortedByUserOptions = (games, sortType) => {
         return 1;
       }
     });
-    console.log("JEEVA Sorting ZA", newGames);
   } else {
     newGames = games;
   }

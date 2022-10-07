@@ -46,8 +46,8 @@ const LeftContainer = styled.div`
   max-height: 100vh;
   overflow: scroll;
   position: absolute;
-  min-width: 70vw;
-  max-width: 70vw;
+  min-width: 75vw;
+  max-width: 75vw;
   background: url(${(props) => props.image});
   background-size: cover;
   background-repeat: no-repeat;

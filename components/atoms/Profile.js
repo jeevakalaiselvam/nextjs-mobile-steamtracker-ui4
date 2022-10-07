@@ -10,7 +10,7 @@ import {
 
 const Container = styled.div`
   display: flex;
-  width: 67.5vw;
+  width: 75vw;
   align-items: center;
   flex-direction: column;
   padding: 1rem;
@@ -36,7 +36,7 @@ const Name = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: center;
-  color: ${(props) => getColor(COLOR_TEXT_DULL_BRIGHT)};
+  color: ${(props) => getColor(COLOR_TEXT_DULL)};
 `;
 
 export default function Profile() {

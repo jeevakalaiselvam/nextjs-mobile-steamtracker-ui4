@@ -9,16 +9,20 @@ export const getDefaultLevelPreference = () => {
 export const getXPDetailsForAllGames = (games) => {
   let totalXPFromAllGames = 0;
   let obtainedXPFromAllGames = 0;
+  let completedTrophies = 0;
+  let totalTrophies = 0;
 
   if (games.length > 0) {
     games.forEach((game) => {
       let gameAchievements = game.achievements;
       gameAchievements.forEach((achievement) => {
         if (achievement.achieved == 1) {
+          completedTrophies = completedTrophies + 1;
           obtainedXPFromAllGames =
             obtainedXPFromAllGames +
             getXPForAchievement(achievement.percentage);
         }
+        totalTrophies = totalTrophies + 1;
         totalXPFromAllGames =
           totalXPFromAllGames + getXPForAchievement(achievement.percentage);
       });
@@ -33,6 +37,8 @@ export const getXPDetailsForAllGames = (games) => {
     xpRequiredForLevelUp:
       getDefaultLevelPreference() -
       (obtainedXPFromAllGames % getDefaultLevelPreference()),
+    completedTrophies,
+    totalTrophies,
   };
 };
 

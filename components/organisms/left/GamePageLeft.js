@@ -22,7 +22,9 @@ import {
 import { HEADER_IMAGE } from "../../../helper/urlHelper";
 import { gamesPageDrawerToggle } from "../../../store/actions/settings.actions";
 import Profile from "../../atoms/Profile";
+import ProfileHistory from "../../atoms/ProfileHistory";
 import ProfileLevel from "../../atoms/ProfileLevel";
+import ProfileTrophies from "../../atoms/ProfileTrophies";
 import GameSelectList from "../../molecules/GameSelectList";
 
 const Container = styled.div`
@@ -143,6 +145,8 @@ export default function GamePageLeft() {
       </CloseBottom>
       <Profile />
       <ProfileLevel />
+      <ProfileTrophies />
+      <ProfileHistory />
     </Container>
   );
 }

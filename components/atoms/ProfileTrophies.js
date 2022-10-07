@@ -8,7 +8,7 @@ import {
   COLOR_TEXT_DULL_BRIGHT,
   getColor,
 } from "../../helper/colorHelper";
-import { getIcon, ICON_MEDAL } from "../../helper/iconHelper";
+import { getIcon, ICON_MEDAL, ICON_TROPHY } from "../../helper/iconHelper";
 import { LEVEL_MODIFIER } from "../../helper/storageHelper";
 import {
   getDefaultLevelPreference,
@@ -52,7 +52,7 @@ const LevelIcon = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 3rem;
+  font-size: 2rem;
   padding: 0.25rem 0.5rem;
   color: ${(props) => getColor(COLOR_GOLD_TROPHY)};
 `;
@@ -75,11 +75,11 @@ const LevelUp = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0.25rem 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
 `;
 
-export default function ProfileLevel() {
+export default function ProfileTrophies() {
   const router = useRouter();
   const dispatch = useDispatch();
   const steam = useSelector((state) => state.steam);
@@ -93,15 +93,16 @@ export default function ProfileLevel() {
     totalXPFromAllGames,
     currentLevel,
     xpRequiredForLevelUp,
+    completedTrophies,
+    totalTrophies,
   } = getXPDetailsForAllGames(games);
 
   return (
     <Container>
-      <Title>Profile Level</Title>
+      <Title>Profile Trophies</Title>
       <Data>
-        <LevelIcon>{getIcon(ICON_MEDAL)}</LevelIcon>
-        <LevelData>{currentLevel}</LevelData>
-        <LevelUp>+{xpRequiredForLevelUp} more..</LevelUp>
+        <LevelIcon>{getIcon(ICON_TROPHY)}</LevelIcon>
+        <LevelData>{completedTrophies}</LevelData>
       </Data>
     </Container>
   );

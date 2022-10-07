@@ -35,6 +35,7 @@ const Title = styled.div`
   align-items: center;
   padding: 0.5rem;
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 const Data = styled.div`

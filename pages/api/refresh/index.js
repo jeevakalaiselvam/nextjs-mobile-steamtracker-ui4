@@ -101,6 +101,7 @@ const handler = async (req, res) => {
               achieved: achievementFound.achieved,
               unlocktime: achievementFound.unlocktime,
               gameId: game.id,
+              gameName: gameName,
             };
             return newAchievement;
           });

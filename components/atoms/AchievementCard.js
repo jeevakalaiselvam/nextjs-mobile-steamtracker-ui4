@@ -172,6 +172,7 @@ export default function AchievementCard({
     name,
     percentage,
     unlocktime,
+    gameName,
   } = achievement;
 
   const [showHiddenDesc, setShowHiddenDesc] = useState(showHiddenByDefault);
@@ -196,7 +197,17 @@ export default function AchievementCard({
       <TopWrapper>
         <Icon src={icon}></Icon>
         <Data>
-          <Title>{displayName}</Title>
+          <Title
+            onClick={() => {
+              if (window !== "undefined") {
+                const searchQuery = `${displayName} achievement ${gameName} `;
+                window.open(`https://www.google.com/search?q=${searchQuery}`);
+                // window.open(`https://www.youtube.com/results?search_query=${searchQuery}`);
+              }
+            }}
+          >
+            {displayName}
+          </Title>
           {hidden === 1 && !showHiddenDesc && <Desc>HIDDEN</Desc>}
           {hidden === 1 && showHiddenDesc && (
             <Desc>

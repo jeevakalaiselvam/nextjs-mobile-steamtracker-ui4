@@ -28,8 +28,10 @@ import {
   TbRefreshDot,
   TbRuler,
   TbRulerOff,
+  TbSettings,
   TbStar,
   TbStars,
+  TbSun,
   TbSwords,
   TbTallymark4,
   TbTrophy,
@@ -73,7 +75,7 @@ export const getIcon = (type) => {
     case ICON_SEARCH_CANCEL:
       return <TbRulerOff />;
     case ICON_THEME_SWITCH:
-      return <TbAtom />;
+      return <TbSun />;
     case ICON_HIDDEN:
       return <TbLockOff />;
     case ICON_PERCENTAGE:
@@ -93,7 +95,7 @@ export const getIcon = (type) => {
     case ICON_SORT_OPTION:
       return <TbColumns />;
     case ICON_SETTINGS:
-      return <TbManualGearbox />;
+      return <TbSettings />;
     default:
       return <TbTrophy />;
   }

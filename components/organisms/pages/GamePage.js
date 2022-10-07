@@ -9,6 +9,7 @@ import {
   WRITE_JSON,
 } from "../../../helper/storageHelper";
 import { HEADER_IMAGE } from "../../../helper/urlHelper";
+import { gamePageDrawerHistoryToggle } from "../../../store/actions/settings.actions";
 import GameHeader from "../../molecules/GameHeader";
 import GameContent from "../content/GameContent";
 import GamePageHistoryLeft from "../left/GamePageHistoryLeft";
@@ -105,6 +106,7 @@ export default function GamePage() {
   const { selectedGameId, drawerOpen, drawerHistoryOpen } = gamePageSettings;
 
   useEffect(() => {
+    dispatch(gamePageDrawerHistoryToggle(false));
     if (games && Object.keys(games).length === 0) {
       router.push("/");
     }

@@ -2,7 +2,11 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { COLOR_TEXT_DULL, getColor } from "../../helper/colorHelper";
+import {
+  COLOR_TEXT_DULL,
+  COLOR_TEXT_DULL_BRIGHT,
+  getColor,
+} from "../../helper/colorHelper";
 
 const Container = styled.div`
   display: flex;
@@ -11,7 +15,7 @@ const Container = styled.div`
   flex-direction: column;
   padding: 1rem;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
 `;
 
 const Image = styled.div`
@@ -32,7 +36,7 @@ const Name = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: center;
-  color: ${(props) => getColor(COLOR_TEXT_DULL)};
+  color: ${(props) => getColor(COLOR_TEXT_DULL_BRIGHT)};
 `;
 
 export default function Profile() {

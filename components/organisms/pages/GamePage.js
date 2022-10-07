@@ -39,7 +39,7 @@ const BackDrop = styled.div`
   min-height: 100vh;
   max-height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(30px);
 `;
 
 const LeftContainer = styled.div`
@@ -49,8 +49,9 @@ const LeftContainer = styled.div`
   position: absolute;
   min-width: 70vw;
   max-width: 70vw;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(20px);
+  background: url(${(props) => props.image});
+  background-size: cover;
+  background-repeat: no-repeat;
   top: 0;
   left: ${(props) => (props.open ? "-1vw" : "-70vw")};
   transition: all 0.25s;
@@ -102,7 +103,10 @@ export default function GamePage() {
   return (
     <Container image={HEADER_IMAGE(getStoredThemeId())}>
       <BackDrop>
-        <LeftContainer open={drawerOpen}>
+        <LeftContainer
+          open={drawerOpen}
+          image={HEADER_IMAGE(getStoredThemeId())}
+        >
           <GamePageLeft />
         </LeftContainer>
         <HeaderContainer>

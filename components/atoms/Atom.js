@@ -13,7 +13,16 @@ const Container = styled.div`
   min-height: 100vh;
   max-height: 100vh;
   overflow: hidden;
-  background-color: blue;
+  background-color: cyan;
+`;
+
+const Example = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
 `;
 
 export default function Atom() {

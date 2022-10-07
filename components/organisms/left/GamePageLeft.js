@@ -14,9 +14,15 @@ import {
   ICON_DRAWER_CLOSE,
   ICON_THEME_SWITCH,
 } from "../../../helper/iconHelper";
-import { SELECTED_THEME_ID, WRITE_JSON } from "../../../helper/storageHelper";
+import {
+  READ_JSON,
+  SELECTED_THEME_ID,
+  WRITE_JSON,
+} from "../../../helper/storageHelper";
+import { HEADER_IMAGE } from "../../../helper/urlHelper";
 import { gamesPageDrawerToggle } from "../../../store/actions/settings.actions";
 import Profile from "../../atoms/Profile";
+import ProfileLevel from "../../atoms/ProfileLevel";
 import GameSelectList from "../../molecules/GameSelectList";
 
 const Container = styled.div`
@@ -26,6 +32,8 @@ const Container = styled.div`
   justify-content: flex-start;
   position: relative;
   min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
 `;
 
 const Close = styled.div`
@@ -116,8 +124,13 @@ export default function GamePageLeft() {
     dispatch(gamesPageDrawerToggle(false));
   };
 
+  const getStoredThemeId = () => {
+    const storedId = READ_JSON(SELECTED_THEME_ID, "1151640");
+    return storedId;
+  };
+
   return (
-    <Container>
+    <Container image={HEADER_IMAGE(getStoredThemeId())}>
       <Theme onClick={themeRefreshClickHandler}>
         {getIcon(ICON_THEME_SWITCH)}
       </Theme>
@@ -129,6 +142,7 @@ export default function GamePageLeft() {
         {getIcon(ICON_DRAWER_CLOSE)}
       </CloseBottom>
       <Profile />
+      <ProfileLevel />
     </Container>
   );
 }

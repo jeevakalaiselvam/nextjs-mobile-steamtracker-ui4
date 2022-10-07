@@ -1,30 +1,25 @@
-import { FaTrophy, FaSearch } from "react-icons/fa";
-import { HiMenu } from "react-icons/hi";
+import { FaTrophy } from "react-icons/fa";
 import {
-  TbBrandChrome,
-  TbBrandCodepen,
-  TbComponents,
-  TbCrutches,
-  TbList,
+  TbArrowLeftBar,
+  TbArrowsShuffle2,
+  TbAtom,
+  TbBarrel,
+  TbBarrelOff,
+  TbBeer,
+  TbBeerOff,
   TbLockOff,
-  TbMenu,
+  TbMedal,
   TbMenu2,
   TbNote,
   TbNoteOff,
+  TbPlayerSkipBack,
   TbPlayerTrackNext,
   TbPlayerTrackPrev,
-  TbRefresh,
   TbRefreshDot,
-  TbSearch,
-  TbSum,
-  TbSumOff,
   TbTrophy,
   TbWorld,
   TbX,
-  TbZoomCancel,
-  TbZoomQuestion,
 } from "react-icons/tb";
-import { IoIosCloseCircle } from "react-icons/io";
 
 export const ICON_REFRESH = "ICON_REFRESH";
 export const ICON_TROPHY = "ICON_TROPHY";
@@ -36,6 +31,7 @@ export const ICON_SEARCH_ACTIVE = "ICON_SEARCH_ACTIVE";
 export const ICON_SEARCH_CANCEL = "ICON_SEARCH_CANCEL";
 export const ICON_HIDDEN = "ICON_HIDDEN";
 export const ICON_PERCENTAGE = "ICON_PERCENTAGE";
+export const ICON_MEDAL = "ICON_MEDAL";
 
 export const getIcon = (type) => {
   switch (type) {
@@ -46,19 +42,21 @@ export const getIcon = (type) => {
     case ICON_MENU:
       return <TbMenu2 />;
     case ICON_DRAWER_CLOSE:
-      return <TbPlayerTrackPrev />;
+      return <TbArrowLeftBar />;
     case ICON_CLOSE:
       return <TbX />;
     case ICON_SEARCH_ACTIVE:
-      return <TbNote />;
+      return <TbBeer />;
     case ICON_SEARCH_CANCEL:
-      return <TbNoteOff />;
+      return <TbBeerOff />;
     case ICON_THEME_SWITCH:
-      return <TbPlayerTrackNext />;
+      return <TbAtom />;
     case ICON_HIDDEN:
       return <TbLockOff />;
     case ICON_PERCENTAGE:
       return <TbWorld />;
+    case ICON_MEDAL:
+      return <TbMedal />;
     default:
       return <TbTrophy />;
   }

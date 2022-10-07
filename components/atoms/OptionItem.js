@@ -19,7 +19,7 @@ const Container = styled.div`
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(20px);
-  min-height: 50px;
+  min-height: 40px;
   margin-bottom: 1rem;
 
   &:hover,
@@ -38,7 +38,7 @@ const Icon = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  font-size: 3rem;
+  font-size: 2.5rem;
   padding: 0.25rem 0.5rem;
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
 `;

@@ -13,6 +13,7 @@ import {
   TbCardboards,
   TbCardboardsOff,
   TbColumns,
+  TbDeviceGamepad2,
   TbDotsVertical,
   TbHexagons,
   TbLockOff,
@@ -26,6 +27,10 @@ import {
   TbRefreshDot,
   TbRuler,
   TbRulerOff,
+  TbStar,
+  TbStars,
+  TbSwords,
+  TbTallymark4,
   TbTrophy,
   TbWorld,
   TbX,
@@ -72,13 +77,13 @@ export const getIcon = (type) => {
     case ICON_PERCENTAGE:
       return <TbWorld />;
     case ICON_MEDAL:
-      return <TbMedal />;
+      return <TbStars />;
     case ICON_COMPLETED_TOGGLE_DISABLED:
       return <TbCardboards />;
     case ICON_COMPLETED_TOGGLE_ACTIVE:
       return <TbCardboardsOff />;
     case ICON_GAMES:
-      return <TbHexagons />;
+      return <TbDeviceGamepad2 />;
     case ICON_OPTIONS_DROPDOWN:
       return <TbDotsVertical />;
     case ICON_OPTIONS_CLOSE:

@@ -104,7 +104,7 @@ export default function ProfileMenu() {
 
   return (
     <Container>
-      <Title>Profile Menu</Title>
+      <Title>Navigation</Title>
       <Data>
         <MenuItem
           to="/games"

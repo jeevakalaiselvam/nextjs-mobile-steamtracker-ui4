@@ -93,7 +93,7 @@ export default function ProfileHistory() {
 
   return (
     <Container>
-      <Title>Achivement History</Title>
+      <Title>Recent History</Title>
       <Data>
         <HistoryContainer>
           {Object.keys(recentHistory).map((key, index) => {

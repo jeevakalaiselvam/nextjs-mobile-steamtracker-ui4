@@ -52,7 +52,7 @@ const LevelIcon = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 4rem;
+  font-size: 2.5rem;
   padding: 0.25rem 0.5rem;
   color: ${(props) => getColor(COLOR_GOLD_TROPHY)};
 `;
@@ -101,7 +101,7 @@ export default function ProfileLevel() {
       <Data>
         <LevelIcon>{getIcon(ICON_MEDAL)}</LevelIcon>
         <LevelData>{currentLevel}</LevelData>
-        <LevelUp>+{xpRequiredForLevelUp} more..</LevelUp>
+        <LevelUp>+{xpRequiredForLevelUp} needed..</LevelUp>
       </Data>
     </Container>
   );

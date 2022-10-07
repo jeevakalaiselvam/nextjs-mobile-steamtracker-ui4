@@ -20,6 +20,7 @@ const Container = styled.div`
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.3);
   padding-left: 1rem;
+  min-height: 40px;
 
   &:hover,
   &:active {
@@ -46,7 +47,7 @@ const Icon = styled.div`
   justify-content: flex-end;
   align-items: center;
   font-size: 2rem;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.25rem;
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
 `;
 
@@ -56,8 +57,9 @@ const Title = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  font-size: 1.5rem;
   padding: 0.25rem 0.5rem;
-  padding-left: 1rem;
+  padding-left: 0.5rem;
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
 `;
 

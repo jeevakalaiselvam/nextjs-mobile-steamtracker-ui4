@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { getAchievementsSortedByUserOptions } from "../../../helper/achievementHelper";
 import { setHiddenAchievementsForGame } from "../../../store/actions/steam.actions";
 import AchievementCard from "../../atoms/AchievementCard";
 import GameCard from "../../atoms/GameCard";
@@ -50,7 +51,8 @@ export default function GameContent({ gameId }) {
   const settings = useSelector((state) => state.settings);
   const { games } = steam;
   const { gamePageSettings } = settings;
-  const { selectedGameId, searchShow, toggleCompleted } = gamePageSettings;
+  const { selectedGameId, searchShow, toggleCompleted, sortOption } =
+    gamePageSettings;
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -69,6 +71,11 @@ export default function GameContent({ gameId }) {
     (achievement1, achievement2) => {
       return Number(achievement2.percentage) - Number(achievement1.percentage);
     }
+  );
+
+  let sortOptionUserOptionFiltered = getAchievementsSortedByUserOptions(
+    sortFilteredAchievements,
+    sortOption
   );
 
   //Get All Hidden Data
@@ -95,13 +102,13 @@ export default function GameContent({ gameId }) {
         </AchievementSearch>
       )}
       <AchievementList searchShow={searchShow}>
-        {sortFilteredAchievements.length > 0 &&
-          sortFilteredAchievements.map((achievement) => {
+        {sortOptionUserOptionFiltered.length > 0 &&
+          sortOptionUserOptionFiltered.map((achievement) => {
             return (
               <AchievementCard
+                key={achievement.name}
                 toggleCompleted={toggleCompleted}
                 achievement={achievement}
-                key={achievement.id}
                 gameId={gameId}
               />
             );

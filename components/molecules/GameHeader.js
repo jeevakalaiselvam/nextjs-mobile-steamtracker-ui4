@@ -14,17 +14,29 @@ import {
   ICON_CLOSE,
   ICON_COMPLETED_TOGGLE_ACTIVE,
   ICON_COMPLETED_TOGGLE_DISABLED,
+  ICON_GAMES,
   ICON_MENU,
+  ICON_OPTIONS_CLOSE,
+  ICON_OPTIONS_DROPDOWN,
   ICON_REFRESH,
   ICON_SEARCH,
   ICON_SEARCH_ACTIVE,
   ICON_SEARCH_CANCEL,
+  ICON_SORT_OPTION,
 } from "../../helper/iconHelper";
+import {
+  SORT_ACHIEVEMENTS_ALL,
+  SORT_ACHIEVEMENTS_LOCKED,
+  SORT_ACHIEVEMENTS_UNLOCKED,
+} from "../../helper/sortHelper";
 import {
   gamePageToggleCompleted,
   gamePageDrawerToggle,
   gamePageSearchShow,
+  gamePageToggleOptions,
+  gamePageSortOptions,
 } from "../../store/actions/settings.actions";
+import OptionItem from "../atoms/OptionItem";
 import TrophyCount from "../atoms/TrophyCount";
 
 const Container = styled.div`
@@ -36,7 +48,6 @@ const Container = styled.div`
   max-width: 100vw;
   min-height: 55px;
   max-height: 55px;
-  overflow: hidden;
   color: ${(props) => getColor(COLOR_TEXT_DRAWER_ICON)};
   padding-right: 1rem;
   background-color: rgba(0, 0, 0, 0.1);
@@ -71,25 +82,26 @@ const MiddleRight = styled.div`
   flex: 1;
 `;
 
-const LeftAfter = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  margin-left: 1rem;
-  justify-content: center;
-  font-size: 2.25rem;
-  padding: 4px;
-  color: ${(props) => getColor(COLOR_TEXT_DRAWER_ICON)};
-`;
-
 const RightBefore = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
+  margin-right: 1rem;
   justify-content: center;
   font-size: 2.25rem;
   padding: 4px;
-  margin-right: 1rem;
+  color: ${(props) => getColor(COLOR_TEXT_DRAWER_ICON)};
+  position: relative;
+`;
+
+const LeftAfter = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 2.25rem;
+  padding: 4px;
+  margin-left: 1rem;
   color: ${(props) => getColor(COLOR_TEXT_DRAWER_ICON)};
 `;
 
@@ -127,6 +139,28 @@ const Right = styled.div`
   }
 `;
 
+const OptionsMenu = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 250px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(40px);
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+`;
+
+const CloseButton = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
 export default function GameHeader() {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -134,7 +168,8 @@ export default function GameHeader() {
   const settings = useSelector((state) => state.settings);
   const { games } = steam;
   const { gamePageSettings } = settings;
-  const { drawerOpen, searchShow, toggleCompleted } = gamePageSettings;
+  const { drawerOpen, searchShow, toggleCompleted, toggleOptions } =
+    gamePageSettings;
 
   const [rotate, setRotate] = useState(false);
 
@@ -158,21 +193,53 @@ export default function GameHeader() {
     dispatch(gamePageToggleCompleted(!toggleCompleted));
   };
 
+  const showOptionsToggle = () => {
+    dispatch(gamePageToggleOptions(!toggleOptions));
+  };
+
+  const optionClickHandler = (sortType) => {
+    dispatch(gamePageSortOptions(sortType));
+  };
+
   return (
     <Container>
       <Left onClick={menuClickHandler}>
         {drawerOpen ? getIcon(ICON_MENU) : getIcon(ICON_MENU)}
       </Left>
-      <LeftAfter rotate={rotate} onClick={completedToggleClickHandler}>
-        {!toggleCompleted && getIcon(ICON_COMPLETED_TOGGLE_DISABLED)}
-        {toggleCompleted && getIcon(ICON_COMPLETED_TOGGLE_ACTIVE)}
+      <LeftAfter onClick={searchClickHandler}>
+        {!searchShow && getIcon(ICON_SEARCH_ACTIVE)}
+        {searchShow && getIcon(ICON_SEARCH_CANCEL)}
       </LeftAfter>
       <MiddleLeft>
         <TrophyCount type="completion" />
       </MiddleLeft>
-      <RightBefore onClick={searchClickHandler}>
-        {!searchShow && getIcon(ICON_SEARCH_ACTIVE)}
-        {searchShow && getIcon(ICON_SEARCH_CANCEL)}
+      <RightBefore rotate={rotate} onClick={showOptionsToggle}>
+        {getIcon(ICON_OPTIONS_DROPDOWN)}
+        {toggleOptions && (
+          <OptionsMenu>
+            <OptionItem
+              title={"Show All"}
+              icon={ICON_SORT_OPTION}
+              optionType={SORT_ACHIEVEMENTS_ALL}
+              optionClickHandler={optionClickHandler}
+            />
+            <OptionItem
+              title={"Show Only Locked"}
+              icon={ICON_SORT_OPTION}
+              optionType={SORT_ACHIEVEMENTS_LOCKED}
+              optionClickHandler={optionClickHandler}
+            />
+            <OptionItem
+              title={"Show Only Unlocked"}
+              icon={ICON_SORT_OPTION}
+              optionType={SORT_ACHIEVEMENTS_UNLOCKED}
+              optionClickHandler={optionClickHandler}
+            />
+            <CloseButton onClick={showOptionsToggle}>
+              {getIcon(ICON_OPTIONS_CLOSE)}
+            </CloseButton>
+          </OptionsMenu>
+        )}
       </RightBefore>
       <Right rotate={rotate} onClick={refreshClickHandler}>
         {getIcon(ICON_REFRESH)}

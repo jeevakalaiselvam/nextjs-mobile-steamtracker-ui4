@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { getGamesSortedByUserOptions } from "../../../helper/achievementHelper";
 import GameCard from "../../atoms/GameCard";
 import Searchbar from "../../atoms/Searchbar";
 
@@ -46,7 +47,8 @@ export default function GamesContent() {
   const settings = useSelector((state) => state.settings);
   const { games } = steam;
   const { gamesPageSettings } = settings;
-  const { selectedGameId, searchShow } = gamesPageSettings;
+  const { selectedGameId, searchShow, toggleCompleted, sortOption } =
+    gamesPageSettings;
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -58,9 +60,10 @@ export default function GamesContent() {
     game.name.toLowerCase().trim().includes(searchTerm)
   );
 
-  const sortFilteredGames = searchFilteredGames.sort((game1, game2) => {
-    return Number(game2.completion) - Number(game1.completion);
-  });
+  let sortOptionUserOptionFiltered = getGamesSortedByUserOptions(
+    searchFilteredGames,
+    sortOption
+  );
 
   return (
     <Container>
@@ -70,8 +73,8 @@ export default function GamesContent() {
         </GamesSearch>
       )}
       <GamesList searchShow={searchShow}>
-        {sortFilteredGames.length > 0 &&
-          sortFilteredGames.map((game) => {
+        {sortOptionUserOptionFiltered.length > 0 &&
+          sortOptionUserOptionFiltered.map((game) => {
             return <GameCard game={game} key={game.id} />;
           })}
       </GamesList>

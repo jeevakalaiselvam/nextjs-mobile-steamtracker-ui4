@@ -10,10 +10,7 @@ import {
 } from "../../../helper/storageHelper";
 import { HEADER_IMAGE } from "../../../helper/urlHelper";
 import GameHeader from "../../molecules/GameHeader";
-import GamesPageHeader from "../../molecules/GameSelectList";
-import GamesHeader from "../../molecules/GamesHeader";
 import GameContent from "../content/GameContent";
-import GamesContent from "../content/GamesContent";
 import GamePageLeft from "../left/GamePageLeft";
 
 const Container = styled.div`

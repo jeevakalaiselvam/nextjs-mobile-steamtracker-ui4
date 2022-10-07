@@ -1,5 +1,6 @@
 import { FaTrophy } from "react-icons/fa";
 import {
+  TbArrowBarToUp,
   TbArrowLeftBar,
   TbArrowsShuffle2,
   TbAtom,
@@ -11,6 +12,8 @@ import {
   TbBookOff,
   TbCardboards,
   TbCardboardsOff,
+  TbColumns,
+  TbDotsVertical,
   TbHexagons,
   TbLockOff,
   TbMedal,
@@ -42,6 +45,9 @@ export const ICON_MEDAL = "ICON_MEDAL";
 export const ICON_COMPLETED_TOGGLE_DISABLED = "ICON_COMPLETED_TOGGLE_DISABLED";
 export const ICON_COMPLETED_TOGGLE_ACTIVE = "ICON_COMPLETED_TOGGLE_ACTIVE";
 export const ICON_GAMES = "ICON_GAMES";
+export const ICON_OPTIONS_DROPDOWN = "ICON_OPTIONS_DROPDOWN";
+export const ICON_OPTIONS_CLOSE = "ICON_OPTIONS_CLOSE";
+export const ICON_SORT_OPTION = "ICON_SORT_OPTION";
 
 export const getIcon = (type) => {
   switch (type) {
@@ -73,6 +79,12 @@ export const getIcon = (type) => {
       return <TbCardboardsOff />;
     case ICON_GAMES:
       return <TbHexagons />;
+    case ICON_OPTIONS_DROPDOWN:
+      return <TbDotsVertical />;
+    case ICON_OPTIONS_CLOSE:
+      return <TbArrowBarToUp />;
+    case ICON_SORT_OPTION:
+      return <TbColumns />;
     default:
       return <TbTrophy />;
   }

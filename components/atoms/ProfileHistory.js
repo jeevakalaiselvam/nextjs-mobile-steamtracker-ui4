@@ -100,6 +100,7 @@ export default function ProfileHistory() {
             return (
               <HistoryItem
                 transparent={recentHistory[key].length == 0}
+                key={index}
                 id={index}
                 current={false}
                 onClick={() => {

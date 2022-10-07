@@ -12,7 +12,8 @@ import { HEADER_IMAGE } from "../../../helper/urlHelper";
 import GamesPageHeader from "../../molecules/GameSelectList";
 import GamesHeader from "../../molecules/GamesHeader";
 import GamesContent from "../content/GamesContent";
-import GamePageLeft from "../left/GamePageLeft";
+import GamesPageLeft from "../left/GamesPageLeft";
+import GamePageLeft from "../left/GamesPageLeft";
 
 const Container = styled.div`
   display: flex;
@@ -105,7 +106,7 @@ export default function GamesPage() {
           open={drawerOpen}
           image={HEADER_IMAGE(getStoredThemeId())}
         >
-          <GamePageLeft />
+          <GamesPageLeft />
         </LeftContainer>
         <HeaderContainer>
           <GamesHeader />

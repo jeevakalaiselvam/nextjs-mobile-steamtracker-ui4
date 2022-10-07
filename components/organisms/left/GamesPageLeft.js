@@ -20,7 +20,7 @@ import {
   WRITE_JSON,
 } from "../../../helper/storageHelper";
 import { HEADER_IMAGE } from "../../../helper/urlHelper";
-import { gamePageDrawerToggle } from "../../../store/actions/settings.actions";
+import { gamesPageDrawerToggle } from "../../../store/actions/settings.actions";
 import Profile from "../../atoms/Profile";
 import ProfileHistory from "../../atoms/ProfileHistory";
 import ProfileLevel from "../../atoms/ProfileLevel";
@@ -107,24 +107,24 @@ const ThemeBottom = styled.div`
   }
 `;
 
-export default function GamePageLeft() {
+export default function GamesPageLeft() {
   const router = useRouter();
   const dispatch = useDispatch();
   const steam = useSelector((state) => state.steam);
   const settings = useSelector((state) => state.settings);
   const { games } = steam;
-  const { gamePageSettings } = settings;
-  const { selectedGameId } = gamePageSettings;
+  const { gamesPageSettings } = settings;
+  const { selectedGameId } = gamesPageSettings;
 
   const closeClickHandler = () => {
-    dispatch(gamePageDrawerToggle(false));
+    dispatch(gamesPageDrawerToggle(false));
   };
 
   const themeRefreshClickHandler = () => {
     let newGameId =
       games[Math.floor(Math.random() * games.length)].id ?? "1151640";
     WRITE_JSON(SELECTED_THEME_ID, newGameId);
-    dispatch(gamePageDrawerToggle(false));
+    dispatch(gamesPageDrawerToggle(false));
   };
 
   const getStoredThemeId = () => {

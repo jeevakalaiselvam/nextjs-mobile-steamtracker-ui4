@@ -35,7 +35,7 @@ import {
   gamesPageSortOptions,
   gamesPageToggleOptions,
 } from "../../store/actions/settings.actions";
-import LevelCount from "../atoms/LevelCount";
+import LevelCount from "../atoms/HeaderLevel";
 import OptionItem from "../atoms/OptionItem";
 import TrophyCount from "../atoms/TrophyCount";
 
@@ -60,7 +60,7 @@ const Left = styled.div`
   flex-direction: row;
   justify-content: center;
   overflow: hidden;
-  font-size: 2.25rem;
+  font-size: 2.5rem;
   padding: 4px;
 `;
 

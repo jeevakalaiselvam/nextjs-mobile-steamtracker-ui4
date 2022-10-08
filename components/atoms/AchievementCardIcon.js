@@ -17,10 +17,10 @@ const Container = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: center;
-  min-height: 65px;
-  max-height: 65px;
-  min-width: 65px;
-  max-width: 65px;
+  min-height: 60px;
+  max-height: 60px;
+  min-width: 60px;
+  max-width: 60px;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.5);
   margin-top: 0.5rem;

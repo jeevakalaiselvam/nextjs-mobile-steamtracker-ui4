@@ -43,7 +43,7 @@ import {
   gamePageViewType,
 } from "../../store/actions/settings.actions";
 import { gamePageRefreshGameData } from "../../store/actions/steam.actions";
-import LevelCount from "../atoms/LevelCount";
+import HeaderLevel from "../atoms/HeaderLevel";
 import OptionItem from "../atoms/OptionItem";
 import TrophyCount from "../atoms/TrophyCount";
 
@@ -68,7 +68,7 @@ const Left = styled.div`
   flex-direction: row;
   justify-content: center;
   overflow: hidden;
-  font-size: 2.25rem;
+  font-size: 2.5rem;
   padding: 4px;
 `;
 
@@ -235,7 +235,7 @@ export default function GameHeader({ gameId }) {
         {searchShow && getIcon(ICON_SEARCH_CANCEL)}
       </LeftAfter>
       <MiddleLeft>
-        <LevelCount type="completion" />
+        <HeaderLevel type="completion" />
       </MiddleLeft>
       <RightBefore rotate={rotate} onClick={showOptionsToggle}>
         {getIcon(ICON_OPTIONS_DROPDOWN)}

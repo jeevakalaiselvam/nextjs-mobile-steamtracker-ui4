@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+import { TbFileVector } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import {
@@ -8,7 +9,12 @@ import {
   COLOR_TEXT_DULL,
   getColor,
 } from "../../helper/colorHelper";
-import { getIcon, ICON_MEDAL, ICON_TROPHY } from "../../helper/iconHelper";
+import {
+  getIcon,
+  ICON_LEVEL_UP,
+  ICON_MEDAL,
+  ICON_TROPHY,
+} from "../../helper/iconHelper";
 import { getXPDetailsForAllGames } from "../../helper/xpHelper";
 
 const Container = styled.div`
@@ -62,8 +68,18 @@ const MoreNeeded = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: center;
+  font-size: 1.25rem;
+  color: ${(props) => getColor(COLOR_TEXT_DULL)};
+`;
+
+const Icon = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
   font-size: 1.5rem;
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
+  transform: rotate(180deg);
 `;
 
 export default function LevelCount({ type }) {
@@ -86,7 +102,9 @@ export default function LevelCount({ type }) {
     <Container>
       <LevelData>{getIcon(ICON_MEDAL)}</LevelData>
       <CountData>{currentLevel}</CountData>
-      <MoreNeeded>+{xpRequiredForLevelUp} more..</MoreNeeded>
+      <MoreNeeded>
+        {xpRequiredForLevelUp} <Icon>{getIcon(ICON_LEVEL_UP)}</Icon>
+      </MoreNeeded>
     </Container>
   );
 }

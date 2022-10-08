@@ -18,11 +18,13 @@ import {
 import {
   GAME_VIEW_TYPE_ICON,
   GAME_VIEW_TYPE_LARGE,
+  GAME_VIEW_TYPE_SMALL,
   SORT_ACHIEVEMENTS_ALL,
 } from "../../../helper/sortHelper";
 import { setHiddenAchievementsForGame } from "../../../store/actions/steam.actions";
 import AchievementCard from "../../atoms/AchievementCard";
 import AchievementCardIcon from "../../atoms/AchievementCardIcon";
+import AchievementCardSmall from "../../atoms/AchievementCardSmall";
 import GameCard from "../../atoms/GameCard";
 import Searchbar from "../../atoms/Searchbar";
 
@@ -85,14 +87,17 @@ const AchievementSelected = styled.div`
   width: 100%;
   min-height: 100px;
   max-height: 100px;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(30px);
 `;
 
 const AchievementIcons = styled.div`
   display: flex;
   align-items: flex-start;
+  justify-self: center;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(30px);
@@ -179,6 +184,27 @@ export default function GameContent({ gameId }) {
             sortOptionUserOptionFiltered.map((achievement) => {
               return (
                 <AchievementCard
+                  key={achievement.name}
+                  toggleCompleted={
+                    sortOption === SORT_ACHIEVEMENTS_ALL
+                      ? true
+                      : toggleCompleted
+                  }
+                  achievement={achievement}
+                  gameId={achievement.gameId}
+                  showHiddenByDefault={false}
+                />
+              );
+            })}
+        </AchievementListLarge>
+      )}
+
+      {viewType === GAME_VIEW_TYPE_SMALL && (
+        <AchievementListLarge searchShow={searchShow}>
+          {sortOptionUserOptionFiltered.length > 0 &&
+            sortOptionUserOptionFiltered.map((achievement) => {
+              return (
+                <AchievementCardSmall
                   key={achievement.name}
                   toggleCompleted={
                     sortOption === SORT_ACHIEVEMENTS_ALL

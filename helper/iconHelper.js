@@ -4,6 +4,7 @@ import {
   TbArrowLeftBar,
   TbArrowsShuffle2,
   TbAtom,
+  TbBadges,
   TbBarrel,
   TbBarrelOff,
   TbBeer,
@@ -70,6 +71,7 @@ export const ICON_SORT_OPTION = "ICON_SORT_OPTION";
 export const ICON_SETTINGS = "ICON_SETTINGS";
 export const ICON_CLOSE_CIRCLE = "ICON_CLOSE_CIRCLE";
 export const ICON_XP = "ICON_XP";
+export const ICON_LEVEL_UP = "ICON_LEVEL_UP";
 
 export const getIcon = (type) => {
   switch (type) {
@@ -113,6 +115,8 @@ export const getIcon = (type) => {
       return <TbReportOff />;
     case ICON_XP:
       return <TbBrandCodesandbox />;
+    case ICON_LEVEL_UP:
+      return <TbBadges />;
     default:
       return <TbTrophy />;
   }

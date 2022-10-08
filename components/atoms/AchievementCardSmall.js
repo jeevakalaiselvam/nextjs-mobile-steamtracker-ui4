@@ -25,8 +25,8 @@ const Container = styled.div`
   justify-content: flex-start;
   min-width: 100%;
   max-width: 100%;
-  min-height: 110px;
-  max-height: 110px;
+  min-height: 80px;
+  max-height: 80px;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.5);
   margin: 0.25rem;
@@ -40,19 +40,6 @@ const TopWrapper = styled.div`
   align-items: flex-start;
   flex-direction: row;
   width: 100%;
-  min-height: 80px;
-  max-height: 80px;
-  justify-content: center;
-  position: relative;
-`;
-
-const BottomWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  width: 100%;
-  min-height: 25px;
-  max-height: 25px;
   justify-content: center;
   position: relative;
 `;
@@ -94,10 +81,10 @@ const Desc = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
+  margin-top: 0.5rem;
   justify-content: flex-start;
   padding-left: 0.5rem;
   width: 100%;
-  margin-top: 0.5rem;
   flex: 1;
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
 `;
@@ -189,7 +176,7 @@ const PercentNumber = styled.div`
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
 `;
 
-export default function AchievementCard({
+export default function AchievementCardSmall({
   achievement,
   gameId,
   toggleCompleted,
@@ -199,7 +186,7 @@ export default function AchievementCard({
   const dispatch = useDispatch();
   const steam = useSelector((state) => state.steam);
   const settings = useSelector((state) => state.settings);
-  const { games, hiddenAchievements, hiddenRequestsOngoing } = steam;
+  const { games, hiddenAchievements } = steam;
   const { gamesPageSettings } = settings;
   const { selectedGameId } = gamesPageSettings;
 
@@ -252,7 +239,9 @@ export default function AchievementCard({
           >
             {displayName}
           </Title>
-          {hidden === 1 && !showHiddenDesc && <Desc>HIDDEN</Desc>}
+          {hidden === 1 && !showHiddenDesc && (
+            <Desc onClick={showHiddenDescription}>HIDDEN</Desc>
+          )}
           {hidden === 1 && showHiddenDesc && (
             <Desc>
               {getHiddenDescription().length > 80
@@ -273,21 +262,6 @@ export default function AchievementCard({
           <XPData>{getXPForAchievement(percentage)}</XPData>
         </XPDetails>
       </TopWrapper>
-      <BottomWrapper>
-        {hidden === 1 && (
-          <Hidden onClick={showHiddenDescription}>
-            {getIcon(ICON_HIDDEN)}
-          </Hidden>
-        )}
-        <Percentage>
-          <PercentIcon>{getIcon(ICON_PERCENTAGE)}</PercentIcon>
-          <PercentNumber>{percentage.toFixed(2)} %</PercentNumber>
-        </Percentage>
-        <Percentage>
-          <PercentIcon>{getIcon(ICON_PERCENTAGE)}</PercentIcon>
-          <PercentNumber>{percentage.toFixed(2)} %</PercentNumber>
-        </Percentage>
-      </BottomWrapper>
     </Container>
   );
 }

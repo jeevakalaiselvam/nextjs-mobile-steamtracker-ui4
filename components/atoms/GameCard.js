@@ -18,7 +18,7 @@ const Container = styled.div`
   min-width: 100%;
   max-width: 100%;
   margin-bottom: 0.5rem;
-  background-color: #151517;
+  background-color: #1b1c1e;
 
   &:hover {
     box-shadow: 2px 2px 4px #1b1c1e;

@@ -7,19 +7,22 @@ export const COLOR_TEXT_DULL_BRIGHT = "COLOR_TEXT_DULL_BRIGHT";
 export const COLOR_TEXT_DRAWER_ICON = "COLOR_TEXT_DRAWER_ICON";
 export const COLOR_PLATINUM_TROPHY = "COLOR_PLATINUM_TROPHY";
 export const COLOR_ACCENT = "COLOR_ACCENT";
+export const COLOR_XBOX = "COLOR_XBOX";
 
 export const getColor = (type) => {
   switch (type) {
     case COLOR_ACCENT:
       return "#3049d1";
     case COLOR_GOLD_TROPHY:
-      return "#f1b51b";
+      return "#0e7a0d";
     case COLOR_PLATINUM_TROPHY:
-      return "#b55af2";
+      return "#0e7a0d";
     case COLOR_REFRESH_INACTIVE:
       return "#fefefe";
     case COLOR_REFRESH_ACTIVE:
-      return "#6cff5c";
+      return "#0e7a0d";
+    case COLOR_XBOX:
+      return "#0e7a0d";
     case COLOR_CLOSE_RED:
       return "#ff4858";
     case COLOR_TEXT_DULL_BRIGHT:

@@ -24,8 +24,7 @@ const Container = styled.div`
   min-height: 100px;
   max-height: 100px;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(30px);
+  background-color: #101114;
   margin-top: 0.5rem;
   opacity: ${(props) =>
     props.toggleCompleted && props.achieved ? "0.25" : "1"};

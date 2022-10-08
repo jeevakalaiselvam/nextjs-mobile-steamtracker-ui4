@@ -34,8 +34,8 @@ const Container = styled.div`
   justify-content: flex-start;
   position: relative;
   min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(30px);
+  background-color: #101114;
+  z-index: 1000;
 `;
 
 const Close = styled.div`

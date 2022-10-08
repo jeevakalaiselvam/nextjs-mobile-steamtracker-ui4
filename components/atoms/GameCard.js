@@ -18,11 +18,10 @@ const Container = styled.div`
   min-width: 100%;
   max-width: 100%;
   margin-bottom: 0.5rem;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(30px);
+  background-color: #101114;
 
   &:hover {
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 4px #1b1c1e;
   }
 `;
 

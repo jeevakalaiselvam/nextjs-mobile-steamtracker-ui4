@@ -26,7 +26,7 @@ const BackdropContainer = styled.div`
   justify-content: center;
   min-width: 100vw;
   max-width: 100vw;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #101114;
 `;
 
 export default function Home() {

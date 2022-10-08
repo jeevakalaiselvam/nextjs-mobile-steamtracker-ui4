@@ -50,7 +50,7 @@ const Container = styled.div`
   max-height: 55px;
   color: ${(props) => getColor(COLOR_TEXT_DRAWER_ICON)};
   padding-right: 1rem;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #101114;
   padding-left: 1rem;
 `;
 
@@ -145,8 +145,8 @@ const OptionsMenu = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   width: 250px;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(30px);
+  background-color: #101114;
+  backdrop-filter: blur(20px);
   padding: 1rem;
   position: absolute;
   top: 0;

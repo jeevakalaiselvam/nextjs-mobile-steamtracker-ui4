@@ -62,8 +62,7 @@ const AchievementListLarge = styled.div`
     props.searchShow ? "calc(100vh - 55px - 50px)" : "calc(100vh - 55px)"};
   overflow: scroll;
   padding: 0 0.25rem 0.5rem 0.25rem;
-  background-color: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(30px);
+  background-color: #101114;
 `;
 
 const AchievementListIcon = styled.div`
@@ -88,8 +87,7 @@ const AchievementSelected = styled.div`
   width: 100%;
   min-height: 100px;
   max-height: 100px;
-  background-color: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(30px);
+  background-color: #101114;
 `;
 
 const AchievementIcons = styled.div`
@@ -100,8 +98,7 @@ const AchievementIcons = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(30px);
+  background-color: #101114;
   overflow: scroll;
 `;
 
@@ -149,14 +146,16 @@ export default function GameContent({ gameId }) {
 
   //Get Hidden Achievements if not present for games
   useEffect(() => {
-    const getHidden = async () => {
-      const hiddenResponse = await axios.get(`/api/hidden/${gameId}`);
-      const hiddenData = hiddenResponse.data.hiddenMapper;
-      dispatch(setHiddenAchievementsForGame(gameId, hiddenData));
-    };
+    if (gameId) {
+      const getHidden = async () => {
+        const hiddenResponse = await axios.get(`/api/hidden/${gameId}`);
+        const hiddenData = hiddenResponse.data.hiddenMapper;
+        dispatch(setHiddenAchievementsForGame(gameId, hiddenData));
+      };
 
-    if (!hiddenAchievements[gameId]) {
-      getHidden();
+      if (!hiddenAchievements[gameId]) {
+        getHidden();
+      }
     }
   }, [gameId]);
 

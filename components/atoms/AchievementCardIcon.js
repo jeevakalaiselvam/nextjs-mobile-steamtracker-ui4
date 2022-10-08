@@ -22,7 +22,7 @@ const Container = styled.div`
   min-width: 60px;
   max-width: 60px;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #1b1c1e;
   margin-top: 0.5rem;
   margin-right: 0.5rem;
   opacity: ${(props) =>

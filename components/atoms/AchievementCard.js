@@ -28,15 +28,16 @@ const Container = styled.div`
   min-height: 110px;
   max-height: 110px;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.5);
-  margin: 0.25rem;
+  background-color: #1b1c1e;
+  margin: 0.1rem;
   opacity: ${(props) =>
     props.toggleCompleted && props.achieved ? "0.2" : "1"};
+  border-radius: 0.1rem;
 `;
 
 const TopWrapper = styled.div`
   display: flex;
-  padding: 1rem 0rem 0.5rem 0rem;
+  padding: 0.75rem 0rem 0.5rem 0rem;
   align-items: flex-start;
   flex-direction: row;
   width: 100%;
@@ -125,11 +126,11 @@ const XPDetails = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: flex-start;
-  color: ${(props) => getColor(COLOR_TEXT_DULL_BRIGHT)};
+  color: ${(props) => getColor(COLOR_TEXT_DULL)};
   padding-left: 0.5rem;
   position: absolute;
-  top: 0.5rem;
-  right: 1rem;
+  top: 0.25rem;
+  right: 0.5rem;
   font-size: 2rem;
 
   &:hover,

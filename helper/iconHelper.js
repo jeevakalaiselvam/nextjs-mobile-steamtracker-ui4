@@ -1,4 +1,4 @@
-import { FaTrophy } from "react-icons/fa";
+import { FaTrophy, FaXbox } from "react-icons/fa";
 import { GoEyeClosed } from "react-icons/go";
 import {
   TbArrowBarToUp,
@@ -97,7 +97,7 @@ export const getIcon = (type) => {
     case ICON_PERCENTAGE:
       return <TbWorld />;
     case ICON_MEDAL:
-      return <TbStars />;
+      return <FaXbox />;
     case ICON_COMPLETED_TOGGLE_DISABLED:
       return <TbCardboards />;
     case ICON_COMPLETED_TOGGLE_ACTIVE:

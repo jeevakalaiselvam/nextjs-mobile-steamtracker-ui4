@@ -27,7 +27,7 @@ const SelectDrop = styled.div`
   max-width: 67.5vw;
   overflow: scroll;
   margin-bottom: 2px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #101114;
   padding: 1rem;
 `;
 

@@ -31,8 +31,7 @@ const BackDrop = styled.div`
   max-width: 100vw;
   min-height: 100vh;
   max-height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(30px);
+  background-color: #101114;
 `;
 
 const LeftContainer = styled.div`

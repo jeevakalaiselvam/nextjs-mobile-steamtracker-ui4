@@ -7,6 +7,7 @@ import {
   COLOR_GOLD_TROPHY,
   COLOR_PLATINUM_TROPHY,
   COLOR_TEXT_DULL,
+  COLOR_XBOX,
   getColor,
 } from "../../helper/colorHelper";
 import {
@@ -49,8 +50,9 @@ const LevelData = styled.div`
   flex-direction: row;
   justify-content: center;
   margin-right: 0.75rem;
+  margin-left: 1rem;
   font-size: 2.5rem;
-  color: ${(props) => getColor(COLOR_GOLD_TROPHY)};
+  color: ${(props) => getColor(COLOR_XBOX)};
 `;
 
 const CountData = styled.div`
@@ -59,7 +61,7 @@ const CountData = styled.div`
   flex-direction: row;
   justify-content: center;
   font-size: 2rem;
-  color: ${(props) => getColor(COLOR_GOLD_TROPHY)};
+  color: ${(props) => getColor(COLOR_XBOX)};
   margin-right: 1rem;
 `;
 

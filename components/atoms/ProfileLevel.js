@@ -6,6 +6,7 @@ import {
   COLOR_GOLD_TROPHY,
   COLOR_TEXT_DULL,
   COLOR_TEXT_DULL_BRIGHT,
+  COLOR_XBOX,
   getColor,
 } from "../../helper/colorHelper";
 import { getIcon, ICON_MEDAL } from "../../helper/iconHelper";
@@ -25,7 +26,7 @@ const Container = styled.div`
   overflow: hidden;
   background-color: cyan;
   margin-top: 0.25rem;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #1b1c1e;
 `;
 
 const Title = styled.div`
@@ -35,7 +36,7 @@ const Title = styled.div`
   align-items: center;
   padding: 0.5rem;
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #161718;
 `;
 
 const Data = styled.div`
@@ -55,7 +56,7 @@ const LevelIcon = styled.div`
   align-items: center;
   font-size: 2.5rem;
   padding: 0.25rem 0.5rem;
-  color: ${(props) => getColor(COLOR_GOLD_TROPHY)};
+  color: ${(props) => getColor(COLOR_XBOX)};
 `;
 
 const LevelData = styled.div`
@@ -66,7 +67,7 @@ const LevelData = styled.div`
   align-items: center;
   padding: 0.25rem 0.5rem;
   font-size: 1.75rem;
-  color: ${(props) => getColor(COLOR_GOLD_TROPHY)};
+  color: ${(props) => getColor(COLOR_XBOX)};
 `;
 
 const LevelUp = styled.div`

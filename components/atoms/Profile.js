@@ -15,7 +15,7 @@ const Container = styled.div`
   flex-direction: column;
   padding: 1rem;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #1b1c1e;
 `;
 
 const Image = styled.div`

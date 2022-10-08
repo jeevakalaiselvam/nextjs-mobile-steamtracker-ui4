@@ -26,7 +26,7 @@ const Container = styled.div`
   overflow: hidden;
   background-color: cyan;
   margin-top: 0.25rem;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #1b1c1e;
 `;
 
 const Title = styled.div`
@@ -36,7 +36,7 @@ const Title = styled.div`
   align-items: center;
   padding: 0.5rem;
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #161718;
 `;
 
 const Data = styled.div`
@@ -67,8 +67,7 @@ const HistoryItem = styled.div`
   flex-direction: row;
   justify-content: center;
   padding: 0.5rem;
-  background-color: ${(props) =>
-    props.current ? "rgba(0, 0, 0, 0.5)" : "rgba(0, 0, 0, 0.5)"};
+  background-color: ${(props) => (props.current ? "#151517" : "#101114")};
   color: ${(props) => (props.current ? "#fefefe" : "#737c9d")};
   opacity: ${(props) => (props.transparent ? "0.25" : "1.0")};
   &:hover {

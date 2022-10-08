@@ -166,7 +166,7 @@ const Percentage = styled.div`
   color: ${(props) => getColor(COLOR_TEXT_DULL_TRANSPARENT)};
   padding-left: 0.5rem;
   position: absolute;
-  bottom: 1rem;
+  bottom: 0.5rem;
   left: 0.5rem;
   font-size: 2rem;
 

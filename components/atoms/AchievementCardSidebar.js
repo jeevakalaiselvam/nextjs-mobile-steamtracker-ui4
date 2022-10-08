@@ -24,7 +24,7 @@ const Container = styled.div`
   min-height: 100px;
   max-height: 100px;
   overflow: hidden;
-  background-color: #101114;
+  background-color: #1b1c1e;
   margin-top: 0.5rem;
   opacity: ${(props) =>
     props.toggleCompleted && props.achieved ? "0.25" : "1"};

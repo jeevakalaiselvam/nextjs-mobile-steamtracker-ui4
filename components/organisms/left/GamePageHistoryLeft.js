@@ -9,6 +9,7 @@ import {
   getAllAchievementsUnlockedToday,
 } from "../../../helper/achievementHelper";
 import {
+  COLOR_ACCENT,
   COLOR_CLOSE_RED,
   COLOR_TEXT_DULL,
   getColor,
@@ -62,8 +63,9 @@ const Close = styled.div`
   padding: 1rem;
   z-index: 5;
 
-  &:hover {
-    color: ${(props) => getColor(COLOR_CLOSE_RED)};
+  &:hover,
+  &:active {
+    color: ${(props) => getColor(COLOR_ACCENT)};
   }
 `;
 
@@ -80,8 +82,9 @@ const Theme = styled.div`
   padding: 1rem;
   z-index: 5;
 
-  &:hover {
-    color: ${(props) => getColor(COLOR_CLOSE_RED)};
+  &:hover,
+  &:active {
+    color: ${(props) => getColor(COLOR_ACCENT)};
   }
 `;
 
@@ -98,8 +101,9 @@ const CloseBottom = styled.div`
   padding: 1rem;
   z-index: 5;
 
-  &:hover {
-    color: ${(props) => getColor(COLOR_CLOSE_RED)};
+  &:hover,
+  &:active {
+    color: ${(props) => getColor(COLOR_ACCENT)};
   }
 `;
 
@@ -116,8 +120,9 @@ const ThemeBottom = styled.div`
   padding: 1rem;
   z-index: 5;
 
-  &:hover {
-    color: ${(props) => getColor(COLOR_CLOSE_RED)};
+  &:hover,
+  &:active {
+    color: ${(props) => getColor(COLOR_ACCENT)};
   }
 `;
 

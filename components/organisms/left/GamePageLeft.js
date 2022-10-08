@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import {
+  COLOR_ACCENT,
   COLOR_CLOSE_RED,
   COLOR_GOLD_TROPHY,
   COLOR_TEXT_DULL,
@@ -50,8 +51,9 @@ const Close = styled.div`
   font-size: 2.5rem;
   padding: 1rem;
 
-  &:hover {
-    color: ${(props) => getColor(COLOR_CLOSE_RED)};
+  &:hover,
+  &:active {
+    color: ${(props) => getColor(COLOR_ACCENT)};
   }
 `;
 
@@ -67,8 +69,9 @@ const Theme = styled.div`
   font-size: 2.5rem;
   padding: 1rem;
 
-  &:hover {
-    color: ${(props) => getColor(COLOR_CLOSE_RED)};
+  &:hover,
+  &:active {
+    color: ${(props) => getColor(COLOR_ACCENT)};
   }
 `;
 
@@ -84,8 +87,9 @@ const CloseBottom = styled.div`
   font-size: 2.5rem;
   padding: 1rem;
 
-  &:hover {
-    color: ${(props) => getColor(COLOR_CLOSE_RED)};
+  &:hover,
+  &:active {
+    color: ${(props) => getColor(COLOR_ACCENT)};
   }
 `;
 
@@ -101,8 +105,9 @@ const ThemeBottom = styled.div`
   font-size: 2.5rem;
   padding: 1rem;
 
-  &:hover {
-    color: ${(props) => getColor(COLOR_CLOSE_RED)};
+  &:hover,
+  &:active {
+    color: ${(props) => getColor(COLOR_ACCENT)};
   }
 `;
 

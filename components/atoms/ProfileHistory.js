@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { calculateRecentHistory } from "../../helper/achievementHelper";
 import {
+  COLOR_ACCENT,
   COLOR_GOLD_TROPHY,
   COLOR_TEXT_DULL,
   COLOR_TEXT_DULL_BRIGHT,
@@ -70,9 +71,10 @@ const HistoryItem = styled.div`
   background-color: ${(props) => (props.current ? "#151517" : "#101114")};
   color: ${(props) => (props.current ? "#fefefe" : "#737c9d")};
   opacity: ${(props) => (props.transparent ? "0.25" : "1.0")};
-  &:hover {
-    background-color: #3049d1;
-    color: #fefefe;
+  &:hover,
+  &:active {
+    background-color: ${(props) => getColor(COLOR_ACCENT)};
+    color: ${(props) => getColor(COLOR_TEXT_DULL_BRIGHT)};
   }
 `;
 

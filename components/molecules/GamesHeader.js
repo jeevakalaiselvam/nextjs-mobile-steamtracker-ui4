@@ -62,6 +62,10 @@ const Left = styled.div`
   overflow: hidden;
   font-size: 2.5rem;
   padding: 4px;
+  &:hover,
+  &:active {
+    color: ${(props) => getColor(COLOR_ACCENT)};
+  }
 `;
 
 const MiddleLeft = styled.div`
@@ -71,6 +75,10 @@ const MiddleLeft = styled.div`
   justify-content: center;
   overflow: hidden;
   flex: 1;
+  &:hover,
+  &:active {
+    color: ${(props) => getColor(COLOR_ACCENT)};
+  }
 `;
 
 const MiddleRight = styled.div`
@@ -80,6 +88,10 @@ const MiddleRight = styled.div`
   justify-content: center;
   overflow: hidden;
   flex: 1;
+  &:hover,
+  &:active {
+    color: ${(props) => getColor(COLOR_ACCENT)};
+  }
 `;
 
 const RightBefore = styled.div`
@@ -92,6 +104,10 @@ const RightBefore = styled.div`
   padding: 4px;
   color: ${(props) => getColor(COLOR_TEXT_DRAWER_ICON)};
   position: relative;
+  &:hover,
+  &:active {
+    color: ${(props) => getColor(COLOR_ACCENT)};
+  }
 `;
 
 const LeftAfter = styled.div`
@@ -103,6 +119,10 @@ const LeftAfter = styled.div`
   padding: 4px;
   margin-left: 1rem;
   color: ${(props) => getColor(COLOR_TEXT_DRAWER_ICON)};
+  &:hover,
+  &:active {
+    color: ${(props) => getColor(COLOR_ACCENT)};
+  }
 `;
 
 const Right = styled.div`
@@ -120,6 +140,10 @@ const Right = styled.div`
     props.rotate ? "spin 1s linear infinite" : ""};
   -moz-animation: ${(props) => (props.rotate ? "spin 1s linear infinite" : "")};
   animation: ${(props) => (props.rotate ? "spin 1s linear infinite" : "")};
+  &:hover,
+  &:active {
+    color: ${(props) => getColor(COLOR_ACCENT)};
+  }
 
   @-moz-keyframes spin {
     100% {
@@ -213,19 +237,19 @@ export default function GamesHeader() {
         {toggleOptions && (
           <OptionsMenu>
             <OptionItem
-              title={"Sort Completion"}
+              title={"SORT BY: COMPLETION"}
               icon={ICON_SORT_OPTION}
               optionType={SORT_GAMES_COMPLETION}
               optionClickHandler={optionClickHandler}
             />
             <OptionItem
-              title={"Sort A - Z"}
+              title={"SORT BY: NAME A-Z"}
               icon={ICON_SORT_OPTION}
               optionType={SORT_GAMES_NAMES_AZ}
               optionClickHandler={optionClickHandler}
             />
             <OptionItem
-              title={"Sort Z - A"}
+              title={"SORT BY: NAME Z-A"}
               icon={ICON_SORT_OPTION}
               optionType={SORT_GAMES_NAMES_ZA}
               optionClickHandler={optionClickHandler}

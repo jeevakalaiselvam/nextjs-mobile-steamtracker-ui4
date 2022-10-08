@@ -2,7 +2,7 @@ import {
   GAME_VIEW_TYPE_LARGE,
   RECENT_TYPE_TODAY,
   SORT_ACHIEVEMENTS_ALL,
-  SORT_GAMES_COMPLETTION,
+  SORT_GAMES_COMPLETION,
 } from "../../helper/sortHelper";
 import {
   GAMES_PAGE_DRAWER_TOGGLE,
@@ -30,7 +30,7 @@ const INITIAL_STATE = {
     drawerOpen: false,
     searchShow: false,
     toggleCompleted: false,
-    sortOption: SORT_GAMES_COMPLETTION,
+    sortOption: SORT_GAMES_COMPLETION,
   },
   gamePageSettings: {
     selectedGameId: "",

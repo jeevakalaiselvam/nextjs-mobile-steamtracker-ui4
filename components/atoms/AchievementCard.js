@@ -8,6 +8,7 @@ import {
   COLOR_REFRESH_ACTIVE,
   COLOR_TEXT_DULL,
   COLOR_TEXT_DULL_BRIGHT,
+  COLOR_TEXT_DULL_TRANSPARENT,
   getColor,
 } from "../../helper/colorHelper";
 import {
@@ -162,7 +163,7 @@ const Percentage = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: flex-start;
-  color: ${(props) => getColor(COLOR_TEXT_DULL_BRIGHT)};
+  color: ${(props) => getColor(COLOR_TEXT_DULL_TRANSPARENT)};
   padding-left: 0.5rem;
   position: absolute;
   bottom: 1rem;
@@ -179,7 +180,7 @@ const PercentIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${(props) => getColor(COLOR_TEXT_DULL)};
+  color: ${(props) => getColor(COLOR_TEXT_DULL_TRANSPARENT)};
   margin-right: 0.5rem;
 `;
 
@@ -188,7 +189,7 @@ const PercentNumber = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 1.37rem;
-  color: ${(props) => getColor(COLOR_TEXT_DULL)};
+  color: ${(props) => getColor(COLOR_TEXT_DULL_TRANSPARENT)};
 `;
 
 export default function AchievementCard({

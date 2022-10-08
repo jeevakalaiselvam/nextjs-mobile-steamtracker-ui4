@@ -8,6 +8,7 @@ export const COLOR_TEXT_DRAWER_ICON = "COLOR_TEXT_DRAWER_ICON";
 export const COLOR_PLATINUM_TROPHY = "COLOR_PLATINUM_TROPHY";
 export const COLOR_ACCENT = "COLOR_ACCENT";
 export const COLOR_XBOX = "COLOR_XBOX";
+export const COLOR_TEXT_DULL_TRANSPARENT = "COLOR_TEXT_DULL_TRANSPARENT";
 
 export const getColor = (type) => {
   switch (type) {
@@ -29,6 +30,8 @@ export const getColor = (type) => {
       return "#afb6cc";
     case COLOR_TEXT_DULL:
       return "#737c9d";
+    case COLOR_TEXT_DULL_TRANSPARENT:
+      return "#737c9d77";
     case COLOR_TEXT_DRAWER_ICON:
       return "#fefefeee";
 

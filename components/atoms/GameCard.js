@@ -5,6 +5,7 @@ import styled from "styled-components";
 import {
   COLOR_GOLD_TROPHY,
   COLOR_TEXT_DULL,
+  COLOR_TEXT_DULL_TRANSPARENT,
   getColor,
 } from "../../helper/colorHelper";
 import {
@@ -108,7 +109,7 @@ const XPCount = styled.div`
   justify-content: center;
   padding: 0.5rem;
   flex: 1;
-  color: ${(props) => getColor(COLOR_TEXT_DULL)};
+  color: ${(props) => getColor(COLOR_TEXT_DULL_TRANSPARENT)};
 `;
 
 const Count = styled.div`

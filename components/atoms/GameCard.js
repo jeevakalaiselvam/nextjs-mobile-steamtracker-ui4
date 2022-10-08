@@ -7,8 +7,14 @@ import {
   COLOR_TEXT_DULL,
   getColor,
 } from "../../helper/colorHelper";
-import { getIcon, ICON_TROPHY } from "../../helper/iconHelper";
+import {
+  getIcon,
+  ICON_MEDAL,
+  ICON_TROPHY,
+  ICON_XP,
+} from "../../helper/iconHelper";
 import { HEADER_IMAGE } from "../../helper/urlHelper";
+import { getXPForAchievement } from "../../helper/xpHelper";
 
 const Container = styled.div`
   display: flex;
@@ -77,6 +83,15 @@ const TrophyCompletion = styled.div`
   padding: 0.5rem;
 `;
 
+const XPRemaining = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0.5rem;
+  color: ${(props) => getColor(COLOR_TEXT_DULL)};
+`;
+
 const Trophy = styled.div`
   display: flex;
   align-items: center;
@@ -84,6 +99,16 @@ const Trophy = styled.div`
   justify-content: center;
   font-size: 1.5rem;
   color: ${(props) => getColor(COLOR_GOLD_TROPHY)};
+`;
+
+const XPCount = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0.5rem;
+  flex: 1;
+  color: ${(props) => getColor(COLOR_TEXT_DULL)};
 `;
 
 const Count = styled.div`
@@ -110,14 +135,22 @@ export default function GameCard({ game }) {
     router.push(`/games/${game.id}`);
   };
 
+  const remainingXP =
+    game?.achievements.reduce((acc, achievement) => {
+      return Number(acc) + getXPForAchievement(achievement.percentage);
+    }, 0) ?? 0;
+
   return (
     <Container onClick={movetoGame}>
       <Image image={HEADER_IMAGE(game.id)}></Image>
       <SubPanel>
         <Name>{game.name}</Name>
         <Stat>
+          <XPRemaining>
+            <XPCount>+{remainingXP}</XPCount>
+          </XPRemaining>
           <TrophyCompletion>
-            <Trophy>{getIcon(ICON_TROPHY)}</Trophy>
+            <Trophy>{getIcon(ICON_MEDAL)}</Trophy>
             <Count>{game.toGet}</Count>
           </TrophyCompletion>
         </Stat>

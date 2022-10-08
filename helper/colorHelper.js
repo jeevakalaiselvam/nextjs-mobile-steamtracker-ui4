@@ -12,7 +12,7 @@ export const COLOR_XBOX = "COLOR_XBOX";
 export const getColor = (type) => {
   switch (type) {
     case COLOR_ACCENT:
-      return "#3049d1";
+      return "#0e7a0d";
     case COLOR_GOLD_TROPHY:
       return "#0e7a0d";
     case COLOR_PLATINUM_TROPHY:

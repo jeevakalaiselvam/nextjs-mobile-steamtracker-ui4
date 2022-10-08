@@ -17,7 +17,7 @@ const Container = styled.div`
   width: 100%;
   justify-content: center;
   overflow: hidden;
-  background-color: #101114;
+  background-color: #1b1c1e;
   min-height: 40px;
   margin-bottom: 1rem;
 

@@ -121,7 +121,7 @@ export default function ProfileMenu() {
           to="/settings"
           title="Settings"
           icon={ICON_SETTINGS}
-          menuClickHandler={menuClickHandler}
+          menuClickHandler={() => {}}
         />
       </Data>
     </Container>

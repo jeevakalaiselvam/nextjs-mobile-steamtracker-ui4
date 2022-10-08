@@ -158,6 +158,7 @@ const OptionsMenu = styled.div`
   top: 0;
   right: 0;
   background-color: #101114;
+  z-index: 1000;
 `;
 
 const CloseButton = styled.div`

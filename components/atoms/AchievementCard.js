@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import {
+  COLOR_ACCENT,
   COLOR_REFRESH_ACTIVE,
   COLOR_TEXT_DULL,
   COLOR_TEXT_DULL_BRIGHT,
@@ -126,12 +127,12 @@ const XPDetails = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: flex-start;
-  color: ${(props) => getColor(COLOR_TEXT_DULL)};
+  color: ${(props) => getColor(COLOR_ACCENT)};
   padding-left: 0.5rem;
   position: absolute;
   top: 0.25rem;
   right: 0.5rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
 
   &:hover,
   &:active {

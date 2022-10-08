@@ -45,18 +45,18 @@ export const getXPDetailsForAllGames = (games) => {
 export const getXPForAchievement = (percentage) => {
   let gamePercentage = Number(percentage);
   if (gamePercentage <= 1) {
-    return 1000;
-  } else if (gamePercentage > 1 && gamePercentage <= 5) {
-    return 500;
-  } else if (gamePercentage > 5 && gamePercentage <= 10) {
-    return 250;
-  } else if (gamePercentage > 10 && gamePercentage <= 25) {
     return 100;
-  } else if (gamePercentage > 25 && gamePercentage <= 50) {
+  } else if (gamePercentage > 1 && gamePercentage <= 5) {
     return 75;
-  } else if (gamePercentage > 50 && gamePercentage <= 75) {
+  } else if (gamePercentage > 5 && gamePercentage <= 10) {
     return 50;
+  } else if (gamePercentage > 10 && gamePercentage <= 25) {
+    return 30;
+  } else if (gamePercentage > 25 && gamePercentage <= 50) {
+    return 20;
+  } else if (gamePercentage > 50 && gamePercentage <= 75) {
+    return 15;
   } else {
-    return 25;
+    return 10;
   }
 };

@@ -115,7 +115,7 @@ export const getIcon = (type) => {
     case ICON_CLOSE_CIRCLE:
       return <TbReportOff />;
     case ICON_XP:
-      return <TbBrandCodesandbox />;
+      return <FaXbox />;
     case ICON_LEVEL_UP:
       return <TbBadges />;
     default:

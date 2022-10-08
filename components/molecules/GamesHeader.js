@@ -151,7 +151,7 @@ const OptionsMenu = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 2;
+  z-index: 1000;
 `;
 
 const CloseButton = styled.div`

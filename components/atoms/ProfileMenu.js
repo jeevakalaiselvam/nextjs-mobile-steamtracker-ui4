@@ -51,7 +51,7 @@ const Data = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 0rem 0.5rem;
 `;
 
 const LevelIcon = styled.div`
@@ -110,6 +110,7 @@ export default function ProfileMenu() {
 
   return (
     <Container>
+      <Title>Navigation</Title>
       <Data>
         <MenuItem
           to="/games"

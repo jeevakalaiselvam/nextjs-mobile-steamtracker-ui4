@@ -38,7 +38,7 @@ const BackDrop = styled.div`
   max-width: 100vw;
   min-height: 100vh;
   max-height: 100vh;
-  background-color: #101114;
+  background-color: #151517;
 `;
 
 const LeftContainer = styled.div`
@@ -46,8 +46,8 @@ const LeftContainer = styled.div`
   max-height: 100vh;
   overflow: scroll;
   position: absolute;
-  min-width: 75vw;
-  max-width: 75vw;
+  min-width: 76vw;
+  max-width: 76vw;
   background: url(${(props) => props.image});
   background-size: cover;
   background-repeat: no-repeat;

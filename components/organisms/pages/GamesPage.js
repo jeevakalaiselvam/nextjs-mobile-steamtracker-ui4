@@ -31,7 +31,7 @@ const BackDrop = styled.div`
   max-width: 100vw;
   min-height: 100vh;
   max-height: 100vh;
-  background-color: #101114;
+  background-color: #141415;
 `;
 
 const LeftContainer = styled.div`

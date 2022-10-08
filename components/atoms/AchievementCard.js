@@ -33,7 +33,7 @@ const Container = styled.div`
   margin: 0.1rem;
   opacity: ${(props) =>
     props.toggleCompleted && props.achieved ? "0.2" : "1"};
-  border-radius: 0.1rem;
+  border-radius: 0.25rem;
 `;
 
 const TopWrapper = styled.div`

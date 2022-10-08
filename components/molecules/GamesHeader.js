@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import {
+  COLOR_ACCENT,
   COLOR_REFRESH_ACTIVE,
   COLOR_REFRESH_INACTIVE,
   COLOR_TEXT_DRAWER_ICON,

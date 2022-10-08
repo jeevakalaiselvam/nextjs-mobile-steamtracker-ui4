@@ -62,7 +62,7 @@ const AchievementListLarge = styled.div`
     props.searchShow ? "calc(100vh - 55px - 50px)" : "calc(100vh - 55px)"};
   overflow: scroll;
   padding: 0 0.25rem 0.5rem 0.25rem;
-  background-color: #101114;
+  background-color: #151517;
 `;
 
 const AchievementListIcon = styled.div`
@@ -87,7 +87,7 @@ const AchievementSelected = styled.div`
   width: 100%;
   min-height: 100px;
   max-height: 100px;
-  background-color: #101114;
+  background-color: #151517;
 `;
 
 const AchievementIcons = styled.div`
@@ -98,7 +98,7 @@ const AchievementIcons = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
-  background-color: #101114;
+  background-color: #151517;
   overflow: scroll;
 `;
 

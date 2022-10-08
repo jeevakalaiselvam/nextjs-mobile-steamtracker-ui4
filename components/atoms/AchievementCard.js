@@ -36,7 +36,7 @@ const Container = styled.div`
 
 const TopWrapper = styled.div`
   display: flex;
-  padding: 0.5rem;
+  padding: 1rem 0rem 0.5rem 0rem;
   align-items: flex-start;
   flex-direction: row;
   width: 100%;
@@ -112,7 +112,7 @@ const Hidden = styled.div`
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
 
   &:hover,
   &:active {
@@ -128,7 +128,7 @@ const XPDetails = styled.div`
   color: ${(props) => getColor(COLOR_TEXT_DULL_BRIGHT)};
   padding-left: 0.5rem;
   position: absolute;
-  top: 0;
+  top: 0.5rem;
   right: 1rem;
   font-size: 2rem;
 

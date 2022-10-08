@@ -1,4 +1,5 @@
 import { FaTrophy } from "react-icons/fa";
+import { GoEyeClosed } from "react-icons/go";
 import {
   TbArrowBarToUp,
   TbArrowLeftBar,
@@ -92,7 +93,7 @@ export const getIcon = (type) => {
     case ICON_THEME_SWITCH:
       return <TbSun />;
     case ICON_HIDDEN:
-      return <TbLockOff />;
+      return <GoEyeClosed />;
     case ICON_PERCENTAGE:
       return <TbWorld />;
     case ICON_MEDAL:

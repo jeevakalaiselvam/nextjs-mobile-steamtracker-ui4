@@ -58,7 +58,7 @@ const Container = styled.div`
   max-height: 55px;
   color: ${(props) => getColor(COLOR_TEXT_DRAWER_ICON)};
   padding-right: 1rem;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
   padding-left: 1rem;
 `;
 

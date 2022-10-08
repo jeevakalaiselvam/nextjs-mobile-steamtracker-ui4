@@ -73,6 +73,7 @@ const AchievementListIcon = styled.div`
   justify-content: center;
   min-width: 100vw;
   max-width: 100vw;
+  padding-top: 0.5rem;
   min-height: ${(props) =>
     props.searchShow ? "calc(100vh - 55px - 50px)" : "calc(100vh - 55px)"};
   max-height: ${(props) =>

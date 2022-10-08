@@ -39,7 +39,6 @@ const BackDrop = styled.div`
   min-height: 100vh;
   max-height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(30px);
 `;
 
 const LeftContainer = styled.div`
@@ -54,7 +53,7 @@ const LeftContainer = styled.div`
   background-repeat: no-repeat;
   top: 0;
   left: ${(props) => (props.open ? "-1vw" : "-75vw")};
-  transition: all 0.25s;
+  transition: all 0.5s;
   z-index: 1;
 `;
 

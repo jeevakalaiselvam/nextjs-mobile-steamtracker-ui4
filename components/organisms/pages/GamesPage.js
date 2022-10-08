@@ -47,7 +47,7 @@ const LeftContainer = styled.div`
   background-repeat: no-repeat;
   top: 0;
   left: ${(props) => (props.open ? "-1vw" : "-75vw")};
-  transition: all 0.25s;
+  transition: all 0.5s;
   z-index: 1;
 `;
 

@@ -154,7 +154,7 @@ const OptionsMenu = styled.div`
   justify-content: flex-start;
   width: 250px;
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(40px);
+  backdrop-filter: blur(30px);
   padding: 1rem;
   position: absolute;
   top: 0;
@@ -174,7 +174,7 @@ export default function GameHeader({ gameId }) {
   const dispatch = useDispatch();
   const steam = useSelector((state) => state.steam);
   const settings = useSelector((state) => state.settings);
-  const { games } = steam;
+  const { games, hiddenAchievements } = steam;
   const { gamePageSettings } = settings;
   const { drawerOpen, searchShow, toggleCompleted, toggleOptions } =
     gamePageSettings;
@@ -187,6 +187,17 @@ export default function GameHeader({ gameId }) {
 
   const refreshClickHandler = async () => {
     setRotate((old) => true);
+
+    const getHidden = async () => {
+      const hiddenResponse = await axios.get(`/api/hidden/${gameId}`);
+      const hiddenData = hiddenResponse.data.hiddenMapper;
+      dispatch(setHiddenAchievementsForGame(gameId, hiddenData));
+    };
+
+    if (!hiddenAchievements[gameId]) {
+      getHidden();
+    }
+
     const response = await axios.get(`/api/refresh/${gameId}`);
     const gameRefreshData = response.data.data;
     setRotate((old) => false);

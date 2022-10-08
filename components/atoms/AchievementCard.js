@@ -31,7 +31,7 @@ const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   margin-top: 0.25rem;
   opacity: ${(props) =>
-    props.toggleCompleted && props.achieved ? "0.15" : "1"};
+    props.toggleCompleted && props.achieved ? "0.2" : "1"};
 `;
 
 const TopWrapper = styled.div`
@@ -219,10 +219,12 @@ export default function AchievementCard({
   const [showHiddenDesc, setShowHiddenDesc] = useState(showHiddenByDefault);
 
   const showHiddenDescription = () => {
+    console.log("SETTING");
     setShowHiddenDesc((old) => true);
   };
 
   const getHiddenDescription = () => {
+    console.log("HIDDEN");
     if (gameId && hiddenAchievements[gameId]) {
       return hiddenAchievements[gameId][displayName.trim().toLowerCase()];
     } else {

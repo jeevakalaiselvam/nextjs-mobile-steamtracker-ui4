@@ -27,7 +27,6 @@ const BackdropContainer = styled.div`
   min-width: 100vw;
   max-width: 100vw;
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
 `;
 
 export default function Home() {

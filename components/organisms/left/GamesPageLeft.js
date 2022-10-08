@@ -35,7 +35,7 @@ const Container = styled.div`
   position: relative;
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(30px);
 `;
 
 const Close = styled.div`

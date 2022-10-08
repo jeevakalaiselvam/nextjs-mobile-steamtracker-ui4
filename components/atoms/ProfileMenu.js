@@ -31,7 +31,7 @@ const Container = styled.div`
   max-width: 67.5vw;
   overflow: hidden;
   background-color: cyan;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
   background-color: rgba(0, 0, 0, 0.3);
 `;
 

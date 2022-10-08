@@ -146,7 +146,7 @@ const OptionsMenu = styled.div`
   justify-content: flex-start;
   width: 250px;
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(40px);
+  backdrop-filter: blur(30px);
   padding: 1rem;
   position: absolute;
   top: 0;

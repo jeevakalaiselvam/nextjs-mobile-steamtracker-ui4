@@ -27,7 +27,6 @@ const SearchInput = styled.div`
     padding: 0.5rem;
     width: ${(props) => props.width || "150px"};
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(6px);
     color: #9caabe;
     border: none;
     border-radius: 0px 0px 0px 0px;

@@ -118,7 +118,7 @@ export default function GameCard({ game }) {
         <Stat>
           <TrophyCompletion>
             <Trophy>{getIcon(ICON_TROPHY)}</Trophy>
-            <Count>{game.total - game.completed}</Count>
+            <Count>{game.toGet}</Count>
           </TrophyCompletion>
         </Stat>
       </SubPanel>

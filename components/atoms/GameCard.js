@@ -152,12 +152,12 @@ export default function GameCard({ game }) {
       <SubPanel>
         <Name>{game.name}</Name>
         <Stat>
-          <XPRemaining>
+          {/* <XPRemaining>
             {remainingXP !== 0 && <XPCount>+{remainingXP}</XPCount>}
-          </XPRemaining>
+          </XPRemaining> */}
           <TrophyCompletion>
             <Trophy>{getIcon(ICON_MEDAL)}</Trophy>
-            <Count>{game.toGet}</Count>
+            <Count>{remainingXP}</Count>
           </TrophyCompletion>
         </Stat>
       </SubPanel>

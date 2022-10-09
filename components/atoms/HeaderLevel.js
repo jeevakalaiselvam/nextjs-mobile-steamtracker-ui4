@@ -72,7 +72,7 @@ const MoreNeeded = styled.div`
   justify-content: center;
   font-size: 1.25rem;
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
-  margin-left: ${(props) => (props.noMargin ? "1rem" : "0rem")};
+  margin-left: ${(props) => (props.noMargin ? "0.5rem" : "0rem")};
 `;
 
 const TrophyData = styled.div`
@@ -82,7 +82,7 @@ const TrophyData = styled.div`
   justify-content: center;
   font-size: 1.25rem;
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
-  margin-right: 1rem;
+  margin-right: 0.5rem;
 `;
 
 const Icon = styled.div`

@@ -102,7 +102,7 @@ const Desc = styled.div`
   width: 100%;
   margin-top: 0.5rem;
   flex: 1;
-  color: ${(props) => getColor(COLOR_TEXT_DULL)};
+  color: ${(props) => getColor(COLOR_TEXT_DULL_TRANSPARENT)};
 `;
 
 const Hidden = styled.div`

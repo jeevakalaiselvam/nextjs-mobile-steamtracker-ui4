@@ -7,6 +7,7 @@ import {
   COLOR_REFRESH_ACTIVE,
   COLOR_TEXT_DULL,
   COLOR_TEXT_DULL_BRIGHT,
+  COLOR_TEXT_DULL_TRANSPARENT,
   getColor,
 } from "../../helper/colorHelper";
 import {
@@ -86,7 +87,7 @@ const Desc = styled.div`
   padding-left: 0.5rem;
   width: 100%;
   flex: 1;
-  color: ${(props) => getColor(COLOR_TEXT_DULL)};
+  color: ${(props) => getColor(COLOR_TEXT_DULL_TRANSPARENT)};
 `;
 
 const Hidden = styled.div`

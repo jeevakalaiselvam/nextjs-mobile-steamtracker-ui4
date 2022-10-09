@@ -19,7 +19,6 @@ const Container = styled.div`
   width: 100%;
   overflow: hidden;
   background-color: #101114;
-  padding-left: 1rem;
   min-height: 40px;
   margin-bottom: 0.5rem;
 
@@ -40,8 +39,7 @@ const Link = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0.25rem 0.5rem;
-  min-width: 50%;
-  padding-left: 2.5rem;
+  min-width: 120px;
 `;
 
 const Icon = styled.div`

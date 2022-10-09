@@ -31,7 +31,7 @@ export const getColor = (type) => {
     case COLOR_TEXT_DULL:
       return "#737c9d";
     case COLOR_TEXT_DULL_TRANSPARENT:
-      return "#737c9d77";
+      return "#737c9d99";
     case COLOR_TEXT_DRAWER_ICON:
       return "#fefefeee";
 

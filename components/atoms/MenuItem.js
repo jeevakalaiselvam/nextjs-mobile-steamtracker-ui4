@@ -41,6 +41,7 @@ const Link = styled.div`
   align-items: center;
   padding: 0.25rem 0.5rem;
   min-width: 50%;
+  padding-left: 2.5rem;
 `;
 
 const Icon = styled.div`

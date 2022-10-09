@@ -130,7 +130,7 @@ export default function LevelCount({ type }) {
 
   return (
     <Container>
-      {gameId && (
+      {gameId && false && (
         <TrophyData>
           <IconNotTransformed>{getIcon(ICON_TROPHY)}</IconNotTransformed>{" "}
           {(game?.achievements?.length ?? 0) - (game?.toGet ?? 0)} /{" "}

@@ -109,7 +109,7 @@ const XPCount = styled.div`
   justify-content: center;
   padding: 0.5rem;
   flex: 1;
-  color: ${(props) => getColor(COLOR_TEXT_DULL_TRANSPARENT)};
+  color: ${(props) => getColor(COLOR_TEXT_DULL)};
 `;
 
 const Count = styled.div`
@@ -138,7 +138,12 @@ export default function GameCard({ game }) {
 
   const remainingXP =
     game?.achievements.reduce((acc, achievement) => {
-      return Number(acc) + getXPForAchievement(achievement.percentage);
+      return (
+        Number(acc) +
+        (achievement.achieved !== 1
+          ? getXPForAchievement(achievement.percentage)
+          : 0)
+      );
     }, 0) ?? 0;
 
   return (
@@ -148,7 +153,7 @@ export default function GameCard({ game }) {
         <Name>{game.name}</Name>
         <Stat>
           <XPRemaining>
-            <XPCount>+{remainingXP}</XPCount>
+            {remainingXP !== 0 && <XPCount>+{remainingXP}</XPCount>}
           </XPRemaining>
           <TrophyCompletion>
             <Trophy>{getIcon(ICON_MEDAL)}</Trophy>

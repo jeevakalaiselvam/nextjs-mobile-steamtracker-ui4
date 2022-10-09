@@ -26,7 +26,7 @@ const Container = styled.div`
   margin-top: 0.5rem;
   margin-right: 0.5rem;
   opacity: ${(props) =>
-    props.toggleCompleted && props.achieved ? "0.15" : "1"};
+    props.toggleCompleted && props.achieved ? "0.1" : "1"};
 `;
 
 const Icon = styled.div`

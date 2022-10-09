@@ -72,6 +72,17 @@ const MoreNeeded = styled.div`
   justify-content: center;
   font-size: 1.25rem;
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
+  margin-left: ${(props) => (props.noMargin ? "1rem" : "0rem")};
+`;
+
+const TrophyData = styled.div`
+  display: ${(props) => (props.hide ? "none" : "flex")};
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: ${(props) => getColor(COLOR_TEXT_DULL)};
+  margin-right: 1rem;
 `;
 
 const Icon = styled.div`
@@ -84,8 +95,19 @@ const Icon = styled.div`
   transform: rotate(180deg);
 `;
 
+const IconNotTransformed = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: ${(props) => getColor(COLOR_TEXT_DULL)};
+  margin-right: 0.5rem;
+`;
+
 export default function LevelCount({ type }) {
   const router = useRouter();
+  const { gameId } = router.query;
   const dispatch = useDispatch();
   const steam = useSelector((state) => state.steam);
   const settings = useSelector((state) => state.settings);
@@ -100,11 +122,24 @@ export default function LevelCount({ type }) {
     xpRequiredForLevelUp,
   } = getXPDetailsForAllGames(games);
 
+  let game = {};
+
+  if (gameId) {
+    game = games.find((game) => game.id == gameId);
+  }
+
   return (
     <Container>
+      {gameId && (
+        <TrophyData>
+          <IconNotTransformed>{getIcon(ICON_TROPHY)}</IconNotTransformed>{" "}
+          {(game?.achievements?.length ?? 0) - (game?.toGet ?? 0)} /{" "}
+          {game?.achievements?.length ?? 0}
+        </TrophyData>
+      )}
       <LevelData>{getIcon(ICON_MEDAL)}</LevelData>
       <CountData>{currentLevel}</CountData>
-      <MoreNeeded>
+      <MoreNeeded noMargin={!!gameId}>
         {xpRequiredForLevelUp} <Icon>{getIcon(ICON_LEVEL_UP)}</Icon>
       </MoreNeeded>
     </Container>

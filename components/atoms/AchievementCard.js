@@ -33,7 +33,7 @@ const Container = styled.div`
   background-color: #1b1c1e;
   margin: 0.1rem;
   opacity: ${(props) =>
-    props.toggleCompleted && props.achieved ? "0.2" : "1"};
+    props.toggleCompleted && props.achieved ? "0.1" : "1"};
   border-radius: 0.25rem;
 `;
 

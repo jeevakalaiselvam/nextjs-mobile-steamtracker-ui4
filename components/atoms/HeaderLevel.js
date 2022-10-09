@@ -72,7 +72,7 @@ const MoreNeeded = styled.div`
   justify-content: center;
   font-size: 1.25rem;
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
-  margin-left: ${(props) => (props.noMargin ? "0.5rem" : "0rem")};
+  margin-left: ${(props) => (props.noMargin ? "0rem" : "0rem")};
 `;
 
 const TrophyData = styled.div`
@@ -139,7 +139,7 @@ export default function LevelCount({ type }) {
       )}
       <LevelData>{getIcon(ICON_MEDAL)}</LevelData>
       <CountData>{currentLevel}</CountData>
-      <MoreNeeded noMargin={!!gameId}>
+      <MoreNeeded noMargin={true}>
         {xpRequiredForLevelUp} <Icon>{getIcon(ICON_LEVEL_UP)}</Icon>
       </MoreNeeded>
     </Container>

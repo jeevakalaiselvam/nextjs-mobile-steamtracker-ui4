@@ -43,7 +43,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   position: relative;
   min-height: 100vh;
   background-color: #101114;
@@ -132,7 +132,8 @@ const AchievementList = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
-  height: 100%;
+  min-height: 90vh;
+  max-height: 90vh;
   overflow: scroll;
   padding: 4rem 0.25rem 4rem 0.25rem;
 `;
@@ -197,7 +198,7 @@ export default function GamePageHistoryLeft({ gameId }) {
       dispatch(setHiddenAchievementsForGame(gameId, hiddenData));
     };
 
-    if (!hiddenAchievements[gameId]) {
+    if (!hiddenAchievements[gameId] && gameId) {
       getHidden();
     }
   });

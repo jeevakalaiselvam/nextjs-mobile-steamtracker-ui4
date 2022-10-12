@@ -192,7 +192,7 @@ export default function GameContent({ gameId }) {
                   }
                   achievement={achievement}
                   gameId={achievement.gameId}
-                  showHiddenByDefault={false}
+                  showHiddenByDefault={true}
                 />
               );
             })}
@@ -213,7 +213,7 @@ export default function GameContent({ gameId }) {
                   }
                   achievement={achievement}
                   gameId={achievement.gameId}
-                  showHiddenByDefault={false}
+                  showHiddenByDefault={true}
                 />
               );
             })}

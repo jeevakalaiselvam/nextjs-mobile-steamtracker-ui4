@@ -159,12 +159,14 @@ export default function LevelCount({ type }) {
 
   if (gameId) {
     game = games.find((game) => game.id == gameId);
+    console.log("Selected Game", { game });
     if (game.achievements.length > 0) {
       totalXPInCurrentGame = game.achievements.reduce((acc, ach) => {
-        return acc + ach.achieved === 1
-          ? getXPForAchievement(ach.percentage)
-          : 0;
+        return (
+          acc + (ach.achieved === 1 ? getXPForAchievement(ach.percentage) : 0)
+        );
       }, 0);
+      console.log("CURRENT GAME", totalXPInCurrentGame);
     }
   } else {
     totalXPInCurrentGame = 0;
@@ -179,6 +181,7 @@ export default function LevelCount({ type }) {
             );
           }, 0);
       });
+      console.log("TOTAL", totalXPInCurrentGame);
     }
   }
 

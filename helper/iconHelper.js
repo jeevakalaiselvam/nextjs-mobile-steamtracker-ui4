@@ -23,11 +23,13 @@ import {
   TbGizmo,
   TbHexagons,
   TbLockOff,
+  TbLockOpen,
   TbManualGearbox,
   TbMedal,
   TbMenu2,
   TbNote,
   TbNoteOff,
+  TbPennant,
   TbPlayerSkipBack,
   TbPlayerTrackNext,
   TbPlayerTrackPrev,
@@ -121,7 +123,7 @@ export const getIcon = (type) => {
     case ICON_LEVEL_UP:
       return <TbBadges />;
     case ICON_XP_COMPLETED:
-      return <TbBrandReactNative />;
+      return <TbLockOpen />;
     default:
       return <TbTrophy />;
   }

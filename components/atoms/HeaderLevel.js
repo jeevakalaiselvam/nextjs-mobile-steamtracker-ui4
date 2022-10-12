@@ -15,8 +15,13 @@ import {
   ICON_LEVEL_UP,
   ICON_MEDAL,
   ICON_TROPHY,
+  ICON_XP,
+  ICON_XP_COMPLETED,
 } from "../../helper/iconHelper";
-import { getXPDetailsForAllGames } from "../../helper/xpHelper";
+import {
+  getXPDetailsForAllGames,
+  getXPForAchievement,
+} from "../../helper/xpHelper";
 
 const Container = styled.div`
   display: flex;
@@ -44,15 +49,25 @@ const Count = styled.div`
   color: ${(props) => getColor(COLOR_GOLD_TROPHY)};
 `;
 
+const HeaderMiddle = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  font-size: 2.5rem;
+  color: ${(props) => getColor(COLOR_XBOX)};
+`;
+
 const LevelData = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: center;
-  margin-right: 0.75rem;
-  margin-left: 1rem;
   font-size: 2.5rem;
   color: ${(props) => getColor(COLOR_XBOX)};
+  margin-right: 0.5rem;
 `;
 
 const CountData = styled.div`
@@ -62,7 +77,16 @@ const CountData = styled.div`
   justify-content: center;
   font-size: 2rem;
   color: ${(props) => getColor(COLOR_XBOX)};
-  margin-right: 1rem;
+`;
+
+const Obtained = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: ${(props) => getColor(COLOR_TEXT_DULL)};
+  margin-right: 0.25rem;
 `;
 
 const MoreNeeded = styled.div`
@@ -72,7 +96,7 @@ const MoreNeeded = styled.div`
   justify-content: center;
   font-size: 1.25rem;
   color: ${(props) => getColor(COLOR_TEXT_DULL)};
-  margin-left: ${(props) => (props.noMargin ? "0rem" : "0rem")};
+  margin-left: 0.25rem;
 `;
 
 const TrophyData = styled.div`
@@ -91,8 +115,16 @@ const Icon = styled.div`
   flex-direction: row;
   justify-content: center;
   font-size: 1.5rem;
-  color: ${(props) => getColor(COLOR_TEXT_DULL)};
   transform: rotate(180deg);
+`;
+
+const IconXP = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-right: 0.5rem;
+  justify-content: center;
+  font-size: 1.5rem;
 `;
 
 const IconNotTransformed = styled.div`
@@ -123,9 +155,31 @@ export default function LevelCount({ type }) {
   } = getXPDetailsForAllGames(games);
 
   let game = {};
+  let totalXPInCurrentGame = 0;
 
   if (gameId) {
     game = games.find((game) => game.id == gameId);
+    if (game.achievements.length > 0) {
+      totalXPInCurrentGame = game.achievements.reduce((acc, ach) => {
+        return acc + ach.achieved === 1
+          ? getXPForAchievement(ach.percentage)
+          : 0;
+      }, 0);
+    }
+  } else {
+    totalXPInCurrentGame = 0;
+    if (games) {
+      games.forEach((game) => {
+        totalXPInCurrentGame =
+          totalXPInCurrentGame +
+          game.achievements.reduce((acc, ach) => {
+            return (
+              acc +
+              (ach.achieved === 1 ? getXPForAchievement(ach.percentage) : 0)
+            );
+          }, 0);
+      });
+    }
   }
 
   return (
@@ -137,8 +191,13 @@ export default function LevelCount({ type }) {
           {game?.achievements?.length ?? 0}
         </TrophyData>
       )}
-      <LevelData>{getIcon(ICON_MEDAL)}</LevelData>
-      <CountData>{currentLevel}</CountData>
+      <Obtained noMargin={true}>
+        <IconXP>{getIcon(ICON_XP_COMPLETED)}</IconXP> {totalXPInCurrentGame}
+      </Obtained>
+      <HeaderMiddle>
+        <LevelData>{getIcon(ICON_MEDAL)}</LevelData>
+        <CountData>{currentLevel}</CountData>
+      </HeaderMiddle>
       <MoreNeeded noMargin={true}>
         {xpRequiredForLevelUp} <Icon>{getIcon(ICON_LEVEL_UP)}</Icon>
       </MoreNeeded>

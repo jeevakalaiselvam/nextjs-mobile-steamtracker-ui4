@@ -13,6 +13,7 @@ import {
   TbBook,
   TbBookOff,
   TbBrandCodesandbox,
+  TbBrandReactNative,
   TbCardboards,
   TbCardboardsOff,
   TbCircleX,
@@ -73,6 +74,7 @@ export const ICON_SETTINGS = "ICON_SETTINGS";
 export const ICON_CLOSE_CIRCLE = "ICON_CLOSE_CIRCLE";
 export const ICON_XP = "ICON_XP";
 export const ICON_LEVEL_UP = "ICON_LEVEL_UP";
+export const ICON_XP_COMPLETED = "ICON_XP_COMPLETED";
 
 export const getIcon = (type) => {
   switch (type) {
@@ -118,6 +120,8 @@ export const getIcon = (type) => {
       return <FaXbox />;
     case ICON_LEVEL_UP:
       return <TbBadges />;
+    case ICON_XP_COMPLETED:
+      return <TbBrandReactNative />;
     default:
       return <TbTrophy />;
   }

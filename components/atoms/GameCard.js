@@ -14,6 +14,11 @@ import {
   ICON_TROPHY,
   ICON_XP,
 } from "../../helper/iconHelper";
+import {
+  READ_JSON,
+  SELECT_MAPPER_KEY,
+  WRITE_JSON,
+} from "../../helper/storageHelper";
 import { HEADER_IMAGE } from "../../helper/urlHelper";
 import { getXPForAchievement } from "../../helper/xpHelper";
 
@@ -133,7 +138,30 @@ export default function GameCard({ game }) {
   const { name } = game;
 
   const movetoGame = () => {
-    router.push(`/games/${game.id}`);
+    if (game.id) {
+      let oldData = READ_JSON(SELECT_MAPPER_KEY, {});
+      let newData = {};
+      if (!oldData[game.id]) {
+        newData = {
+          ...oldData,
+          [game.id]: {
+            recentClick: new Date().getTime(),
+            count: 1,
+          },
+        };
+        WRITE_JSON(SELECT_MAPPER_KEY, newData);
+      } else {
+        newData = {
+          ...oldData,
+          [game.id]: {
+            count: oldData[game.id].count + 1,
+            recentClick: new Date().getTime(),
+          },
+        };
+        WRITE_JSON(SELECT_MAPPER_KEY, newData);
+      }
+      router.push(`/games/${game.id}`);
+    }
   };
 
   const remainingXP =

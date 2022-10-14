@@ -1,5 +1,6 @@
 export const SELECTED_THEME_ID = "SELECTED_THEME_ID";
 export const LEVEL_MODIFIER = "LEVEL_MODIFIER";
+export const SELECT_MAPPER_KEY = "SELECT_MAPPER_KEY";
 
 export const WRITE_JSON = (key, data) => {
   if (typeof window !== "undefined") {

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { getGamesSortedByUserOptions } from "../../../helper/achievementHelper";
+import { READ_JSON, SELECT_MAPPER_KEY } from "../../../helper/storageHelper";
 import GameCard from "../../atoms/GameCard";
 import Searchbar from "../../atoms/Searchbar";
 
@@ -65,6 +66,22 @@ export default function GamesContent() {
     sortOption
   );
 
+  let useSelectedCountOrderedGames = sortOptionUserOptionFiltered.sort(
+    (game1, game2) => {
+      let game1Id = game1.id;
+      let game2Id = game2.id;
+      let countMapperinStorage = READ_JSON(SELECT_MAPPER_KEY, {});
+      let game1ClickDate = countMapperinStorage[game1Id]?.recentClick ?? 0;
+      let game2ClickDate = countMapperinStorage[game2Id]?.recentClick ?? 0;
+      return game2ClickDate - game1ClickDate;
+    }
+  );
+
+  console.log(
+    "SELECT SORTED",
+    useSelectedCountOrderedGames.slice(0, 1)[0]?.name ?? ""
+  );
+
   return (
     <Container>
       {searchShow && (
@@ -77,8 +94,8 @@ export default function GamesContent() {
         </GamesSearch>
       )}
       <GamesList searchShow={searchShow}>
-        {sortOptionUserOptionFiltered.length > 0 &&
-          sortOptionUserOptionFiltered.map((game) => {
+        {useSelectedCountOrderedGames.length > 0 &&
+          useSelectedCountOrderedGames.map((game) => {
             return <GameCard game={game} key={game.id} />;
           })}
       </GamesList>
